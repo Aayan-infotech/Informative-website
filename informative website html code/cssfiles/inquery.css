@@ -1,0 +1,96 @@
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+header .logo,
+.footer-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+main h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.thin-text {
+  font-weight: 400 !important;
+}
+
+footer .footer-contact p {
+  margin: 0;
+}
+
+footer nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer nav ul li {
+  display: inline;
+  margin-right: 1em;
+}
+footer {
+  background-color: black;
+}
+footer > *,
+footer > div > * {
+  background-color: black;
+  color: #ffff;
+}
+.wrappermain {
+  padding: 5% 0;
+  background-color: #f4f4f4;
+  border-radius: 0 0 10% 10%;
+}
+.main-section {
+  background: #000;
+}
+#enquiryForm input {
+  border-radius: 100px;
+}
+#enquiryForm > button {
+  background-color: #000;
+  width: 60%;
+}
+
+/* For large devices */
+@media screen and (max-width: 992px) {
+    .row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+        /* text-align: center; */
+    }
+    footer{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer img{
+        margin: 0 40px 40px;
+        height: 200px;
+    }
+
+    .footstrip{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 576px) {
+  footer img{
+    margin: 0 40px 40px;
+    height: 150px;
+}
+}
+
+@media screen and (max-width: 350px) {
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Csonka Contact Form</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../cssfiles/contact.css" />
+  </head>
+  <body>
+    <!-- <header class="d-flex justify-content-between container">
+      <a id="icon" href="../index.html"><img src="../assets/images/csonka worldwide.png" alt="" width="80%"/></a>
+      <a id="home-link" href="../index.html">Home</a>
+      <a id="products-link" href="products.html">Products</a>
+      <a id="testimonials-link" href="testimonials.html">Testimonials</a>
+      <a id="gallery-link" href="gallery.html">Gallery</a>
+      <a id="enquiry-link" href="inquery.html">Enquiry</a>
+      <a id="faq-link" href="f&q.html">F&Q</a>
+      <a id="about-link" href="AboutUs.html">About</a>
+      <a id="contact-link" href="contact.html">Contact</a>
+    </header> -->
+
+    <header class="d-flex justify-content-between container nav">
+      <a id="icon" href="../index.html"><img src="../assets/images/csonka worldwide.png" alt="" width="80%"/></a>
+      <a id="home-link" href="../index.html">Home</a>
+      <a id="products-link" href="./products.html">Products</a>
+      <a id="testimonials-link" href="./testimonials.html">Testimonials</a>
+      <a id="gallery-link" href="./gallery.html">Gallery</a>
+      <a id="enquiry-link" href="./inquery.html">Enquiry</a>
+      <a id="faq-link" href="./f&q.html">F&Q</a>
+      <a id="about-link" href="./AboutUs.html">About</a>
+      <a id="contact-link" href="./contact.html">Contact</a>
+    </header>
+
+    <div class="hero">
+      <h1>Contact Us</h1>
+      <p class="mt-4 w-50 mx-auto thin-text" style="font-weight: 500">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries
+      </p>
+    </div>
+
+    <h1 class="text-center" style="margin-top: 10px;">Please Fill the Form</h1>
+    <div class="form-cont">
+      <div class="d-flex py-4 cont-form">
+        <div class="w-60">
+          <form class="px-5">
+            <!-- First Row: First Name and Last Name -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  placeholder="First Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Second Row: Email -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Email" required />
+            </div>
+
+            <!-- Third Row: Mobile Number -->
+            <div class="form-group">
+              <label for="mobileNumber">Mobile Number</label>
+              <input
+                type="tel"
+                id="mobileNumber"
+                placeholder="Mobile Number"
+                required
+              />
+            </div>
+
+            <!-- Fourth Row: Message (Resizable) -->
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                rows="4"
+                placeholder="Your message"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="submitbtn py-2" type="submit" class="btn">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div class="w-40">
+          <img
+            class="px-5"
+            src="../assets/contactpage/form-mockup.png"
+            alt=""
+          />
+          <li class="d-flex justify-content-around">
+            <a class="text-white" href="">800-276-6522</a
+            ><a class="text-white" href="">Info@csonka.com</a>
+          </li>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid my-5 container">
+      <svg
+        class="mx-auto my-3"
+        width="90"
+        height="90"
+        viewBox="0 0 90 90"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_129_5058)">
+          <path
+            opacity="0.16"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M65.5596 61.8218L44.9998 82.3816L24.44 61.8218C13.0851 50.4669 13.0851 32.057 24.44 20.7022C35.7948 9.34732 54.2047 9.34732 65.5596 20.7022C76.9144 32.057 76.9145 50.4669 65.5596 61.8218ZM44.9998 45.0001C47.0643 45.0001 48.7379 43.3265 48.7379 41.262C48.7379 39.1975 47.0643 37.5238 44.9998 37.5238C42.9353 37.5238 41.2616 39.1975 41.2616 41.262C41.2616 43.3265 42.9353 45.0001 44.9998 45.0001Z"
+            fill="white"
+          />
+          <rect
+            x="45"
+            y="41.262"
+            width="0.0373815"
+            height="0.0373815"
+            stroke="black"
+            stroke-width="11.2144"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M45.0005 82.3816L65.5603 61.8217C76.9151 50.4669 76.9151 32.057 65.5603 20.7021C54.2054 9.34728 35.7955 9.34728 24.4407 20.7021C13.0858 32.057 13.0858 50.4669 24.4407 61.8218L45.0005 82.3816Z"
+            stroke="black"
+            stroke-width="7.47629"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_129_5058">
+            <rect width="89.7155" height="89.7155" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+
+      <h4 class="mx-auto">XYZ Place, Los Angles USA, zip-122334</h4>
+    </div>
+
+    <!-- below for contact us section with numbers -->
+    <div class="reach-us-sec1">
+      <div class="reach-us-sec container d-flex justify-content-around py-4">
+        <div class="py-4 pe-5">
+          <h1 class="pt-2">REACH US OUT</h1>
+          <p class="pt-2 thin-text">
+            Csonka offers a diverse range of products, from cigars and smoking
+            kits to golf accessories and customized apparel. Our unique electron
+            beam irradiation facility and in-house polymer compounding unit
+            ensure top quality and fast delivery. With manufacturing in
+            Hyderabad and a marketing network spanning major Indian cities and
+            the Middle East, we provide exceptional service and products
+            tailored to your needs. Explore our online platform today for unique
+            gifts and personalized items.
+          </p>
+          <a href="/pages/contact.html"
+            ><button class="pt-2">
+              Contact Form<svg
+                class="ps-2"
+                width="26"
+                height="8"
+                viewBox="0 0 26 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.921997 6.98045H23.1524L16.6282 1.42285"
+                  stroke="white"
+                  stroke-width="1.58789"
+                />
+              </svg></button
+          ></a>
+        </div>
+        <img src="../assets/images/reachus-sec.png" width="400px" alt="" />
+      </div>
+
+      <div class="cnumbers d-flex justify-content-around py-5 container">
+        <span>
+          <h6>Get a Quote.</h6>
+          <h2>Contact Us</h2>
+        </span>
+        <span>
+          <h6>Give us a Call.</h6>
+          <span class="d-flex justify-content-between align-items-center">
+            <h2>800-276-6522</h2>
+            <p class="ms-2">(Toll Free)</p>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="container">
+      <footer class="foot d-flex justify-content-between mx-4">
+        <img src="../assets/images/footer.png" alt="" height="100" />
+        <div>
+          <a href="">About</a><br />
+          <a href="">Product</a><br />
+          <a href="">FAQ</a><br />
+          <a href="">Enquiry</a>
+        </div>
+        <div>
+          <a href="">Gallery</a><br />
+          <a href="">Testimonials</a><br />
+          <a href="">Contact</a>
+        </div>
+        <p>
+          Lorem Ipsum city <br />
+          New York, USA <br />
+          201089
+        </p>
+        <a href="">800-276-6522</a>
+      </footer>
+    </div>
+
+    <section class="footstrip d-flex justify-content-around align-items-center">
+      <p class="text-white">csonka worldwide</p>
+      <p class="text-white">
+        © Copyright csonka worldwide All rights reserved.
+      </p>
+      <p class="text-white">1996-2024</p>
+    </section>
+    <script src="../script.js"></script>
+  </body>
+</html>

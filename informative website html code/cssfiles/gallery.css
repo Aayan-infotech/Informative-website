@@ -1,0 +1,182 @@
+.box {
+  display: grid;
+}
+.box > * {
+  margin: auto;
+}
+
+body {
+  font-family: "Poppins", sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+.thin-text {
+  font-weight: 400 !important;
+}
+
+.box-1,
+.box-1 > p {
+  background-image: url(../assets/gallerypage/gallerypage.png);
+  color: #ffff;
+}
+.box-3 > div {
+  padding: 1% 0;
+}
+.box-3 > div > img {
+  padding: 0 1%;
+}
+
+.foot {
+  margin: 20px 0;
+}
+
+.explore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 50px;
+}
+
+.explore-text {
+  text-align: center;
+  margin: 60px 0 20px;
+}
+
+  /* Medium devices (tablets) */
+  @media screen and (max-width: 992px) {
+    .box-1 h2 {
+      font-size: 1.5rem;
+      padding: 0 50px;
+    }
+
+    .box-1 p {
+      font-size: 1rem;
+      padding: 30px 50px;
+      width: 150%!important;
+    }
+
+    .box-3 .d-flex {
+      flex-direction: column;
+    }
+
+    .box-3 img {
+      width: 100%;
+      height: auto;
+    }
+
+    .explore .card {
+      margin: 10px 0;
+    }
+    footer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer img {
+      margin-bottom: 1em;
+    }
+
+    footer > div {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    footer p,
+    footer a {
+      text-align: center;
+    }
+
+    .footstrip {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  /* Small devices (phones) */
+  @media screen and (max-width: 768px) {
+    .box-1 h2 {
+      font-size: 1.2rem;
+      padding: 0 20px;
+    }
+
+    .box-1 p {
+      font-size: 0.9rem;
+      padding: 30px 20px;
+    }
+
+    .box-3 .d-flex {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box-3 img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .explore .card {
+      margin: 10px 0;
+    }
+
+    .explore-text {
+      margin: 40px 0 20px;
+    }
+  }
+
+  /* Extra small devices (phones in portrait mode) */
+  @media screen and (max-width: 576px) {
+    .box-1 h2 {
+      font-size: 1rem;
+      padding: 0 10px;
+      width: 100%;
+    }
+
+    .box-1 p {
+      font-size: 0.8rem;
+      padding: 30px 10px;
+      width: 100% !important;
+    }
+
+    .box-3 img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 5px;
+    }
+
+    .explore .card {
+      margin: 5px 0;
+    }
+
+    .explore-text {
+      margin: 20px 0;
+    }
+  }
+
+  /* Extra extra small devices (phones with very small screens) */
+  @media screen and (max-width: 350px) {
+    .box-1 h2 {
+      font-size: 0.9rem;
+      padding: 0 5px;
+    }
+
+    .box-1 p {
+      font-size: 0.7rem;
+      padding: 20px 5px;
+    }
+
+    .box-3 img {
+      width: 100%;
+      height: auto;
+    }
+
+    .explore .card {
+      margin: 5px 0;
+    }
+
+    .explore-text {
+      margin: 10px 0;
+    }
+  }

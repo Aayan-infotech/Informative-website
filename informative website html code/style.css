@@ -1,0 +1,682 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://unicons.iconscout.com/release/v4.0.8/css/line.css");
+@import url("https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://kit.fontawesome.com/78e082663a.js");
+:root {
+  --text-white: #ffffff;
+  --text-black: #000000f;
+}
+body,
+button,
+input,
+textarea {
+  font-family: "Poppins", sans-serif !important;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+} */
+.hero1{
+  margin-top: -2rem;
+}
+p {
+  font-weight: 50;
+  color: #929292;
+}
+header {
+  background: var(--text-white);
+  padding: 1.2% 0%;
+  color: var(--text-black);
+}
+header > a {
+  text-decoration: none;
+  color: var(--text-black);
+  padding: 1% 2%;
+}
+header > a:not(#icon):hover {
+  border-radius: 2px;
+  background-color: black;
+  color: var(--text-white);
+}
+
+/* @media (max-width: 992px) {
+  header button{
+    display: block;
+  }
+  header .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--text-white);
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+} */
+
+.foot {
+  margin: 20px 0;
+}
+
+/* .herocont {
+  margin-top: -25%;
+  padding: 0 1%;
+}
+.herocont > * {
+  padding-right: 40%;
+  color: var(--text-white);
+} */
+.herocont {
+  background-image: url(./assets/images/hero-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 700px; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.herocont h1{
+  padding-right: 300px;
+}
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .herocont {
+    background-size: cover; /* Cover the area better on smaller screens */
+  }
+  .herocont h1{
+    padding-right: 0;
+    color: #fff;
+    width: 100%;
+  }
+  .herocont p{
+    padding-right: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .herocont {
+    min-height: 750px;
+  }
+}
+
+
+.thin-text {
+  font-weight: 400 !important;
+}
+
+.first-poster, .second-poster{
+  text-align: center;
+}
+
+.first-poster{
+  margin-bottom: 50px!important;
+}
+
+.second1-box {
+  background-color: #f4f4f4;
+}
+.second-box > * {
+  margin: auto;
+  padding: 2%;
+}
+.third-box > * {
+  text-align: center;
+  padding: 1% 0 4% 0;
+  margin-top: 2rem;
+}
+
+.fourth1-box {
+  background-color: #f4f4f4;
+  padding: 20px 0;
+}
+
+.fourth-box > div {
+  display: grid;
+  padding: 2%;
+}
+.fourth-box > div > * {
+  padding-top: 5%;
+  margin: auto;
+  text-align: center;
+}
+
+.fifth1-box {
+  margin: 20px 0;
+}
+
+.cat-icons {
+  padding: 0 20%;
+}
+.cat-icons > * {
+  padding: 2%;
+  border-top: 5px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 5px;
+}
+.cat-icons > *:hover {
+  border-top: 5px solid black;
+}
+.wrapercontact {
+  background-color: #f4f4f4;
+}
+.reach-us-sec > div > a > button {
+  background: #000;
+  color: #ffffff;
+  border-radius: 11.12px;
+  padding: 1% 2%;
+}
+/* for last bannere befor footer */
+.lastposter {
+  background-image: url(assets/images/lastporter.png);
+  background-size: cover;
+  padding: 2% 0;
+  color: #ffffff;
+  display: grid;
+}
+.lastposter > * {
+  margin: auto;
+  color: var(--text-white);
+}
+footer > div > *,
+footer > a,
+p {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.footstrip {
+  background: #000;
+  padding: 15px 0 5px 0;
+}
+.submitbtn {
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  border: 2px solid rgb(255, 255, 255);
+}
+.submitbtn:hover {
+  background-color: #ffffff;
+  color: #000;
+  border: 2px solid black;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.carousel-container {
+  position: relative;
+  height: 50vh; /* 50% of viewport height */
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px; /* Space between images */
+  height: 100%;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 25%; /* Adjust width for 3-4 images visible */
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 0 0 10px 10px; /* Matches border-radius of the image */
+}
+
+.overlay h4 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.overlay p {
+  margin: 0.5rem 0;
+}
+
+.details-button {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.details-button:hover {
+  background: #ddd;
+}
+
+.carousel-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.carousel-shadow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none; /* Prevent interaction with shadow */
+}
+/* below for .carousel */
+
+.categories {
+  padding: 2em 0 ;
+  text-align: center;
+}
+.category-grid > .category {
+  margin: 0 5%;
+  padding: 0% 10%;
+  color: #fff;
+}
+.categories h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.category-grid {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+/* Container and Grid Layout */
+.container-cat {
+  padding: 20px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* General category styling */
+.category {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category h3,
+.category p {
+  border-radius: 5px;
+  width: 100%!important;
+}
+
+.category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Individual category background images */
+.category:nth-child(1) {
+  background-image: url("./assets/productspage/cigar.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.category:nth-child(2) {
+  background-image: url("./assets/productspage/DEZ02397 1.png");
+}
+
+.category:nth-child(3) {
+  background-image: url("./assets/productspage/lighter.png");
+}
+
+.category:nth-child(4) {
+  background-image: url("./assets/productspage/cloaker.png");
+}
+
+.category:nth-child(5) {
+  background-image: url("./assets/productspage/weddinggift.png");
+}
+
+.category:nth-child(6) {
+  background-image: url("./assets/productspage/uniquecigar.png");
+}
+
+.category:nth-child(7) {
+  background-image: url("./assets/productspage/tker.png");
+}
+
+.category:nth-child(8) {
+  background-image: url("./assets/productspage/golfkit.png");
+}
+
+.category:nth-child(9) {
+  background-image: url("./assets/productspage/groomsparty.png");
+}
+
+/* Continue for all categories */
+
+.details-btn {
+  display: inline-block;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+}
+
+.categories .category a button {
+  background: black;
+  color: white;
+  border-radius: 11.12px;
+  padding: 10px 40px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.categories .category a button svg{
+  color: #000!important;
+}
+
+.contact {
+  background-color: #f8f8f8;
+  padding: 2em 0;
+  text-align: center;
+}
+
+.contact-btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+}
+
+.contact-info {
+  margin-top: 1em;
+}
+
+footer > div > *,
+footer > a,
+p {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.footstrip {
+  background: #000;
+}
+/* .category-grid > .category:nth-child(1) {
+  background-image: url(../assets/productspage/DEZ02397\ 1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(2) {
+  background-image: url(../assets/productspage/lighter.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(3) {
+  background-image: url(../assets/productspage/cigar.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(4) {
+  background-image: url(../assets/productspage/uniquecigar.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(5) {
+  background-image: url(../assets/productspage/weddinggift.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(6) {
+  background-image: url(../assets/productspage/cloaker.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(7) {
+  background-image: url(../assets/productspage/groomsparty.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(8) {
+  background-image: url(../assets/productspage/golfkit.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.category-grid > .category:nth-child(9) {
+  background-image: url(../assets/productspage/tker.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+.category-grid > .category > p {
+  color: #fff;
+}
+/* .category-grid > .category > a {
+  background-color: #ffffff;
+  color: #000000;
+} */
+
+.icon-container {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid rgba(128, 128, 128, 0.267);
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.icon-container:hover {
+  border-top-color: black;
+}
+
+.icon-container:hover::before {
+  content: "";
+  position: absolute;
+  top: -10px; /* Adjusts the height of the spike */
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid black;
+}
+
+.home {
+  width: 1300px;
+}
+
+/*=============================== NEW-CODE-ADDED ================================*/
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 5rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+}
+
+.section__subtitle {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: 4rem;
+}
+
+.section__title,
+.section__subtitle {
+  text-align: center;
+}
+
+.foot {
+  margin: 20px;
+}
+
+/*=============== LAYOUT ===============*/
+.container {
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/*=============== BUTTONS ===============*/
+.button {
+  display: inline-block;
+  background-color: #7843e9;
+  color: var(--container-color);
+  padding: 0.9rem 1.7rem 1.1rem 1.7rem;
+  border-radius: 1rem;
+  font-weight: var(--font-medium);
+}
+
+.button:hover {
+  box-shadow: 0px 1px 5px 2px #afa3a3;
+  background-color: #6e34ec;
+}
+
+.button__icon {
+  margin-left: var(--mb-0-5);
+  position: relative;
+  top: 5px;
+}
+
+.button--flex {
+  display: inline-block;
+  align-items: center;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (max-width: 992px){
+  .second-box img{
+    width: 100%;
+  }
+  .second-box{
+    display: flex;
+    flex-direction: column;
+  }
+  .fourth-box{
+    display: flex;
+    flex-direction: column;
+  }
+  .fifth-box{
+    display: flex;
+    flex-direction:column-reverse;
+  }
+  .fifth-box img{
+    width: 100%;
+  }
+  .reach-us-sec{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .reach-us-sec img{
+    width: 100%;
+  }
+  .cnumbers{
+    display: flex;
+    flex-direction: column;
+  }
+  footer,.footstrip{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-width: 768px){
+}
+
+@media screen and (max-width: 576px){
+  .lastposter, .second-poster p{
+    
+  }
+}
+
+@media screen and (max-width: 350px){
+}

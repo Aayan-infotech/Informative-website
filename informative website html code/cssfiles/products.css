@@ -1,0 +1,387 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[class*="-btn"] {
+  border-radius: 8px;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+:root {
+  --text-white: #ffffff;
+  --text-black: #000000f;
+}
+p {
+  font-weight: 50;
+  color: #929292;
+}
+header {
+  background: var(--text-white);
+  padding: 1.2% 0%;
+  color: var(--text-black);
+}
+header > a {
+  text-decoration: none;
+  color: var(--text-black);
+  padding: 1% 2%;
+}
+header > a:not(#icon):hover {
+  border-radius: 2px;
+  background-color: black;
+  color: var(--text-white);
+}
+
+.hero {
+  background-color: #f8f8f8;
+  padding: 4em 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  text-align: left;
+  width: 75%;
+  font-weight: bold;
+}
+
+.thin-text {
+  font-weight: 400 !important;
+}
+
+.hero p {
+  font-size: 1.1em;
+  text-align: left;
+  width: 95%;
+  font-weight: 400;
+}
+
+.categories {
+  padding: 4em 0;
+  text-align: center;
+}
+
+.categories h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+  /* border-bottom: 1px solid black;
+  text-align: center;
+  padding-bottom: 10px; */
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1em;
+}
+
+.category {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.left-cate{
+  position: relative;
+  left: 40px;
+}
+
+.category img {
+  max-width: 100%;
+  height: auto;
+}
+
+.category h3 {
+  font-size: 1.5em;
+  margin: 1em 0 0.5em;
+}
+
+.category p {
+  font-size: 1em;
+  color: #666;
+}
+
+.details-btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+}
+
+.contact {
+  background-color: #f8f8f8;
+  padding: 2em 0;
+  text-align: center;
+}
+
+.contact-btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+}
+
+.product {
+  background-color: #f8f8f8;
+  padding: 2em 0;
+}
+
+.product h1 {
+  font-weight: 500;
+}
+
+.product p {
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-right: 200px;
+}
+
+.product button {
+  padding: 12px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.product h3 span {
+  font-size: 1rem;
+}
+.contact-info {
+  margin: 20px 0;
+}
+
+footer > div > *,
+footer > a,
+p {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.footstrip {
+  background: #000;
+}
+.category-grid > .category:nth-child(1) {
+  background-image: url(../assets/productspage/DEZ02397\ 1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(2) {
+  background-image: url(../assets/productspage/lighter.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(3) {
+  background-image: url(../assets/productspage/cigar.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(4) {
+  background-image: url(../assets/productspage/uniquecigar.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(5) {
+  background-image: url(../assets/productspage/weddinggift.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(6) {
+  background-image: url(../assets/productspage/cloaker.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(7) {
+  background-image: url(../assets/productspage/groomsparty.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(8) {
+  background-image: url(../assets/productspage/golfkit.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category:nth-child(9) {
+  background-image: url(../assets/productspage/tker.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.category-grid > .category {
+  padding: 40% 19% 5% 1%;
+  color: #fff;
+}
+
+.category-grid .category {
+  margin: 20px 50px 0 0;
+}
+
+.category-grid > .category > p {
+  color: #fff;
+}
+.category-grid > .category > a {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.foot {
+  margin: 20px 0;
+}
+
+.footstrip {
+  padding: 20px 0 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .hero {
+    padding: 3em 0;
+  }
+
+  .hero h1,
+  .hero p {
+    width: 100%;
+  }
+  .hero-sec {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .hero-sec img {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .product-img {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .product-img img {
+    width: 100%;
+  }
+  .product-img p {
+    width: 110%;
+  }
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer img {
+    margin-bottom: 1em;
+  }
+
+  footer > div {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  footer p,
+  footer a {
+    text-align: center;
+  }
+
+  .footstrip{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 2em 0;
+  }
+
+  .hero h1 {
+    font-size: 1.5em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .category h3 {
+    font-size: 1.2em;
+  }
+
+  .category p {
+    font-size: 0.9em;
+  }
+  .product .contact-info {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    padding: 20px;
+  }
+
+  footer a {
+    font-size: 0.9em;
+  }
+
+  footer p {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hero {
+    padding: 1.5em 0;
+  }
+
+  .hero h1 {
+    font-size: 1.2em;
+  }
+
+  .hero p {
+    font-size: 0.9em;
+  }
+
+  .details-btn {
+    padding: 0.4em 0.8em;
+  }
+
+  .footstrip p {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .hero h1 {
+    font-size: 1em;
+  }
+
+  .hero p {
+    font-size: 0.8em;
+  }
+
+  .details-btn {
+    padding: 0.3em 0.6em;
+  }
+}
