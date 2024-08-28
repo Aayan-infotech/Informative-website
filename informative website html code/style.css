@@ -24,7 +24,7 @@ textarea {
   max-width: 1200px;
   margin: 0 auto;
 } */
-.hero1{
+.hero1 {
   margin-top: -2rem;
 }
 p {
@@ -62,7 +62,7 @@ header > a:not(#icon):hover {
 } */
 
 .foot {
-  margin: 20px 0;
+  margin: 20px 0 20px 0;
 }
 
 /* .herocont {
@@ -78,18 +78,18 @@ header > a:not(#icon):hover {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 700px; 
+  min-height: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   color: white;
   padding: 20px;
   box-sizing: border-box;
 }
 
-.herocont h1{
+.herocont h1 {
   padding-right: 300px;
 }
 .hero {
@@ -103,12 +103,12 @@ header > a:not(#icon):hover {
   .herocont {
     background-size: cover; /* Cover the area better on smaller screens */
   }
-  .herocont h1{
+  .herocont h1 {
     padding-right: 0;
     color: #fff;
     width: 100%;
   }
-  .herocont p{
+  .herocont p {
     padding-right: 0;
     width: 100%;
   }
@@ -120,17 +120,17 @@ header > a:not(#icon):hover {
   }
 }
 
-
 .thin-text {
   font-weight: 400 !important;
 }
 
-.first-poster, .second-poster{
+.first-poster,
+.second-poster {
   text-align: center;
 }
 
-.first-poster{
-  margin-bottom: 50px!important;
+.first-poster {
+  margin-bottom: 50px !important;
 }
 
 .second1-box {
@@ -328,7 +328,7 @@ body {
 /* below for .carousel */
 
 .categories {
-  padding: 2em 0 ;
+  padding: 2em 0;
   text-align: center;
 }
 .category-grid > .category {
@@ -374,14 +374,14 @@ body {
   min-height: 300px;
   display: flex;
   flex-direction: column;
-  justify-content:flex-end;
+  justify-content: flex-end;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category h3,
 .category p {
   border-radius: 5px;
-  width: 100%!important;
+  width: 100% !important;
 }
 
 .category:hover {
@@ -448,8 +448,8 @@ body {
   margin-bottom: 10px;
 }
 
-.categories .category a button svg{
-  color: #000!important;
+.categories .category a button svg {
+  color: #000 !important;
 }
 
 .contact {
@@ -631,52 +631,94 @@ p {
 
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
-@media screen and (max-width: 992px){
-  .second-box img{
+@media screen and (max-width: 992px) {
+  .nav {
+    margin-bottom: 40px !important;
+  }
+  .second-box img {
     width: 100%;
   }
-  .second-box{
+  .second-box {
     display: flex;
     flex-direction: column;
   }
-  .fourth-box{
+  .fourth-box {
     display: flex;
     flex-direction: column;
   }
-  .fifth-box{
-    display: flex;
-    flex-direction:column-reverse;
-  }
-  .fifth-box img{
-    width: 100%;
-  }
-  .reach-us-sec{
+  .fifth-box {
     display: flex;
     flex-direction: column-reverse;
   }
-  .reach-us-sec img{
+  .fifth-box img {
     width: 100%;
   }
-  .cnumbers{
+  .reach-us-sec {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .reach-us-sec img {
+    width: 100%;
+  }
+  .cnumbers {
     display: flex;
     flex-direction: column;
   }
-  footer,.footstrip{
+  .footstrip {
     display: flex;
     flex-direction: column;
     text-align: center;
   }
+  footer {
+    flex-wrap: wrap;
+  }
 
-}
+  footer div,
+  footer p,
+  footer img {
+    width: 48%;
+    margin: 10px 0;
+  }
 
-@media screen and (max-width: 768px){
-}
+  footer div.first {
+    margin-top: 20px;
+  }
 
-@media screen and (max-width: 576px){
-  .lastposter, .second-poster p{
-    
+  footer div:nth-of-type(1), .foo-para{
+    position: relative;
+    left: 100px;
+  }
+
+  footer div a {
+    margin-top: 10px;
+  }
+
+  footer img {
+    height: 80px;
+    margin-right: 10px;
   }
 }
 
-@media screen and (max-width: 350px){
+@media screen and (max-width: 768px) {
+
+  footer div:nth-of-type(1), .foo-para{
+    position: relative;
+    left: 50px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .fifth1-inner {
+    margin-top: -50px;
+  }
+  .cnumbers {
+    margin-top: -50px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  footer div:nth-of-type(1), .foo-para{
+    position: relative;
+    left: -10px;
+  }
 }

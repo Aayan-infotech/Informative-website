@@ -307,6 +307,35 @@ p {
     display: flex;
     flex-direction: column;
   }
+
+  footer {
+    flex-wrap: wrap;
+  }
+
+  footer div,
+  footer p,
+  footer img {
+    width: 48%;
+    margin: 10px 0;
+  }
+
+  footer div.first {
+    margin-top: 20px;
+  }
+
+  footer div:nth-of-type(1), .foo-para{
+    position: relative;
+    left: 100px;
+  }
+
+  footer div a {
+    margin-top: 10px;
+  }
+
+  footer img {
+    height: 80px;
+    margin-right: 10px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -372,6 +401,13 @@ p {
   }
 }
 
+@media screen and (max-width: 576px){
+  .contact-info{
+    margin-top: -20px;
+  }
+  
+}
+
 @media screen and (max-width: 350px) {
   .hero h1 {
     font-size: 1em;
@@ -384,4 +420,19 @@ p {
   .details-btn {
     padding: 0.3em 0.6em;
   }
+
+  footer div:nth-of-type(1), .foo-para{
+    position: relative;
+    left: -10px;
+  }
 }
+
+@media screen and (max-width: 768px) {
+
+  footer div:nth-of-type(1), .foo-para{
+    position: relative;
+    left: 50px;
+  }
+}
+
+

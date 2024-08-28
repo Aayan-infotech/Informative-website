@@ -137,6 +137,7 @@ body {
 
   .cnumbers {
     padding: 0 5px;
+    margin-top: 0;
   }
 
   .cnumbers span h3 {
