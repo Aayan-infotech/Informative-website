@@ -143,14 +143,32 @@
         background: #000;
         padding: 15px 0 5px 0;
       }
-      .foot{
+      .foot {
         margin: 20px 0;
+      }
+
+      @media screen and (max-width: 992px) {
+        footer,
+        .footstrip {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+      }
+
+      @media screen and (max-width: 576px) {
+      }
+
+      @media screen and (max-width: 350px) {
       }
     </style>
   </head>
 
   <body>
-    <header class="d-flex justify-content-between container">
+    <header class="d-flex justify-content-between container nav">
       <a id="icon"
         ><img src="../assets/images/csonka worldwide.png" alt="" width="80%"
       /></a>
