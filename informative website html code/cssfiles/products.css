@@ -91,7 +91,7 @@ header > a:not(#icon):hover {
   border: 1px solid #ddd;
 }
 
-.left-cate{
+.left-cate {
   position: relative;
   left: 40px;
 }
@@ -284,30 +284,10 @@ p {
   .product-img p {
     width: 110%;
   }
-  footer {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  footer img {
-    margin-bottom: 1em;
-  }
-
-  footer > div {
-    text-align: center;
-    margin-bottom: 1em;
-  }
-
-  footer p,
-  footer a {
-    text-align: center;
-  }
-
-  .footstrip{
+  .footstrip {
     display: flex;
     flex-direction: column;
   }
-
   footer {
     flex-wrap: wrap;
   }
@@ -323,7 +303,8 @@ p {
     margin-top: 20px;
   }
 
-  footer div:nth-of-type(1), .foo-para{
+  footer div:nth-of-type(1),
+  .foo-para {
     position: relative;
     left: 100px;
   }
@@ -334,6 +315,7 @@ p {
 
   footer img {
     height: 80px;
+    width: 120px;
     margin-right: 10px;
   }
 }
@@ -377,6 +359,11 @@ p {
   footer p {
     font-size: 0.9em;
   }
+  footer div:nth-of-type(1),
+  .foo-para {
+    position: relative;
+    left: 50px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -399,13 +386,9 @@ p {
   .footstrip p {
     font-size: 0.8em;
   }
-}
-
-@media screen and (max-width: 576px){
-  .contact-info{
+  .contact-info {
     margin-top: -20px;
   }
-  
 }
 
 @media screen and (max-width: 350px) {
@@ -421,18 +404,9 @@ p {
     padding: 0.3em 0.6em;
   }
 
-  footer div:nth-of-type(1), .foo-para{
+  footer div:nth-of-type(1),
+  .foo-para {
     position: relative;
     left: -10px;
   }
 }
-
-@media screen and (max-width: 768px) {
-
-  footer div:nth-of-type(1), .foo-para{
-    position: relative;
-    left: 50px;
-  }
-}
-
-

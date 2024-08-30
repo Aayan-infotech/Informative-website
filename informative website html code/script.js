@@ -138,112 +138,111 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 // Testimonial Section
+
 // document.addEventListener("DOMContentLoaded", function () {
-//   const apiEndpoint = "http://3.111.163.2:5002/api/testimonial/";
 //   const testimonialsContainer = document.querySelector(
 //     ".testimonials-section"
 //   );
 
-//   fetch(apiEndpoint)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       let toggle = true;
+//   // Dummy array for testing
+//   const data = [
+//     {
+//       testimonial: "This is a great product! Highly recommend it to everyone.",
+//       image: "../assets/testimonials/unsplash_-QJvYDTCwAg-1.png",
+//     },
+//     {
+//       testimonial: "Amazing service and support. Will definitely use it again.",
+//       image: "../assets/testimonials/unsplash_-QJvYDTCwAg-2.png",
+//     },
+//     {
+//       testimonial: "Exceeded all my expectations! Fantastic experience.",
+//       image: "../assets/testimonials/unsplash_-QJvYDTCwAg-3.png",
+//     },
+//     {
+//       testimonial: "High-quality product and great customer service.",
+//       image: "../assets/testimonials/unsplash_-QJvYDTCwAg-4.png",
+//     },
+//   ];
 
-//       data.forEach((testimonial, index) => {
-//         const testimonialContainer = document.createElement("div");
-//         testimonialContainer.className = `testimonial-container ${
-//           toggle ? "left" : "right"
-//         }`;
-//         toggle = !toggle;
+//   let toggle = true;
 
-//         const testimonialDiv = document.createElement("div");
-//         testimonialDiv.className = "testimonial";
+//   data.forEach((testimonial, index) => {
+//     const testimonialContainer = document.createElement("div");
+//     testimonialContainer.className = `testimonial-container ${
+//       toggle ? "left" : "right"
+//     }`;
+//     toggle = !toggle;
 
-//         const testimonialContent = document.createElement("div");
-//         testimonialContent.className = "testimonial-content d-flex";
+//     const testimonialDiv = document.createElement("div");
+//     testimonialDiv.className = "testimonial";
 
-//         const testimonialText = document.createElement("p");
-//         testimonialText.textContent = `"${testimonial.testimonial}"`;
+//     const testimonialContent = document.createElement("div");
+//     testimonialContent.className = "testimonial-content d-flex";
 
-//         const testimonialImage = document.createElement("img");
-//         testimonialImage.src = testimonial.image; 
-//         testimonialImage.alt = "Customer";
-//         testimonialImage.className = "testi-img";
+//     const testimonialText = document.createElement("p");
+//     testimonialText.textContent = `"${testimonial.testimonial}"`;
 
-//         // Append elements
-//         testimonialContent.appendChild(testimonialText);
-//         testimonialContent.appendChild(testimonialImage);
-//         testimonialDiv.appendChild(testimonialContent);
-//         testimonialContainer.appendChild(testimonialDiv);
-//         testimonialsContainer.appendChild(testimonialContainer);
-//       });
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching testimonials:", error);
-//     });
+//     const testimonialImage = document.createElement("img");
+//     testimonialImage.src = testimonial.image;
+//     testimonialImage.alt = "Customer";
+//     testimonialImage.className = "testi-img";
+
+//     testimonialContent.appendChild(testimonialText);
+//     testimonialContent.appendChild(testimonialImage);
+//     testimonialDiv.appendChild(testimonialContent);
+//     testimonialContainer.appendChild(testimonialDiv);
+//     testimonialsContainer.appendChild(testimonialContainer);
+//   });
 // });
-
 document.addEventListener("DOMContentLoaded", function () {
+  const apiEndpoint = "http://3.111.163.2:5002/api/testimonial/";
   const testimonialsContainer = document.querySelector(
     ".testimonials-section"
   );
 
-  // Dummy array for testing
-  const data = [
-    {
-      testimonial: "This is a great product! Highly recommend it to everyone.",
-      image: "../assets/testimonials/unsplash_-QJvYDTCwAg-1.png",
-    },
-    {
-      testimonial: "Amazing service and support. Will definitely use it again.",
-      image: "../assets/testimonials/unsplash_-QJvYDTCwAg-2.png",
-    },
-    {
-      testimonial: "Exceeded all my expectations! Fantastic experience.",
-      image: "../assets/testimonials/unsplash_-QJvYDTCwAg-3.png",
-    },
-    {
-      testimonial: "High-quality product and great customer service.",
-      image: "../assets/testimonials/unsplash_-QJvYDTCwAg-4.png",
-    },
-  ];
+  fetch(apiEndpoint)
+    .then((response) => response.json())
+    .then((data) => {
+      let toggle = true;
 
-  let toggle = true;
+      data.forEach((testimonial, index) => {
+        const testimonialContainer = document.createElement("div");
+        testimonialContainer.className = `testimonial-container ${
+          toggle ? "left" : "right"
+        }`;
+        toggle = !toggle;
 
-  data.forEach((testimonial, index) => {
-    const testimonialContainer = document.createElement("div");
-    testimonialContainer.className = `testimonial-container ${
-      toggle ? "left" : "right"
-    }`;
-    toggle = !toggle;
+        const testimonialDiv = document.createElement("div");
+        testimonialDiv.className = "testimonial";
 
-    const testimonialDiv = document.createElement("div");
-    testimonialDiv.className = "testimonial";
+        const testimonialContent = document.createElement("div");
+        testimonialContent.className = "testimonial-content d-flex";
 
-    const testimonialContent = document.createElement("div");
-    testimonialContent.className = "testimonial-content d-flex";
+        const testimonialText = document.createElement("p");
+        testimonialText.textContent = `"${testimonial.testimonial}"`;
 
-    const testimonialText = document.createElement("p");
-    testimonialText.textContent = `"${testimonial.testimonial}"`;
+        const testimonialImage = document.createElement("img");
+        testimonialImage.src = testimonial.image; 
+        testimonialImage.alt = "Customer";
+        testimonialImage.className = "testi-img";
 
-    const testimonialImage = document.createElement("img");
-    testimonialImage.src = testimonial.image;
-    testimonialImage.alt = "Customer";
-    testimonialImage.className = "testi-img";
-
-    testimonialContent.appendChild(testimonialText);
-    testimonialContent.appendChild(testimonialImage);
-    testimonialDiv.appendChild(testimonialContent);
-    testimonialContainer.appendChild(testimonialDiv);
-    testimonialsContainer.appendChild(testimonialContainer);
-  });
+        // Append elements
+        testimonialContent.appendChild(testimonialText);
+        testimonialContent.appendChild(testimonialImage);
+        testimonialDiv.appendChild(testimonialContent);
+        testimonialContainer.appendChild(testimonialDiv);
+        testimonialsContainer.appendChild(testimonialContainer);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching testimonials:", error);
+    });
 });
 
-//FAQ section
+//FAQ Section
 document.addEventListener("DOMContentLoaded", function(){
-  const apiEndpoint = "http://3.111.163.2:5007/api/faq/";
+  const apiEndpoint = "http://3.111.163.2:5002/api/faq/";
   const faqContainer = document.querySelector(".faq-container");
 
   fetch(apiEndpoint).then((resp) => resp.json()).then((data) => {
@@ -254,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       const quesDiv = document.createElement("div");
       quesDiv.className = "question";
-      quesDiv.textContent = "item.ques";
+      quesDiv.textContent = item.question;
 
       const arrowSpan = document.createElement("span");
       arrowSpan.className = "arrow";
@@ -268,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       const answerP = document.createElement("p");
       answerP.className="thin-text";
-      answerP.textContent = item.ans;
+      answerP.textContent = item.answer;
 
       answerDiv.appendChild(answerP);
 
@@ -289,3 +288,5 @@ function toggleAnswer(element){
     ansDiv.style.display="block";
   }
 }
+
+
