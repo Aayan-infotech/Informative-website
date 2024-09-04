@@ -19,11 +19,6 @@ textarea {
   padding: 0;
 }
 
-/* .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-} */
 .hero1 {
   margin-top: -2rem;
 }
@@ -47,32 +42,10 @@ header > a:not(#icon):hover {
   color: var(--text-white);
 }
 
-/* @media (max-width: 992px) {
-  header button{
-    display: block;
-  }
-  header .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: var(--text-white);
-    padding: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-} */
-
 .foot {
   margin: 20px 0 20px 0;
 }
 
-/* .herocont {
-  margin-top: -25%;
-  padding: 0 1%;
-}
-.herocont > * {
-  padding-right: 40%;
-  color: var(--text-white);
-} */
 .herocont {
   background-image: url(./assets/images/hero-bg.png);
   background-size: contain;
@@ -101,7 +74,7 @@ header > a:not(#icon):hover {
 
 @media (max-width: 992px) {
   .herocont {
-    background-size: cover; /* Cover the area better on smaller screens */
+    background-size: cover;
   }
   .herocont h1 {
     padding-right: 0;
@@ -123,6 +96,7 @@ header > a:not(#icon):hover {
 .thin-text {
   font-weight: 400 !important;
   margin-right: 20px;
+  color: #000;
 }
 
 .first-poster,
@@ -286,17 +260,12 @@ body {
 }
 
 .details-button {
-  background: #fff;
   color: #000;
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1rem;
-}
-
-.details-button:hover {
-  background: #ddd;
 }
 
 .carousel-button {
@@ -390,47 +359,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Individual category background images */
-.category:nth-child(1) {
-  background-image: url("./assets/productspage/cigar.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.category:nth-child(2) {
-  background-image: url("./assets/productspage/DEZ02397 1.png");
-}
-
-.category:nth-child(3) {
-  background-image: url("./assets/productspage/lighter.png");
-}
-
-.category:nth-child(4) {
-  background-image: url("./assets/productspage/cloaker.png");
-}
-
-.category:nth-child(5) {
-  background-image: url("./assets/productspage/weddinggift.png");
-}
-
-.category:nth-child(6) {
-  background-image: url("./assets/productspage/uniquecigar.png");
-}
-
-.category:nth-child(7) {
-  background-image: url("./assets/productspage/tker.png");
-}
-
-.category:nth-child(8) {
-  background-image: url("./assets/productspage/golfkit.png");
-}
-
-.category:nth-child(9) {
-  background-image: url("./assets/productspage/groomsparty.png");
-}
-
 /* Continue for all categories */
-
 .details-btn {
   display: inline-block;
   margin: 1em 0;
@@ -482,59 +411,10 @@ p {
 .footstrip {
   background: #000;
 }
-/* .category-grid > .category:nth-child(1) {
-  background-image: url(../assets/productspage/DEZ02397\ 1.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(2) {
-  background-image: url(../assets/productspage/lighter.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(3) {
-  background-image: url(../assets/productspage/cigar.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(4) {
-  background-image: url(../assets/productspage/uniquecigar.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(5) {
-  background-image: url(../assets/productspage/weddinggift.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(6) {
-  background-image: url(../assets/productspage/cloaker.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(7) {
-  background-image: url(../assets/productspage/groomsparty.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(8) {
-  background-image: url(../assets/productspage/golfkit.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.category-grid > .category:nth-child(9) {
-  background-image: url(../assets/productspage/tker.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
 
 .category-grid > .category > p {
   color: #fff;
 }
-/* .category-grid > .category > a {
-  background-color: #ffffff;
-  color: #000000;
-} */
 
 .icon-container {
   display: inline-block;
@@ -553,7 +433,7 @@ p {
 .icon-container:hover::before {
   content: "";
   position: absolute;
-  top: -10px; /* Adjusts the height of the spike */
+  top: -10px; 
   left: 50%;
   transform: translateX(-50%);
   border-left: 10px solid transparent;

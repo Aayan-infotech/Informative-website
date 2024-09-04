@@ -48,6 +48,9 @@ header > a:not(#icon):hover {
   text-align: center;
 }
 
+.text-white{
+  text-align: center;
+}
 .hero h1 {
   font-size: 2em;
   margin-bottom: 0.5em;
@@ -75,9 +78,6 @@ header > a:not(#icon):hover {
 .categories h2 {
   font-size: 2em;
   margin-bottom: 1em;
-  /* border-bottom: 1px solid black;
-  text-align: center;
-  padding-bottom: 10px; */
 }
 
 .category-grid {
@@ -233,19 +233,18 @@ p {
   border-radius: 10px;
 }
 .category-grid > .category {
-  padding: 40% 19% 5% 1%;
+  padding: 40% 5% 5% 1%;
   color: #fff;
 }
 
-.category-grid .category {
+/* .category-grid .category {
   margin: 20px 50px 0 0;
-}
+} */
 
 .category-grid > .category > p {
   color: #fff;
 }
 .category-grid > .category > a {
-  background-color: #ffffff;
   color: #000000;
 }
 
@@ -255,6 +254,14 @@ p {
 
 .footstrip {
   padding: 20px 0 10px;
+}
+.categories .category a button {
+  background: black;
+  color: white;
+  border-radius: 11.12px;
+  padding: 10px 40px;
+  border: 1px solid black;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 992px) {
