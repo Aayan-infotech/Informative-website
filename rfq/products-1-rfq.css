@@ -155,9 +155,40 @@ footer > p {
     position: relative;
     left: 25%;
   }
-  footer,
-  .footstrip {
+  footer {
+    flex-wrap: wrap;
+  }
+
+  footer div,
+  footer p,
+  footer img {
+    width: 48%;
+    margin: 10px 0;
+  }
+
+  footer div.first {
+    margin-top: 20px;
+  }
+
+  footer div:nth-of-type(1),
+  .foo-para {
+    position: relative;
+    left: 100px;
+  }
+
+  footer div a {
+    margin-top: 10px;
+  }
+
+  footer img {
+    height: 80px;
+    width: 100px;
+    margin-right: 10px;
+  }
+  .footstrip{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     text-align: center;
   }
@@ -167,7 +198,8 @@ footer > p {
   .form-container {
     margin-bottom: 30px;
   }
-  footer div:nth-of-type(1), .foo-para{
+  footer div:nth-of-type(1),
+  .foo-para {
     position: relative;
     left: 20px;
   }
@@ -191,7 +223,8 @@ footer > p {
     position: relative;
     left: 10%;
   }
-  footer div:nth-of-type(1), .foo-para{
+  footer div:nth-of-type(1),
+  .foo-para {
     position: relative;
     left: -10px;
   }

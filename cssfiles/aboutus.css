@@ -16,7 +16,6 @@ h1 {
   background-color: #f4f4f4;
 }
 .box h1 {
-  /* border-bottom: 1px solid black; */
   padding-bottom: 10px;
 }
 
@@ -69,14 +68,54 @@ h1 {
       margin-top: 40px!important;
     }
 
-    footer, .footstrip{
-      display: flex;
-      flex-direction: column;
-      text-align: center;
+    footer {
+      flex-wrap: wrap;
+    }
+  
+    footer div,
+    footer p,
+    footer img {
+      width: 48%;
+      margin: 10px 0;
+    }
+  
+    footer div.first {
+      margin-top: 20px;
+    }
+  
+    footer div:nth-of-type(1), .foo-para{
+      position: relative;
+      left: 100px;
+    }
+  
+    footer div a {
+      margin-top: 10px;
+    }
+  
+    footer img {
+      height: 80px;
+      width: 100px;
+      margin-right: 10px;
     }
 }
 
 @media screen and (max-width: 768px) {
+  footer {
+    padding: 20px;
+  }
+
+  footer a {
+    font-size: 0.9em;
+  }
+
+  footer p {
+    font-size: 0.9em;
+  }
+  footer div:nth-of-type(1),
+  .foo-para {
+    position: relative;
+    left: 50px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -86,4 +125,9 @@ h1 {
 }
 
 @media screen and (max-width: 350px) {
+  footer div:nth-of-type(1),
+  .foo-para {
+    position: relative;
+    left: -10px;
+  }
 }

@@ -17,11 +17,11 @@
         margin: 0;
         padding: 0;
       }
-      .product-detail .product-img .prod-inner-img{
-          height: 380px!important;
-          width: 320px!important;
-        }
-      .product-info{
+      .product-detail .product-img .prod-inner-img {
+        height: 380px !important;
+        width: 320px !important;
+      }
+      .product-info {
         width: 60%;
       }
 
@@ -40,7 +40,7 @@
         line-height: 1.5;
       }
 
-      .product-info a{
+      .product-info a {
         background-color: #000;
         padding: 15px 50px;
         border-radius: 10px;
@@ -197,9 +197,9 @@
           width: 40%;
         }
 
-        .product-detail .product-img .prod-inner-img{
-          height: 400px!important;
-          width: 300px!important;
+        .product-detail .product-img .prod-inner-img {
+          height: 400px !important;
+          width: 300px !important;
         }
 
         .product-details .product-info {
@@ -209,6 +209,15 @@
           margin-top: 20px;
         }
 
+        .product-detail {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .request-button a {
+          padding: 10px 50px;
+        }
         footer {
           flex-wrap: wrap;
         }
@@ -227,7 +236,7 @@
         footer div:nth-of-type(1),
         .foo-para {
           position: relative;
-          left: 0;
+          left: 100px;
         }
 
         footer div a {
@@ -236,18 +245,8 @@
 
         footer img {
           height: 80px;
-          width: 120px;
+          width: 100px;
           margin-right: 10px;
-        }
-
-        .product-detail {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-
-        .request-button a {
-          padding: 10px 50px;
         }
       }
 
@@ -268,6 +267,11 @@
 
         .request-button a {
           padding: 10px 40px;
+        }
+        footer div:nth-of-type(1),
+        .foo-para {
+          position: relative;
+          left: 50px;
         }
       }
 
@@ -336,6 +340,11 @@
           line-height: 1.5;
           width: 200px;
         }
+        footer div:nth-of-type(1),
+        .foo-para {
+          position: relative;
+          left: -10px;
+        }
       }
     </style>
   </head>
@@ -359,14 +368,14 @@
       <div class="product-details d-flex justify-content-around">
         <div class="product-img">
           <h2>Gilded Smoke Ashtray</h2>
-          <img src="#" alt="Gilded Smoke Ashtray" class="prod-inner-img"/>
+          <img src="#" alt="Gilded Smoke Ashtray" class="prod-inner-img" />
         </div>
         <div class="product-info mx-5">
           <h1>Gilded Smoke Ashtray</h1>
           <h5 class="price">$75</h5>
           <p></p>
-            <a href="../rfq/products-1-rfq.html">Request for RFQ</a>
-          </div>
+          <a href="../rfq/products-1-rfq.html">Request for RFQ</a>
+        </div>
       </div>
     </div>
 
@@ -396,7 +405,9 @@
 
     <section class="footstrip d-flex justify-content-around align-items-center">
       <p class="text-white">csonka worldwide</p>
-      <p class="text-white">© Copyright csonka worldwide All rights reserved.</p>
+      <p class="text-white">
+        © Copyright csonka worldwide All rights reserved.
+      </p>
       <p class="text-white">1996-2024</p>
     </section>
 
