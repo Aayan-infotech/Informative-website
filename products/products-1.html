@@ -9,7 +9,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
+    <link rel="icon" href="../assets/images/Logo.png" type="image/png" />
     <title>Product Page</title>
     <style>
       body {
@@ -53,6 +53,7 @@
         display: flex;
         justify-content: space-between;
         margin-top: 4rem;
+        height: 90vh;
       }
 
       .price {
@@ -118,7 +119,7 @@
       header > a {
         text-decoration: none;
         color: var(--text-black);
-        padding: 1% 2%;
+        padding: 1% 2% 0% 2%;
       }
 
       header > a:not(#icon):hover {
@@ -173,6 +174,16 @@
         margin: 20px 0;
       }
 
+      .nav a img {
+        margin-top: -5px;
+        height: 45px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+      }
+      
       @media screen and (max-width: 992px) {
         .footstrip {
           display: flex;
@@ -352,16 +363,16 @@
   <body>
     <header class="d-flex justify-content-between container nav">
       <a id="icon" href="../index.html"
-        ><img src="../assets/images/csonka worldwide.png" alt="" width="80%"
+        ><img src="../assets/images/Logo.png" alt="" width="80%"
       /></a>
       <a id="home-link" href="../index.html">Home</a>
-      <a id="products-link" href="products.html">Products</a>
-      <a id="testimonials-link" href="testimonials.html">Testimonials</a>
-      <a id="gallery-link" href="gallery.html">Gallery</a>
-      <a id="enquiry-link" href="inquery.html">Enquiry</a>
-      <a id="faq-link" href="f&q.html">FAQ</a>
-      <a id="about-link" href="AboutUs.html">About</a>
-      <a id="contact-link" href="contact.html">Contact Us</a>
+      <a id="products-link" href="../pages/products.html">Products</a>
+      <a id="testimonials-link" href="../pages/testimonials.html">Testimonials</a>
+      <a id="gallery-link" href="../pages/gallery.html">Gallery</a>
+      <a id="enquiry-link" href="../pages/inquery.html">Enquiry</a>
+      <a id="faq-link" href="../pages/f&q.html">FAQ</a>
+      <a id="about-link" href="../pages/AboutUs.html">About</a>
+      <a id="contact-link" href="../pages/contact.html">Contact Us</a>
     </header>
 
     <div class="product-detail container section">

@@ -34,7 +34,7 @@ header {
 header > a {
   text-decoration: none;
   color: var(--text-black);
-  padding: 1% 2%;
+  padding: 1% 2% 0% 2%;
 }
 header > a:not(#icon):hover {
   border-radius: 2px;
@@ -445,6 +445,16 @@ p {
   width: 1300px;
 }
 
+.nav a img{
+  margin-top: -5px;
+  height: 45px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
 /*=============================== NEW-CODE-ADDED ================================*/
 
 /*=============== REUSABLE CSS CLASSES ===============*/
@@ -514,7 +524,7 @@ p {
 /* For large devices */
 @media screen and (max-width: 992px) {
   .nav {
-    margin-bottom: 40px !important;
+    margin-bottom: 10px !important;
   }
   .second-box img {
     width: 100%;

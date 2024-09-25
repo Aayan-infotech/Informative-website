@@ -34,7 +34,7 @@ header {
 header > a {
   text-decoration: none;
   color: var(--text-black);
-  padding: 1% 2%;
+  padding: 1% 2% 0% 2%;
 }
 header > a:not(#icon):hover {
   border-radius: 2px;
@@ -262,6 +262,16 @@ p {
   padding: 10px 40px;
   border: 1px solid black;
   margin-bottom: 10px;
+}
+
+.nav a img{
+  margin-top: -5px;
+  height: 45px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 }
 
 @media screen and (max-width: 992px) {

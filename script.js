@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         message: document.getElementById("message").value,
       };
 
-      fetch("http://3.111.163.2:5002/api/ContactUs/add", {
+      fetch("http://44.196.192.232:5002/api/ContactUs/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,78 +77,185 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Enquiry Form
+// Enquiry Form - Need Change
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("enquiryForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      const formData1 = {
-        fullName: document.getElementById("name").value,
-        email: document.getElementById("emails").value,
-        message: document.getElementById("messages").value,
-      };
+  document.getElementById("enquiryForm").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-      fetch("http://3.111.163.2:5002/api/enquiry/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData1),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data._id) {
-            document.getElementById("enquiryForm").reset();
-          } else {
-            throw new Error("Submission failed");
-          }
-        })
-        .catch((error) => {
-          console.log("Hello");
-        });
+    // Capture the checkbox label for personalization
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let personalization = '';
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked && checkbox.name === "check1") {
+        const label = document.querySelector(`label[for="${checkbox.id}"]`);
+        if (label) {
+          personalization += label.textContent.trim() + " ";
+        }
+      }
     });
+    personalization = personalization.trim();
+
+    // Capture the checkbox label for timing
+    let timing = '';
+    const timingCheckboxes = document.querySelectorAll('input[name^="timingCheck"]');
+    timingCheckboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const label = document.querySelector(`label[for="${checkbox.id}"]`);
+        if (label) {
+          timing = label.textContent.trim();
+        }
+      }
+    });
+
+    // Capture the specific date if selected
+    const specificDate = document.querySelector('input[type="date"]').value;
+
+    // Prepare the form data for submission
+    const formData1 = {
+      description: document.getElementById("messages").value,
+      personalization: personalization || null,
+      engravedText: document.getElementById("engravedText").value,
+      timing: timing || null,
+      specificDate: specificDate || null,
+      fullName: document.getElementById("name").value,
+      email: document.getElementById("emails").value,
+      mobileNo: document.getElementById("phoneno").value,
+      postalCode: document.getElementById("postal-code").value,
+      message: "I will provide the logo soon and need the product by the specific date if provided."
+    };
+
+    // Send the POST request with the form data
+    fetch("http://44.196.192.232:5002/api/enquiry/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData1),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data._id) {
+          document.getElementById("enquiryForm").reset(); // Reset the form
+          console.log("Submission successful:", data);
+        } else {
+          throw new Error("Submission failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  });
 });
 
-// Product-Query Form
+// Product-Query Form - Need Change-RFQ
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("rfqForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      const formData2 = {
-        fullName: document.getElementById("fullName").value,
-        email: document.getElementById("email").value,
-        mobileNo: document.getElementById("number").value,
-        productname: document.getElementById("productName").value,
-        productID: document.getElementById("productId").value,
-        message: document.getElementById("message").value,
-      };
+  document.getElementById("rfqForm").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-      fetch("http://3.111.163.2:5002/api/productenquiry/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData2),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data._id) {
-            document.getElementById("rfqForm").reset();
-          } else {
-            throw new Error("Submission failed");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    // Capture the checkbox label for personalization
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let personalization = '';
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked && checkbox.name === "check1") {
+        const label = document.querySelector(`label[for="${checkbox.id}"]`);
+        if (label) {
+          personalization += label.textContent.trim() + " ";
+        }
+      }
     });
+    personalization = personalization.trim();
+
+    // Capture the checkbox label for timing
+    let timing = '';
+    const timingCheckboxes = document.querySelectorAll('input[name^="timingCheck"]');
+    timingCheckboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const label = document.querySelector(`label[for="${checkbox.id}"]`);
+        if (label) {
+          timing = label.textContent.trim();
+        }
+      }
+    });
+
+    // Capture the specific date if selected
+    const specificDate = document.querySelector('input[type="date"]').value;
+
+    // Prepare the form data for submission
+    const formData1 = {
+      description: document.getElementById("messages").value,
+      personalization: personalization || null,
+      engravedText: document.getElementById("engravedText").value,
+      timing: timing || null,
+      specificDate: specificDate || null,
+      fullName: document.getElementById("name").value,
+      email: document.getElementById("emails").value,
+      mobileNo: document.getElementById("phoneno").value,
+      postalCode: document.getElementById("postal-code").value,
+      message: "I will provide the logo soon and need the product by the specific date if provided."
+    };
+
+    // Send the POST request with the form data
+    fetch("http://44.196.192.232:5002/api/productenquiry/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData1),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data._id) {
+          document.getElementById("enquiryForm").reset(); // Reset the form
+          console.log("Submission successful:", data);
+        } else {
+          throw new Error("Submission failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  });
 });
+
+// Product-Query Form - Need Change-RFQ
+// document.addEventListener("DOMContentLoaded", function () {
+//   document
+//     .getElementById("rfqForm")
+//     .addEventListener("submit", function (event) {
+//       event.preventDefault();
+//       const formData2 = {
+//         fullName: document.getElementById("fullName").value,
+//         email: document.getElementById("email").value,
+//         mobileNo: document.getElementById("number").value,
+//         productname: document.getElementById("productName").value,
+//         productID: document.getElementById("productId").value,
+//         message: document.getElementById("message").value,
+//       };
+
+//       fetch("http://44.196.192.232:5002/api/productenquiry/add", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(formData2),
+//       })
+//         .then((response) => response.json())
+//         .then((data) => {
+//           if (data._id) {
+//             document.getElementById("rfqForm").reset();
+//           } else {
+//             throw new Error("Submission failed");
+//           }
+//         })
+//         .catch((error) => {
+//           console.log(error);
+//         });
+//     });
+// });
 
 // Testimonial Section
 document.addEventListener("DOMContentLoaded", function () {
-  const apiEndpoint = "http://3.111.163.2:5002/api/testimonial/";
+  const apiEndpoint = "http://44.196.192.232:5002/api/testimonial/";
   const testimonialsContainer = document.querySelector(".testimonials-section");
 
   fetch(apiEndpoint)
@@ -192,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //FAQ Section
 document.addEventListener("DOMContentLoaded", function () {
-  const apiEndpoint = "http://3.111.163.2:5002/api/faq/";
+  const apiEndpoint = "http://44.196.192.232:5002/api/faq/";
   const faqContainer = document.querySelector(".faq-container");
 
   fetch(apiEndpoint)
@@ -243,7 +350,7 @@ function toggleAnswer(element) {
 
 //Gallery Section
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://3.111.163.2:5002/api/gallery/")
+  fetch("http://44.196.192.232:5002/api/gallery/")
     .then((response) => response.json())
     .then((data) => {
       const galleryGrid = document.querySelector(".gallery-grid");
@@ -252,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((gallery, index) => {
         const galleryElement = document.createElement("div");
         galleryElement.classList.add("gallery");
-        galleryElement.style.backgroundImage = `url(http://3.111.163.2:5002/uploads/${gallery.image})`;
+        galleryElement.style.backgroundImage = `url(http://44.196.192.232:5002/uploads/${gallery.image})`;
         galleryElement.style.backgroundSize = "cover";
         galleryElement.style.backgroundPosition = "center";
         galleryElement.style.backgroundRepeat = "no-repeat";
@@ -273,7 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Category Section
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://3.111.163.2:5002/api/category/")
+  fetch("http://44.196.192.232:5002/api/category/")
     .then((response) => response.json())
     .then((data) => {
       const categoryGrid = document.querySelector(".category-grid");
@@ -283,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((category) => {
         const categoryElement = document.createElement("div");
         categoryElement.classList.add("category");
-        categoryElement.style.backgroundImage = `url(http://3.111.163.2:5002/uploads/${category.image})`;
+        categoryElement.style.backgroundImage = `url(http://44.196.192.232:5002/uploads/${category.image})`;
         categoryElement.style.backgroundSize = "cover";
         categoryElement.style.backgroundRepeat = "no-repeat";
 
@@ -306,7 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", (e) => {
           e.preventDefault();
           const categoryData = JSON.parse(e.currentTarget.getAttribute("data-category"));
-          sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData)); // Store clicked category in sessionStorage
+          sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData));
           fetchProductsByCategory(categoryData.name);
         });
       });
@@ -315,15 +422,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchProductsByCategory(categoryName) {
-  fetch(`http://3.111.163.2:5002/api/product/getproduct/${categoryName}`)
+  fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
     .then((response) => response.json())
     .then((products) => {
       sessionStorage.setItem("fetchedProducts", JSON.stringify(products));
       const currentPage = window.location.pathname;
-      let redirectPath = "./products-pages/Cigar-Product.html";
-
-      if (currentPage.includes("products")) {
+      let redirectPath;
+      if(currentPage.includes("pages/")){
         redirectPath = "../products-pages/Cigar-Product.html";
+      }else{
+        redirectPath = "./products-pages/Cigar-Product.html";
       }
 
       window.location.href = redirectPath;
@@ -334,63 +442,88 @@ function fetchProductsByCategory(categoryName) {
 //Product-section
 document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".products-section .row");
+  const productSection2 = document.querySelector(".products-section-2 .swiper-wrapper");
   const products = JSON.parse(sessionStorage.getItem("fetchedProducts"));
   const heroSection = document.querySelector(".hero-section .d-grid");
   const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
 
+  // Update hero section
   if (selectedCategory) {
     heroSection.querySelector("h1").textContent = selectedCategory.name;
     heroSection.querySelector("p").textContent = selectedCategory.description;
   } else {
-    console.error("No products found in sessionStorage");
+    console.error("No category found in sessionStorage");
   }
 
+  // Function to render products
   if (products) {
-    productSection.innerHTML = "";
-
-    products.forEach((product) => {
-      const productElement = document.createElement("div");
-      productElement.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4");
-
-      productElement.innerHTML = `
-        <a href="../products/products-1.html">
-          <div class="card">
-            <img src="http://3.111.163.2:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
-            <div class="card-body">
-              <h5 class="card-title">${product.productname}</h5>
-              <p class="card-text">${product.price}</p>
+    const renderProducts = (productSection, cols, swiper = false) => {
+      productSection.innerHTML = "";
+      products.forEach((product) => {
+        const productElement = document.createElement("div");
+        productElement.classList.add(...cols, "mb-4");
+  
+        productElement.innerHTML = `
+          <a href="../products/products-1.html">
+            <div class="card">
+              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
+              <div class="card-body">
+                <h5 class="card-title">${product.productname}</h5>
+                <p class="card-text">$${product.price}</p>
+              </div>
             </div>
-          </div>
-        </a>
-      `;
-
-      productElement.querySelector("a").addEventListener("click", (e) => {
-        e.preventDefault();
-        sessionStorage.setItem("selectedProduct", JSON.stringify(product));
-        window.location.href = "../products/products-1.html";
+          </a>
+        `;
+  
+        productElement.querySelector("a").addEventListener("click", (e) => {
+          e.preventDefault();
+          sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+          window.location.href = "../products/products-1.html";
+        });
+  
+        if (swiper) {
+          const swiperSlide = document.createElement("div");
+          swiperSlide.classList.add("swiper-slide");
+          swiperSlide.appendChild(productElement);
+          productSection.appendChild(swiperSlide);
+        } else {
+          productSection.appendChild(productElement);
+        }
       });
+    };
 
-      productSection.appendChild(productElement);
-    });
+    renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
+
+    renderProducts(productSection2, ["col-sm-4"], true);
+    
   } else {
     console.error("No products found in sessionStorage");
   }
 });
+
+
+const style = document.createElement('style');
+style.innerHTML = `
+  .card-title, .card-text {
+    text-decoration: underline #fff;
+    font-weight: bold;
+  }
+  .card-text{
+    color: #667479;
+  }
+`;
+document.head.appendChild(style);
 
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
 
   if (product) {
     document.querySelector(".product-img h2").textContent = product.productname;
-    document.querySelector(
-      ".product-img img"
-    ).src = `http://3.111.163.2:5002/uploads/${product.image}`;
+    document.querySelector(".product-img img").src = `http://44.196.192.232:5002/uploads/${product.image}`;
     document.querySelector(".product-img img").alt = product.productname;
 
-    document.querySelector(".product-info h1").textContent =
-      product.productname;
-    document.querySelector(".product-info h5.price").textContent =
-      product.price;
+    document.querySelector(".product-info h1").textContent = product.productname;
+    document.querySelector(".product-info h5.price").textContent ="$"+product.price;
     document.querySelector(".product-info p").textContent = product.description;
 
     const rfqLink = document.querySelector(".product-info a");
@@ -409,13 +542,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (product) {
     document.querySelector(".product-info h1").textContent =
       product.productname;
-    document.querySelector(".product-info .price").textContent = product.price;
+    document.querySelector(".product-info .price").textContent = "$"+product.price;
     document.querySelector(".product-info .description").textContent =
       product.description;
-    document.querySelector(".product-info .id").textContent = product.productID;
+    document.querySelector(".product-info .id").textContent = "Product Id: "+product.productID;
     document.querySelector(
       ".product-details img"
-    ).src = `http://3.111.163.2:5002/uploads/${product.image}`;
+    ).src = `http://44.196.192.232:5002/uploads/${product.image}`;
     document.querySelector(".product-img img").alt = product.productname;
 
     // Add a click event to the RFQ link
@@ -429,8 +562,3 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("No product data found in sessionStorage");
   }
 });
-
-
-
-
-

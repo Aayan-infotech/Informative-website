@@ -11,7 +11,7 @@ header {
 header > a {
   text-decoration: none;
   color: var(--text-black);
-  padding: 1% 2%;
+  padding: 1% 2% 0% 2%;
 }
 header > a:not(#icon):hover {
   border-radius: 2px;
@@ -139,6 +139,16 @@ footer > p {
 }
 .btn-dark button {
   padding: 0 120px;
+}
+
+.nav a img{
+  margin-top: -5px;
+  height: 45px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 }
 
 @media screen and (max-width: 992px) {
