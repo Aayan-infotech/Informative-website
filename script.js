@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     let personalization = '';
     checkboxes.forEach(checkbox => {
-      if (checkbox.checked && checkbox.name === "check1") {
+      if (checkbox.checked) {
         const label = document.querySelector(`label[for="${checkbox.id}"]`);
         if (label) {
           personalization += label.textContent.trim() + " ";
@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
 
 // Product-Query Form - Need Change-RFQ
 document.addEventListener("DOMContentLoaded", function () {
@@ -216,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
-
 // Product-Query Form - Need Change-RFQ
 // document.addEventListener("DOMContentLoaded", function () {
 //   document
