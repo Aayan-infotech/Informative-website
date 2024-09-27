@@ -11,7 +11,7 @@ header {
 header > a {
   text-decoration: none;
   color: var(--text-black);
-  padding: 1% 2% 0% 2%;
+  padding: 1% 2%;
 }
 header > a:not(#icon):hover {
   border-radius: 2px;

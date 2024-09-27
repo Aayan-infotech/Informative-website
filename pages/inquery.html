@@ -14,17 +14,27 @@
   </head>
   <body>
     <header class="d-flex justify-content-between container nav">
-      <a id="icon" href="../index.html"
-        ><img src="../assets/images/Logo.png" alt="" width="80%"
-      /></a>
-      <a id="home-link" href="../index.html">Home</a>
-      <a id="products-link" href="products.html">Products</a>
-      <a id="testimonials-link" href="testimonials.html">Testimonials</a>
-      <a id="gallery-link" href="gallery.html">Gallery</a>
-      <a id="enquiry-link" href="inquery.html">Enquiry</a>
-      <a id="faq-link" href="f&q.html">FAQ</a>
-      <a id="about-link" href="AboutUs.html">About</a>
-      <a id="contact-link" href="contact.html">Contact</a>
+      <div>
+        <a id="icon" href="../index.html"><img src="../assets/images/Logo-1.png" alt="" width="95%" /></a>
+        <p style="font-size: 12px;text-align: center;">We Know Cigar... Personally</p>
+      </div>
+      <a id="icon" href="../index.html"><img src="../assets/images/logo-2.png" alt="" width="95%" /></a>
+      <div>
+      <a id="icon" href="../index.html"><img src="../assets/images/Logo-3.png" alt="" width="95%" /></a>
+      <p style="font-size: 12px;text-align: center;">SAGE number 6785</p>
+      </div>
+    </header>
+    <header class="d-flex justify-content-between container nav">
+      <a id="home-link" href="">Home</a>
+      <a id="products-link" href="./products.html">Products</a>
+      <a id="testimonials-link" href="./testimonials.html"
+        >Testimonials</a
+      >
+      <a id="gallery-link" href="./gallery.html">Gallery</a>
+      <a id="enquiry-link" href="./inquery.html">Enquiry</a>
+      <a id="faq-link" href="./f&q.html">FAQ</a>
+      <a id="about-link" href="./AboutUs.html">About</a>
+      <a id="contact-link" href="./contact.html">Contact Us</a>
     </header>
 
     <div class="main-section">
@@ -35,7 +45,10 @@
               <h2>Get in Touch with Us</h2>
               <form id="enquiryForm">
                 <div class="mb-3">
-                  <label for="message" class="form-label enqi-wrap">I'm interested in obtaining more info, based on my needs noted here:</label>
+                  <label for="message" class="form-label enqi-wrap"
+                    >I'm interested in obtaining more info, based on my needs
+                    noted here:</label
+                  >
                   <textarea
                     class="form-control inqu-form"
                     id="messages"
@@ -44,25 +57,49 @@
                     required
                   ></textarea>
                 </div>
+
                 <div class="mb-3 enqi-wrap" style="white-space: nowrap">
                   <h6>
-                    Need personalization or customizing with name(s) or a logo or art.
+                    Need personalization or customizing with name(s) or a logo
+                    or art.
                   </h6>
-                  <input type="checkbox" id="check1" name="check1" value="Bike" />
-                  <label for="check1">
-                    No personalization nor customization is needed.</label
+                  <input
+                    type="checkbox"
+                    id="check1"
+                    name="personalization"
+                    value="Bike"
+                  />
+                  <label for="check1"
+                    >No personalization nor customization is needed.</label
                   ><br />
-                  <input type="checkbox" id="check2" name="check2" value="Bike" />
+                  <input
+                    type="checkbox"
+                    id="check2"
+                    name="personalization"
+                    value="Bike"
+                  />
                   <label for="check2">
-                    Today, I can provide a logo or the art(Email it ASAP to:
-                    orders@csonka.com).</label
+                    Today, I can provide a logo or the art (Email it ASAP to:
+                    orders@csonka.com). </label
                   ><br />
-                  <input type="checkbox" id="check3" name="check3" value="Bike" />
-                  <label for="check3">Soon, I can provide a logo or the art.</label><br />
-                  <input type="checkbox" id="check4" name="check4" value="Bike" />
-                  <label for="check4">
-                    I'll need a name or initials or words engraved(please provide this
-                    below).</label
+                  <input
+                    type="checkbox"
+                    id="check3"
+                    name="personalization"
+                    value="Bike"
+                  />
+                  <label for="check3"
+                    >Soon, I can provide a logo or the art.</label
+                  ><br />
+                  <input
+                    type="checkbox"
+                    id="check4"
+                    name="personalization"
+                    value="Bike"
+                  />
+                  <label for="check4"
+                    >I'll need a name or initials or words engraved (please
+                    provide this below).</label
                   ><br />
                   <input
                     type="text"
@@ -71,30 +108,35 @@
                     placeholder="Name(s) initials or words to be engraved."
                   />
                 </div>
-                
+
                 <div class="mb-3" style="white-space: nowrap">
                   <h6>Timing needs.</h6>
                   <input
                     type="checkbox"
                     id="check12"
-                    name="timingCheck1"
+                    name="timing"
                     value="ASAP"
                   />
-                  <label for="check12" class="enqi-wrap">Just desired ASAP ... there's no timing needs</label><br />
+                  <label for="check12"
+                    >Just desired ASAP ... there's no timing needs</label
+                  ><br />
                   <input
                     type="checkbox"
                     id="check13"
-                    name="timingCheck2"
+                    name="timing"
                     value="Specific date"
                   />
-                  <label for="check13" class="enqi-wrap">Needed by a specific date (please provide this date).</label><br />
+                  <label for="check13"
+                    >Needed by a specific date (please provide this
+                    date).</label
+                  ><br />
                   <input
                     type="date"
                     class="form-control inqu-form"
                     placeholder="Enter the required date."
                   />
                 </div>
-                
+
                 <div class="mb-3">
                   <label for="name" class="form-label">Full Name:</label>
                   <input
@@ -126,7 +168,9 @@
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="postal-code" class="form-label">Postal Zip Code:</label>
+                  <label for="postal-code" class="form-label"
+                    >Postal Zip Code:</label
+                  >
                   <input
                     type="text"
                     class="form-control inqu-form"

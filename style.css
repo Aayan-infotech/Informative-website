@@ -34,7 +34,7 @@ header {
 header > a {
   text-decoration: none;
   color: var(--text-black);
-  padding: 1% 2% 0% 2%;
+  padding: 1% 2%;
 }
 header > a:not(#icon):hover {
   border-radius: 2px;
@@ -447,8 +447,8 @@ p {
 
 .nav a img{
   margin-top: -5px;
-  height: 45px;
-  width: 150px;
+  height: 60px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;

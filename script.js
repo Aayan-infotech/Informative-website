@@ -79,11 +79,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Enquiry Form - Need Change
 document.addEventListener("DOMContentLoaded", function () {
+  // Function to ensure only one checkbox is selected per group
+  function manageCheckboxGroup(groupName) {
+    const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function () {
+        if (this.checked) {
+          checkboxes.forEach(otherCheckbox => {
+            if (otherCheckbox !== this) {
+              otherCheckbox.checked = false; // Uncheck others
+            }
+          });
+        }
+      });
+    });
+  }
+
+  // Apply the function to both checkbox groups
+  manageCheckboxGroup('personalization');
+  manageCheckboxGroup('timing');
+
+  // Form submission logic (unchanged from your original code)
   document.getElementById("enquiryForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Capture the checkbox label for personalization
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll('input[name="personalization"]');
     let personalization = '';
     checkboxes.forEach(checkbox => {
       if (checkbox.checked) {
@@ -97,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Capture the checkbox label for timing
     let timing = '';
-    const timingCheckboxes = document.querySelectorAll('input[name^="timingCheck"]');
+    const timingCheckboxes = document.querySelectorAll('input[name="timing"]');
     timingCheckboxes.forEach(checkbox => {
       if (checkbox.checked) {
         const label = document.querySelector(`label[for="${checkbox.id}"]`);
@@ -149,26 +171,134 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Product-Query Form - Need Change-RFQ
+// document.addEventListener("DOMContentLoaded", function () {
+//   function manageCheckboxGroup(groupName) {
+//     const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+
+//     checkboxes.forEach(checkbox => {
+//       checkbox.addEventListener('change', function () {
+//         if (this.checked) {
+//           checkboxes.forEach(otherCheckbox => {
+//             if (otherCheckbox !== this) {
+//               otherCheckbox.checked = false; // Uncheck others
+//             }
+//           });
+//         }
+//       });
+//     });
+//   }
+
+//   // Apply the function to both checkbox groups
+//   manageCheckboxGroup('personalization');
+//   manageCheckboxGroup('timing');
+//   document.getElementById("rfqForm").addEventListener("submit", function (event) {
+//     event.preventDefault();
+
+//     // Capture the checkbox label for personalization
+//     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//     let personalization = '';
+//     checkboxes.forEach(checkbox => {
+//       if (checkbox.checked && checkbox.name === "check1") {
+//         const label = document.querySelector(`label[for="${checkbox.id}"]`);
+//         if (label) {
+//           personalization += label.textContent.trim() + " ";
+//         }
+//       }
+//     });
+//     personalization = personalization.trim();
+
+//     // Capture the checkbox label for timing
+//     let timing = '';
+//     const timingCheckboxes = document.querySelectorAll('input[name^="timingCheck"]');
+//     timingCheckboxes.forEach(checkbox => {
+//       if (checkbox.checked) {
+//         const label = document.querySelector(`label[for="${checkbox.id}"]`);
+//         if (label) {
+//           timing = label.textContent.trim();
+//         }
+//       }
+//     });
+
+//     // Capture the specific date if selected
+//     const specificDate = document.querySelector('input[type="date"]').value;
+
+//     // Prepare the form data for submission
+//     const formData1 = {
+//       description: document.getElementById("messages").value,
+//       personalization: personalization || null,
+//       engravedText: document.getElementById("engravedText").value,
+//       timing: timing || null,
+//       specificDate: specificDate || null,
+//       fullName: document.getElementById("name").value,
+//       email: document.getElementById("emails").value,
+//       mobileNo: document.getElementById("phoneno").value,
+//       postalCode: document.getElementById("postal-code").value,
+//       message: "I will provide the logo soon and need the product by the specific date if provided."
+//     };
+
+//     // Send the POST request with the form data
+//     fetch("http://44.196.192.232:5002/api/productenquiry/add", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(formData1),
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         if (data._id) {
+//           document.getElementById("rfqForm").reset(); // Reset the form
+//           console.log("Submission successful:", data);
+//         } else {
+//           throw new Error("Submission failed");
+//         }
+//       })
+//       .catch((error) => {
+//         console.error("Error:", error);
+//       });
+//   });
+// });
 document.addEventListener("DOMContentLoaded", function () {
+  // Function to manage only one checkbox selection per group
+  function manageCheckboxGroup(groupName) {
+    const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function () {
+        if (this.checked) {
+          checkboxes.forEach(otherCheckbox => {
+            if (otherCheckbox !== this) {
+              otherCheckbox.checked = false; // Uncheck others
+            }
+          });
+        }
+      });
+    });
+  }
+
+  // Apply the function to both checkbox groups
+  manageCheckboxGroup('personalization');
+  manageCheckboxGroup('timing');
+
+  // Form submission logic
   document.getElementById("rfqForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Capture the checkbox label for personalization
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const personalizationCheckboxes = document.querySelectorAll('input[name="personalization"]');
     let personalization = '';
-    checkboxes.forEach(checkbox => {
-      if (checkbox.checked && checkbox.name === "check1") {
+    personalizationCheckboxes.forEach(checkbox => {
+      if (checkbox.checked) {
         const label = document.querySelector(`label[for="${checkbox.id}"]`);
         if (label) {
-          personalization += label.textContent.trim() + " ";
+          personalization = label.textContent.trim();
         }
       }
     });
-    personalization = personalization.trim();
 
     // Capture the checkbox label for timing
     let timing = '';
-    const timingCheckboxes = document.querySelectorAll('input[name^="timingCheck"]');
+    const timingCheckboxes = document.querySelectorAll('input[name="timing"]');
     timingCheckboxes.forEach(checkbox => {
       if (checkbox.checked) {
         const label = document.querySelector(`label[for="${checkbox.id}"]`);
@@ -182,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const specificDate = document.querySelector('input[type="date"]').value;
 
     // Prepare the form data for submission
-    const formData1 = {
+    const formData = {
       description: document.getElementById("messages").value,
       personalization: personalization || null,
       engravedText: document.getElementById("engravedText").value,
@@ -201,12 +331,12 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData1),
+      body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((data) => {
         if (data._id) {
-          document.getElementById("enquiryForm").reset(); // Reset the form
+          document.getElementById("rfqForm").reset(); // Reset the form
           console.log("Submission successful:", data);
         } else {
           throw new Error("Submission failed");
@@ -217,6 +347,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
+
 // Product-Query Form - Need Change-RFQ
 // document.addEventListener("DOMContentLoaded", function () {
 //   document

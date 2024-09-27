@@ -9,7 +9,7 @@ header {
 header > a {
   text-decoration: none;
   color: var(--text-black);
-  padding: 1% 2% 0% 2%;
+  padding: 1% 2%;
 }
 .bottom-line::after {
   content: "";
