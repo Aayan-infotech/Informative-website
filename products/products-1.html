@@ -183,7 +183,7 @@
         align-items: center;
         vertical-align: middle;
       }
-      
+
       @media screen and (max-width: 992px) {
         .footstrip {
           display: flex;
@@ -263,6 +263,13 @@
 
       @media screen and (max-width: 768px) {
         header {
+          justify-content: center;
+        }
+
+        .nav-top {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           justify-content: center;
         }
 
@@ -363,13 +370,21 @@
   <body>
     <header class="d-flex justify-content-between container nav nav-top">
       <div>
-        <a id="icon" href="../index.html"><img src="../assets/images/Logo-1.png" alt="" width="95%" /></a>
-        <p style="font-size: 12px;text-align: center;">We Know Cigar... Personally</p>
+        <a id="icon" href="../index.html"
+          ><img src="../assets/images/Logo-1.png" alt="" width="95%"
+        /></a>
+        <p style="font-size: 12px; text-align: center">
+          We Know Cigar... Personally
+        </p>
       </div>
-      <a id="icon" href="../index.html"><img src="../assets/images/logo-2.png" alt="" width="95%" /></a>
+      <a id="icon" href="../index.html"
+        ><img src="../assets/images/logo-2.png" alt="" width="95%"
+      /></a>
       <div>
-      <a id="icon" href="../index.html"><img src="../assets/images/Logo-3.png" alt="" width="95%" /></a>
-      <p style="font-size: 12px;text-align: center;">SAGE number 6785</p>
+        <a id="icon" href="../index.html"
+          ><img src="../assets/images/Logo-3.png" alt="" width="95%"
+        /></a>
+        <p style="font-size: 12px; text-align: center">SAGE number 6785</p>
       </div>
     </header>
     <header class="d-flex justify-content-between container nav">
@@ -378,7 +393,7 @@
       <a id="testimonials-link" href="../pages/testimonials.html"
         >Testimonials</a
       >
-      <a id="gallery-link" href="../pages/gallery.html">Gallery</a>
+      <!-- <a id="gallery-link" href="../pages/gallery.html">Gallery</a> -->
       <a id="enquiry-link" href="../pages/inquery.html">Enquiry</a>
       <a id="faq-link" href="../pages/f&q.html">FAQ</a>
       <a id="about-link" href="../pages/AboutUs.html">About</a>
@@ -405,15 +420,15 @@
       <footer class="foot d-flex justify-content-between mx-4 pt-4 container">
         <img src="../assets/images/footer.png" alt="" height="100px" />
         <div>
-          <a href="">About</a><br />
-          <a href="">Product</a><br />
-          <a href="">FAQ</a><br />
-          <a href="">Enquiry</a>
+          <a href="../pages/AboutUs.html">About</a><br />
+          <a href="../pages/products.html">Product</a><br />
+          <a href="../pages/f&q.html">FAQ</a><br />
+          <a href="../pages/inquery.html">Enquiry</a>
         </div>
         <div>
-          <a href="">Gallery</a><br />
-          <a href="">Testimonials</a><br />
-          <a href="">Contact</a>
+          <!-- <a href="">Gallery</a><br /> -->
+          <a href="../pages/testimonials.html">Testimonials</a><br />
+          <a href="../pages/contact.html">Contact</a>
         </div>
         <p class="foo-para">
           Lorem Ipsum city <br />

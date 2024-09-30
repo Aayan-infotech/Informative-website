@@ -278,7 +278,9 @@ p {
   .hero {
     padding: 3em 0;
   }
-
+  .nav-top{
+    text-align: center;
+  }
   .hero h1,
   .hero p {
     width: 100%;
@@ -380,6 +382,16 @@ p {
   .foo-para {
     position: relative;
     left: 50px;
+  }
+  .nav-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-top img{
+    width: 100%;
   }
 }
 
