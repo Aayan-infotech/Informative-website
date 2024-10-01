@@ -164,9 +164,7 @@ footer > p {
     max-width: 100%;
   }
   .form-container {
-    width: 300px;
-    position: relative;
-    left: 25%;
+    width: 100%;
   }
   footer {
     flex-wrap: wrap;
@@ -235,19 +233,14 @@ footer > p {
     width: 220px;
     height: 300px;
   }
-  .form-container {
+  /* .form-container {
     width: 250px;
     position: relative;
     left: 25%;
-  }
+  } */
 }
 
 @media screen and (max-width: 350px) {
-  .form-container {
-    width: 250px;
-    position: relative;
-    left: 10%;
-  }
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
