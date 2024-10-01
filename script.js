@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
         testimonialText.textContent = `"${testimonial.testimonial}"`;
 
         const testimonialImage = document.createElement("img");
-        testimonialImage.src = `http://3.111.163.2:5002/uploads/${testimonial.image}`;
+        testimonialImage.src = `${testimonial.image}`;
         testimonialImage.alt = "Customer";
         testimonialImage.className = "testi-img";
 
@@ -491,7 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((gallery, index) => {
         const galleryElement = document.createElement("div");
         galleryElement.classList.add("gallery");
-        galleryElement.style.backgroundImage = `url(http://44.196.192.232:5002/uploads/${gallery.image})`;
+        galleryElement.style.backgroundImage = `url(${gallery.image})`;
         galleryElement.style.backgroundSize = "cover";
         galleryElement.style.backgroundPosition = "center";
         galleryElement.style.backgroundRepeat = "no-repeat";
@@ -522,7 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((category) => {
         const categoryElement = document.createElement("div");
         categoryElement.classList.add("category");
-        categoryElement.style.backgroundImage = `url(http://44.196.192.232:5002/uploads/${category.image})`;
+        categoryElement.style.backgroundImage = `url(${category.image})`;
         categoryElement.style.backgroundSize = "cover";
         categoryElement.style.backgroundRepeat = "no-repeat";
 
@@ -598,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productElement.innerHTML = `
           <a href="../products/products-1.html">
             <div class="card">
-              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
+              <img src="${product.image}" class="card-img-top" alt="${product.productname}" />
               <div class="card-body">
                 <h5 class="card-title">${product.productname}</h5>
                 <p class="card-text">$${product.price}</p>
@@ -651,7 +651,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (product) {
     document.querySelector(".product-img h2").textContent = product.productname;
-    document.querySelector(".product-img img").src = `http://44.196.192.232:5002/uploads/${product.image}`;
+    document.querySelector(".product-img img").src = `${product.image}`;
     document.querySelector(".product-img img").alt = product.productname;
 
     document.querySelector(".product-info h1").textContent = product.productname;
@@ -680,7 +680,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".product-info .id").textContent = "Product Id: "+product.productID;
     document.querySelector(
       ".product-details img"
-    ).src = `http://44.196.192.232:5002/uploads/${product.image}`;
+    ).src = `${product.image}`;
     document.querySelector(".product-img img").alt = product.productname;
 
     // Add a click event to the RFQ link
