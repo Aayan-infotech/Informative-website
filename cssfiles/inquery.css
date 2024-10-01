@@ -130,16 +130,16 @@ footer > div > * {
 }
 
 @media screen and (max-width: 576px) {
-  .inqu-form{
+  /* .inqu-form{
     width: 80%;
-  }
+  } */
 }
 
 @media screen and (max-width: 350px) {
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
-    left: 0px;
+    left: 20px;
   }
   .inqu-form{
     width: 100%;

@@ -9,6 +9,10 @@ h1 {
   text-align: center;
 }
 
+.mission5{
+  margin-right: 30px;
+}
+
 .box > * {
   margin: auto;
 }
@@ -47,6 +51,11 @@ h1 {
 
     .mission-cont p{
         width: 100%;
+    }
+
+    .mission5{
+      margin-right: 0;
+      margin-bottom: 30px;
     }
 
     .reach-us-sec{
@@ -128,6 +137,6 @@ h1 {
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
-    left: -10px;
+    left: 10px;
   }
 }

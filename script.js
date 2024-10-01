@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentPath === linkPath) {
       link.style.backgroundColor = "black";
       link.style.color = "white";
-      link.style.borderRadius = "8px";
+      link.style.borderRadius = "3px";
     }
   });
 });

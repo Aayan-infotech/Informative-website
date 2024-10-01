@@ -157,6 +157,9 @@ footer > p {
     justify-content: center;
     flex-direction: column;
   }
+  .nav-top{
+    text-align: center;
+  }
   .product-details {
     max-width: 100%;
   }
@@ -213,6 +216,18 @@ footer > p {
     position: relative;
     left: 20px;
   }
+  .nav-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-top img{
+    width: 100%;
+  }
+  .enqi-wrap{
+    white-space:normal!important;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -236,6 +251,9 @@ footer > p {
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
-    left: -10px;
+    left: 10px;
+  }
+  .enqi-wrap{
+    width: 100%;
   }
 }

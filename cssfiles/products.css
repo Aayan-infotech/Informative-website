@@ -37,7 +37,7 @@ header > a {
   padding: 1% 2%;
 }
 header > a:not(#icon):hover {
-  border-radius: 2px;
+  border-radius: 2px!important;
   background-color: black;
   color: var(--text-white);
 }
@@ -266,8 +266,8 @@ p {
 
 .nav a img{
   margin-top: -5px;
-  height: 45px;
-  width: 150px;
+  height: 60px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -436,6 +436,9 @@ p {
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
-    left: -10px;
+    left: 20px;
+  }
+  .product p{
+    margin-right: 0px;
   }
 }

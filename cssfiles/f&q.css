@@ -64,6 +64,10 @@ body {
   margin: 20px 0;
 }
 
+.nav1{
+  flex-wrap: wrap;
+}
+
 @media screen and (max-width: 992px) {
   .faq-item {
     padding: 15px;
@@ -203,6 +207,6 @@ body {
   }
   footer div:nth-of-type(1), .foo-para{
     position: relative;
-    left: -10px;
+    left: 10px;
   }
 }
