@@ -108,7 +108,7 @@ header > a:not(#icon):hover {
 
 .category p {
   font-size: 1em;
-  color: #666;
+  color: #fef3c7;
 }
 
 .details-btn {
@@ -272,6 +272,11 @@ p {
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+}
+.addBack .addh3, .addp{
+  color: #fef3c7;
+  text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827,
+  2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827;
 }
 
 @media screen and (max-width: 992px) {

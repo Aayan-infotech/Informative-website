@@ -523,12 +523,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const categoryElement = document.createElement("div");
         categoryElement.classList.add("category");
         categoryElement.style.backgroundImage = `url(${category.image})`;
+        categoryElement.style.objectFit= "cover";
+        categoryElement.style.height="auto"
         categoryElement.style.backgroundSize = "cover";
         categoryElement.style.backgroundRepeat = "no-repeat";
 
         categoryElement.innerHTML = `
-          <h3>${category.name}</h3>
-          <p class="thin-text">${category.description}</p>
+          <div class="addBack">
+            <h3 class="addh3">${category.name}</h3>
+            <p class="thin-text addp">${category.description}</p>
+          </div>
           <a href="" class="details-button" data-category='${JSON.stringify(category)}'>
             <button class="pt-2">Details
               <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">

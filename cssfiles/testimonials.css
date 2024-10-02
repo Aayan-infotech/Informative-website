@@ -12,7 +12,7 @@ header .logo,
 main h2,
 main h3 {
   font-size: 2em;
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
 }
 .box-1 {
   background-image: url(../assets/testimonials/bg-hero.png);
