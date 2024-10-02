@@ -397,9 +397,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       data.forEach((testimonial, index) => {
         const testimonialContainer = document.createElement("div");
-        testimonialContainer.className = `testimonial-container ${
-          toggle ? "left" : "right"
-        }`;
+        testimonialContainer.className = `testimonial-container ${toggle ? "left" : "right"
+          }`;
         toggle = !toggle;
 
         const testimonialDiv = document.createElement("div");
@@ -515,29 +514,31 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("http://44.196.192.232:5002/api/category/")
     .then((response) => response.json())
     .then((data) => {
-      const categoryGrid = document.querySelector(".category-grid");
+      const categoryGrid = document.querySelector('.third-box .category-grid');
       categoryGrid.innerHTML = "";
       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
 
       data.forEach((category) => {
+        const truncatedDescription = category.description.length > 20
+          ? category.description.substring(0, 20) + "..."
+          : category.description;
+
         const categoryElement = document.createElement("div");
         categoryElement.classList.add("category");
-        categoryElement.style.backgroundImage = `url(${category.image})`;
-        categoryElement.style.backgroundSize = "cover";
-        categoryElement.style.backgroundRepeat = "no-repeat";
-
         categoryElement.innerHTML = `
-          <h3>${category.name}</h3>
-          <p class="thin-text">${category.description}</p>
-          <a href="" class="details-button" data-category='${JSON.stringify(category)}'>
-            <button class="pt-2">Details
-              <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="white" stroke-width="1.58789"/>
-              </svg>
-            </button>
-          </a>
-        `;
-
+            <div class="card" style="background-color: black; color: white;">
+              <div class="img">
+               <img src="${category.image}" alt="${category.name}">
+              </div>
+              <h4 style="text-align: center;">${category.name}</h4>
+              <div class="price">
+                <div style="text-align: center;">
+                  <p>${truncatedDescription}</p> <!-- Display truncated description -->
+                </div>
+              </div>
+               <button class="details-btn" data-category='${JSON.stringify(category)}'>Details</button>
+            </div>
+            `;
         categoryGrid.appendChild(categoryElement);
       });
 
@@ -560,9 +561,9 @@ function fetchProductsByCategory(categoryName) {
       sessionStorage.setItem("fetchedProducts", JSON.stringify(products));
       const currentPage = window.location.pathname;
       let redirectPath;
-      if(currentPage.includes("pages/")){
+      if (currentPage.includes("pages/")) {
         redirectPath = "../products-pages/Cigar-Product.html";
-      }else{
+      } else {
         redirectPath = "./products-pages/Cigar-Product.html";
       }
 
@@ -594,7 +595,7 @@ document.addEventListener("DOMContentLoaded", () => {
       products.forEach((product) => {
         const productElement = document.createElement("div");
         productElement.classList.add(...cols, "mb-4");
-  
+
         productElement.innerHTML = `
           <a href="../products/products-1.html">
             <div class="card">
@@ -606,13 +607,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </a>
         `;
-  
+
         productElement.querySelector("a").addEventListener("click", (e) => {
           e.preventDefault();
           sessionStorage.setItem("selectedProduct", JSON.stringify(product));
           window.location.href = "../products/products-1.html";
         });
-  
+
         if (swiper) {
           const swiperSlide = document.createElement("div");
           swiperSlide.classList.add("swiper-slide");
@@ -627,7 +628,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
 
     renderProducts(productSection2, ["col-sm-4"], true);
-    
+
   } else {
     console.error("No products found in sessionStorage");
   }
@@ -655,7 +656,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".product-img img").alt = product.productname;
 
     document.querySelector(".product-info h1").textContent = product.productname;
-    document.querySelector(".product-info h5.price").textContent ="$"+product.price;
+    document.querySelector(".product-info h5.price").textContent = "$" + product.price;
     document.querySelector(".product-info p").textContent = product.description;
 
     const rfqLink = document.querySelector(".product-info a");
@@ -674,10 +675,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (product) {
     document.querySelector(".product-info h1").textContent =
       product.productname;
-    document.querySelector(".product-info .price").textContent = "$"+product.price;
+    document.querySelector(".product-info .price").textContent = "$" + product.price;
     document.querySelector(".product-info .description").textContent =
       product.description;
-    document.querySelector(".product-info .id").textContent = "Product Id: "+product.productID;
+    document.querySelector(".product-info .id").textContent = "Product Id: " + product.productID;
     document.querySelector(
       ".product-details img"
     ).src = `${product.image}`;
