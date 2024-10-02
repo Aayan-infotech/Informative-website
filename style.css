@@ -179,7 +179,7 @@ footer > div > *,
 footer > a,
 p {
   text-decoration: none;
-  color: black;
+  /* color: black; */
   font-weight: bold;
 }
 .footstrip {
@@ -359,6 +359,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
 }
 
 .category h3,
@@ -370,6 +371,8 @@ body {
 .category:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  border-radius: 5px;
 }
 
 /* Continue for all categories */
@@ -418,7 +421,7 @@ footer > div > *,
 footer > a,
 p {
   text-decoration: none;
-  color: black;
+  /* color: black; */
   font-weight: bold;
 }
 .footstrip {

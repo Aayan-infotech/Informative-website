@@ -510,35 +510,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 //Category Section
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetch("http://44.196.192.232:5002/api/category/")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const categoryGrid = document.querySelector('.third-box .category-grid');
+//       categoryGrid.innerHTML = "";
+//       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
+
+//       data.forEach((category) => {
+//         const truncatedDescription = category.description.length > 20
+//           ? category.description.substring(0, 20) + "..."
+//           : category.description;
+
+//         console.log(truncatedDescription);
+//         const categoryElement = document.createElement("div");
+//         categoryElement.classList.add("category");
+//         categoryElement.innerHTML = `
+//             <div class="card" style="background-color: black; color: white;">
+//               <div class="img">
+//                <img src="${category.image}" alt="${category.name}">
+//               </div>
+//               <h4 style="text-align: center;">${category.name}</h4>
+//               <div class="price">
+//                 <div style="text-align: center;">
+//                   <p>${category.description}</p> <!-- Display truncated description -->
+//                 </div>
+//               </div>
+//                <button class="details-btn" data-category='${JSON.stringify(category)}'>Details</button>
+//             </div>
+//             `;
+//         categoryGrid.appendChild(categoryElement);
+//       });
+
+//       document.querySelectorAll(".details-button").forEach((button) => {
+//         button.addEventListener("click", (e) => {
+//           e.preventDefault();
+//           const categoryData = JSON.parse(e.currentTarget.getAttribute("data-category"));
+//           sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData));
+//           fetchProductsByCategory(categoryData.name);
+//         });
+//       });
+//     })
+//     .catch((error) => console.error("Error fetching categories:", error));
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
   fetch("http://44.196.192.232:5002/api/category/")
     .then((response) => response.json())
     .then((data) => {
-      const categoryGrid = document.querySelector('.third-box .category-grid');
+      const categoryGrid = document.querySelector(".category-grid");
       categoryGrid.innerHTML = "";
       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
 
       data.forEach((category) => {
-        const truncatedDescription = category.description.length > 20
-          ? category.description.substring(0, 20) + "..."
-          : category.description;
-
         const categoryElement = document.createElement("div");
         categoryElement.classList.add("category");
+        categoryElement.style.backgroundImage = `url(${category.image})`;
+        categoryElement.style.backgroundSize = "cover";
+        categoryElement.style.backgroundRepeat = "no-repeat";
+
         categoryElement.innerHTML = `
-            <div class="card" style="background-color: black; color: white;">
-              <div class="img">
-               <img src="${category.image}" alt="${category.name}">
-              </div>
-              <h4 style="text-align: center;">${category.name}</h4>
-              <div class="price">
-                <div style="text-align: center;">
-                  <p>${truncatedDescription}</p> <!-- Display truncated description -->
-                </div>
-              </div>
-               <button class="details-btn" data-category='${JSON.stringify(category)}'>Details</button>
-            </div>
-            `;
+          <h3>${category.name}</h3>
+          <p class="thin-text">${category.description}</p>
+          <a href="" class="details-button" data-category='${JSON.stringify(category)}'>
+            <button class="pt-2">Details
+              <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="white" stroke-width="1.58789"/>
+              </svg>
+            </button>
+          </a>
+        `;
+
         categoryGrid.appendChild(categoryElement);
       });
 
@@ -546,13 +589,55 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", (e) => {
           e.preventDefault();
           const categoryData = JSON.parse(e.currentTarget.getAttribute("data-category"));
-          sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData));
+          sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData)); // Store clicked category in sessionStorage
           fetchProductsByCategory(categoryData.name);
         });
       });
     })
     .catch((error) => console.error("Error fetching categories:", error));
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetch("http://44.196.192.232:5002/api/category/")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const categoryGrid = document.querySelector(".category-grid");
+//       categoryGrid.innerHTML = "";
+//       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
+
+//       data.forEach((category) => {
+//         const categoryElement = document.createElement("div");
+//         categoryElement.classList.add("category");
+//         categoryElement.style.backgroundImage = `url(http://44.196.192.232:5002/uploads/${category.image})`;
+//         categoryElement.style.backgroundSize = "cover";
+//         categoryElement.style.backgroundRepeat = "no-repeat";
+
+//         categoryElement.innerHTML = `
+//           <h3>${category.name}</h3>
+//           <p class="thin-text">${category.description}</p>
+//           <a href="" class="details-button" data-category='${JSON.stringify(category)}'>
+//             <button class="pt-2">Details
+//               <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                 <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="white" stroke-width="1.58789"/>
+//               </svg>
+//             </button>
+//           </a>
+//         `;
+
+//         categoryGrid.appendChild(categoryElement);
+//       });
+
+//       document.querySelectorAll(".details-button").forEach((button) => {
+//         button.addEventListener("click", (e) => {
+//           e.preventDefault();
+//           const categoryData = JSON.parse(e.currentTarget.getAttribute("data-category"));
+//           sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData)); // Store clicked category in sessionStorage
+//           fetchProductsByCategory(categoryData.name);
+//         });
+//       });
+//     })
+//     .catch((error) => console.error("Error fetching categories:", error));
+// });
 
 function fetchProductsByCategory(categoryName) {
   fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
@@ -599,7 +684,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productElement.innerHTML = `
           <a href="../products/products-1.html">
             <div class="card">
-              <img src="${product.image}" class="card-img-top" alt="${product.productname}" />
+              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
               <div class="card-body">
                 <h5 class="card-title">${product.productname}</h5>
                 <p class="card-text">$${product.price}</p>
@@ -652,7 +737,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (product) {
     document.querySelector(".product-img h2").textContent = product.productname;
-    document.querySelector(".product-img img").src = `${product.image}`;
+    document.querySelector(".product-img img").src = `http://44.196.192.232:5002/uploads/${product.image}`;
     document.querySelector(".product-img img").alt = product.productname;
 
     document.querySelector(".product-info h1").textContent = product.productname;
@@ -681,7 +766,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".product-info .id").textContent = "Product Id: " + product.productID;
     document.querySelector(
       ".product-details img"
-    ).src = `${product.image}`;
+    ).src = `http://44.196.192.232:5002/uploads/${product.image}`;
     document.querySelector(".product-img img").alt = product.productname;
 
     // Add a click event to the RFQ link
