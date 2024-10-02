@@ -37,7 +37,7 @@ header > a {
   padding: 1% 2%;
 }
 header > a:not(#icon):hover {
-  border-radius: 2px;
+  border-radius: 2px!important;
   background-color: black;
   color: var(--text-white);
 }
@@ -108,7 +108,7 @@ header > a:not(#icon):hover {
 
 .category p {
   font-size: 1em;
-  color: #666;
+  color: #fef3c7;
 }
 
 .details-btn {
@@ -266,12 +266,17 @@ p {
 
 .nav a img{
   margin-top: -5px;
-  height: 45px;
-  width: 150px;
+  height: 60px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+}
+.addBack .addh3, .addp{
+  color: #fef3c7;
+  text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827,
+  2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827;
 }
 
 @media screen and (max-width: 992px) {
@@ -436,6 +441,9 @@ p {
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
-    left: -10px;
+    left: 20px;
+  }
+  .product p{
+    margin-right: 0px;
   }
 }

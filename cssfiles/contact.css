@@ -121,7 +121,7 @@ h2 {
   }
 
   .hero p {
-    width: 100%;
+    width: 100%!important;
   }
 
   .cont-form {
@@ -210,6 +210,6 @@ h2 {
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
-    left: -10px;
+    left: 10px;
   }
 }

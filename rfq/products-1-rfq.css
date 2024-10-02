@@ -157,13 +157,14 @@ footer > p {
     justify-content: center;
     flex-direction: column;
   }
+  .nav-top{
+    text-align: center;
+  }
   .product-details {
     max-width: 100%;
   }
   .form-container {
-    width: 300px;
-    position: relative;
-    left: 25%;
+    width: 100%;
   }
   footer {
     flex-wrap: wrap;
@@ -213,6 +214,18 @@ footer > p {
     position: relative;
     left: 20px;
   }
+  .nav-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-top img{
+    width: 100%;
+  }
+  .enqi-wrap{
+    white-space:normal!important;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -220,22 +233,20 @@ footer > p {
     width: 220px;
     height: 300px;
   }
-  .form-container {
+  /* .form-container {
     width: 250px;
     position: relative;
     left: 25%;
-  }
+  } */
 }
 
 @media screen and (max-width: 350px) {
-  .form-container {
-    width: 250px;
-    position: relative;
-    left: 10%;
-  }
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
-    left: -10px;
+    left: 10px;
+  }
+  .enqi-wrap{
+    width: 100%;
   }
 }
