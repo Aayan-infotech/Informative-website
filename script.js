@@ -25,68 +25,66 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Conatct Us
-document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("contactForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      console.log("Hello");
+// document.addEventListener("DOMContentLoaded", function () {
+//   document
+//     .getElementById("contactForm")
+//     .addEventListener("submit", function (event) {
+//       event.preventDefault();
 
-      const formData = {
-        firstName: document.getElementById("firstName").value,
-        lastName: document.getElementById("lastName").value,
-        email: document.getElementById("email").value,
-        mobileNo: document.getElementById("mobileNumber").value,
-        message: document.getElementById("message").value,
-      };
+//       const formData = {
+//         firstName: document.getElementById("firstName").value,
+//         lastName: document.getElementById("lastName").value,
+//         email: document.getElementById("email").value,
+//         mobileNo: document.getElementById("mobileNumber").value,
+//         message: document.getElementById("message").value,
+//       };
 
-      fetch("http://44.196.192.232:5002/api/ContactUs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data._id) {
-            Toastify({
-              text: "Thank you! Your form submission has been received.",
-              duration: 3000,
-              close: true,
-              gravity: "top",
-              position: "right",
-              backgroundColor: "#4CAF50",
-            }).showToast();
+//       fetch("http://44.196.192.232:5002/api/ContactUs/add", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(formData),
+//       })
+//         .then((response) => response.json())
+//         .then((data) => {
+//           if (data._id) {
+//             Toastify({
+//               text: "Thank you! Your form submission has been received.",
+//               duration: 3000,
+//               close: true,
+//               gravity: "top",
+//               position: "right",
+//               backgroundColor: "#4CAF50",
+//             }).showToast();
 
-            document.getElementById("contactForm").reset();
-          } else {
-            throw new Error("Submission failed");
-          }
-        })
-        .catch((error) => {
-          Toastify({
-            text: "Something went wrong.",
-            duration: 3000,
-            close: true,
-            gravity: "top",
-            position: "right",
-            backgroundColor: "#FF0000",
-          }).showToast();
-        });
-    });
-});
+//             document.getElementById("contactForm").reset();
+//           } else {
+//             throw new Error("Submission failed");
+//           }
+//         })
+//         .catch((error) => {
+//           Toastify({
+//             text: "Something went wrong.",
+//             duration: 3000,
+//             close: true,
+//             gravity: "top",
+//             position: "right",
+//             backgroundColor: "#FF0000",
+//           }).showToast();
+//         });
+//     });
+// });
 
-// Enquiry Form - Need Change
 document.addEventListener("DOMContentLoaded", function () {
   // Function to ensure only one checkbox is selected per group
   function manageCheckboxGroup(groupName) {
     const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
 
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', function () {
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", function () {
         if (this.checked) {
-          checkboxes.forEach(otherCheckbox => {
+          checkboxes.forEach((otherCheckbox) => {
             if (otherCheckbox !== this) {
               otherCheckbox.checked = false; // Uncheck others
             }
@@ -97,78 +95,181 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Apply the function to both checkbox groups
-  manageCheckboxGroup('personalization');
-  manageCheckboxGroup('timing');
+  manageCheckboxGroup("personalization");
+  manageCheckboxGroup("timing");
 
   // Form submission logic (unchanged from your original code)
-  document.getElementById("enquiryForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+  document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    // Capture the checkbox label for personalization
-    const checkboxes = document.querySelectorAll('input[name="personalization"]');
-    let personalization = '';
-    checkboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        const label = document.querySelector(`label[for="${checkbox.id}"]`);
-        if (label) {
-          personalization += label.textContent.trim() + " ";
+      // Capture the checkbox label for personalization
+      const checkboxes = document.querySelectorAll(
+        'input[name="personalization"]'
+      );
+      let personalization = "";
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          const label = document.querySelector(`label[for="${checkbox.id}"]`);
+          if (label) {
+            personalization += label.textContent.trim() + " ";
+          }
         }
-      }
-    });
-    personalization = personalization.trim();
-
-    // Capture the checkbox label for timing
-    let timing = '';
-    const timingCheckboxes = document.querySelectorAll('input[name="timing"]');
-    timingCheckboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        const label = document.querySelector(`label[for="${checkbox.id}"]`);
-        if (label) {
-          timing = label.textContent.trim();
-        }
-      }
-    });
-
-    // Capture the specific date if selected
-    const specificDate = document.querySelector('input[type="date"]').value;
-
-    // Prepare the form data for submission
-    const formData1 = {
-      description: document.getElementById("messages").value,
-      personalization: personalization || null,
-      engravedText: document.getElementById("engravedText").value,
-      timing: timing || null,
-      specificDate: specificDate || null,
-      fullName: document.getElementById("name").value,
-      email: document.getElementById("emails").value,
-      mobileNo: document.getElementById("phoneno").value,
-      postalCode: document.getElementById("postal-code").value,
-      message: "I will provide the logo soon and need the product by the specific date if provided."
-    };
-
-    // Send the POST request with the form data
-    fetch("http://44.196.192.232:5002/api/enquiry/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData1),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data._id) {
-          document.getElementById("enquiryForm").reset(); // Reset the form
-          console.log("Submission successful:", data);
-        } else {
-          throw new Error("Submission failed");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
       });
-  });
+      personalization = personalization.trim();
+
+      // Capture the checkbox label for timing
+      let timing = "";
+      const timingCheckboxes = document.querySelectorAll(
+        'input[name="timing"]'
+      );
+      timingCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          const label = document.querySelector(`label[for="${checkbox.id}"]`);
+          if (label) {
+            timing = label.textContent.trim();
+          }
+        }
+      });
+
+      // Capture the specific date if selected
+      const specificDate = document.querySelector('input[type="date"]').value;
+
+      // Prepare the form data for submission
+      const formData1 = {
+        description: document.getElementById("messages").value,
+        personalization: personalization || null,
+        engravedText: document.getElementById("engravedText").value,
+        timing: timing || null,
+        specificDate: specificDate || null,
+        fullName: document.getElementById("name").value,
+        email: document.getElementById("emails").value,
+        mobileNo: document.getElementById("phoneno").value,
+        postalCode: document.getElementById("postal-code").value,
+        message:
+          "I will provide the logo soon and need the product by the specific date if provided.",
+      };
+
+      // Send the POST request with the form data
+      fetch("http://44.196.192.232:5002/api/ContactUs/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData1),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data._id) {
+            document.getElementById("contactForm").reset(); // Reset the form
+            console.log("Submission successful:", data);
+          } else {
+            throw new Error("Submission failed");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
 });
 
+// Enquiry Form - Need Change
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to ensure only one checkbox is selected per group
+  function manageCheckboxGroup(groupName) {
+    const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", function () {
+        if (this.checked) {
+          checkboxes.forEach((otherCheckbox) => {
+            if (otherCheckbox !== this) {
+              otherCheckbox.checked = false; // Uncheck others
+            }
+          });
+        }
+      });
+    });
+  }
+
+  // Apply the function to both checkbox groups
+  manageCheckboxGroup("personalization");
+  manageCheckboxGroup("timing");
+
+  // Form submission logic (unchanged from your original code)
+  document
+    .getElementById("enquiryForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Capture the checkbox label for personalization
+      const checkboxes = document.querySelectorAll(
+        'input[name="personalization"]'
+      );
+      let personalization = "";
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          const label = document.querySelector(`label[for="${checkbox.id}"]`);
+          if (label) {
+            personalization += label.textContent.trim() + " ";
+          }
+        }
+      });
+      personalization = personalization.trim();
+
+      // Capture the checkbox label for timing
+      let timing = "";
+      const timingCheckboxes = document.querySelectorAll(
+        'input[name="timing"]'
+      );
+      timingCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          const label = document.querySelector(`label[for="${checkbox.id}"]`);
+          if (label) {
+            timing = label.textContent.trim();
+          }
+        }
+      });
+
+      // Capture the specific date if selected
+      const specificDate = document.querySelector('input[type="date"]').value;
+
+      // Prepare the form data for submission
+      const formData1 = {
+        description: document.getElementById("messages").value,
+        personalization: personalization || null,
+        engravedText: document.getElementById("engravedText").value,
+        timing: timing || null,
+        specificDate: specificDate || null,
+        fullName: document.getElementById("name").value,
+        email: document.getElementById("emails").value,
+        mobileNo: document.getElementById("phoneno").value,
+        postalCode: document.getElementById("postal-code").value,
+        message:
+          "I will provide the logo soon and need the product by the specific date if provided.",
+      };
+
+      // Send the POST request with the form data
+      fetch("http://44.196.192.232:5002/api/enquiry/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData1),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data._id) {
+            document.getElementById("enquiryForm").reset(); // Reset the form
+            console.log("Submission successful:", data);
+          } else {
+            throw new Error("Submission failed");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+});
 
 // Product-Query Form - Need Change-RFQ
 // document.addEventListener("DOMContentLoaded", function () {
@@ -259,14 +360,13 @@ document.addEventListener("DOMContentLoaded", function () {
 //   });
 // });
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to manage only one checkbox selection per group
   function manageCheckboxGroup(groupName) {
     const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
 
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', function () {
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", function () {
         if (this.checked) {
-          checkboxes.forEach(otherCheckbox => {
+          checkboxes.forEach((otherCheckbox) => {
             if (otherCheckbox !== this) {
               otherCheckbox.checked = false; // Uncheck others
             }
@@ -277,77 +377,83 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Apply the function to both checkbox groups
-  manageCheckboxGroup('personalization');
-  manageCheckboxGroup('timing');
+  manageCheckboxGroup("personalization");
+  manageCheckboxGroup("timing");
 
   // Form submission logic
-  document.getElementById("rfqForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+  document
+    .getElementById("rfqForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    // Capture the checkbox label for personalization
-    const personalizationCheckboxes = document.querySelectorAll('input[name="personalization"]');
-    let personalization = '';
-    personalizationCheckboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        const label = document.querySelector(`label[for="${checkbox.id}"]`);
-        if (label) {
-          personalization = label.textContent.trim();
+      // Capture the checkbox label for personalization
+      const personalizationCheckboxes = document.querySelectorAll(
+        'input[name="personalization"]'
+      );
+      let personalization = "";
+      personalizationCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          const label = document.querySelector(`label[for="${checkbox.id}"]`);
+          if (label) {
+            personalization = label.textContent.trim();
+          }
         }
-      }
-    });
-
-    // Capture the checkbox label for timing
-    let timing = '';
-    const timingCheckboxes = document.querySelectorAll('input[name="timing"]');
-    timingCheckboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        const label = document.querySelector(`label[for="${checkbox.id}"]`);
-        if (label) {
-          timing = label.textContent.trim();
-        }
-      }
-    });
-
-    // Capture the specific date if selected
-    const specificDate = document.querySelector('input[type="date"]').value;
-
-    // Prepare the form data for submission
-    const formData = {
-      description: document.getElementById("messages").value,
-      personalization: personalization || null,
-      engravedText: document.getElementById("engravedText").value,
-      timing: timing || null,
-      specificDate: specificDate || null,
-      fullName: document.getElementById("name").value,
-      email: document.getElementById("emails").value,
-      mobileNo: document.getElementById("phoneno").value,
-      postalCode: document.getElementById("postal-code").value,
-      message: "I will provide the logo soon and need the product by the specific date if provided."
-    };
-
-    // Send the POST request with the form data
-    fetch("http://44.196.192.232:5002/api/productenquiry/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data._id) {
-          document.getElementById("rfqForm").reset(); // Reset the form
-          console.log("Submission successful:", data);
-        } else {
-          throw new Error("Submission failed");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
       });
-  });
-});
 
+      // Capture the checkbox label for timing
+      let timing = "";
+      const timingCheckboxes = document.querySelectorAll(
+        'input[name="timing"]'
+      );
+      timingCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          const label = document.querySelector(`label[for="${checkbox.id}"]`);
+          if (label) {
+            timing = label.textContent.trim();
+          }
+        }
+      });
+
+      // Capture the specific date if selected
+      const specificDate = document.querySelector('input[type="date"]').value;
+
+      // Prepare the form data for submission
+      const formData = {
+        description: document.getElementById("messages").value,
+        personalization: personalization || null,
+        engravedText: document.getElementById("engravedText").value,
+        timing: timing || null,
+        specificDate: specificDate || null,
+        fullName: document.getElementById("name").value,
+        email: document.getElementById("emails").value,
+        mobileNo: document.getElementById("phoneno").value,
+        postalCode: document.getElementById("postal-code").value,
+        message:
+          "I will provide the logo soon and need the product by the specific date if provided.",
+      };
+
+      // Send the POST request with the form data
+      fetch("http://44.196.192.232:5002/api/productenquiry/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data._id) {
+            document.getElementById("rfqForm").reset(); // Reset the form
+            console.log("Submission successful:", data);
+          } else {
+            throw new Error("Submission failed");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+});
 
 // Product-Query Form - Need Change-RFQ
 // document.addEventListener("DOMContentLoaded", function () {
@@ -397,8 +503,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       data.forEach((testimonial, index) => {
         const testimonialContainer = document.createElement("div");
-        testimonialContainer.className = `testimonial-container ${toggle ? "left" : "right"
-          }`;
+        testimonialContainer.className = `testimonial-container ${
+          toggle ? "left" : "right"
+        }`;
         toggle = !toggle;
 
         const testimonialDiv = document.createElement("div");
@@ -508,7 +615,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => console.error("Error fetching data:", error));
 });
 
-
 //Category Section
 // document.addEventListener("DOMContentLoaded", () => {
 //   fetch("http://44.196.192.232:5002/api/category/")
@@ -566,20 +672,34 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((category) => {
         const categoryElement = document.createElement("div");
         categoryElement.classList.add("category");
-        categoryElement.style.backgroundImage = `url(${category.image})`;
-        categoryElement.style.backgroundSize = "cover";
-        categoryElement.style.backgroundRepeat = "no-repeat";
+        // categoryElement.style.backgroundImage = `url(${category.image})`;
+        // categoryElement.style.backgroundSize = "cover";
+        // categoryElement.style.backgroundRepeat = "no-repeat";
+          const truncatedDescription = category.description.length > 20
+          ? category.description.substring(0, 200) + "..."
+          : category.description;
+
+          // const truncatedName = category.name.length > 20
+          // ? category.name.substring(0, 50) + "..."
+          // : category.name;
 
         categoryElement.innerHTML = `
-          <h3>${category.name}</h3>
-          <p class="thin-text">${category.description}</p>
-          <a href="" class="details-button" data-category='${JSON.stringify(category)}'>
+        <div class="addBack">
+          <div class="img1">
+            <img src="${category.image}" alt="${category.name}">
+          </div>
+          <div class="inner-content">
+            <h3 class="addh3">${category.name}</h3>
+            <p class="thin-text1 addp">${truncatedDescription }</p>
+            <a href="" class="details-button" data-category='${JSON.stringify(category)}'>
             <button class="pt-2">Details
               <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="white" stroke-width="1.58789"/>
+                <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="black" stroke-width="1.58789"/>
               </svg>
             </button>
-          </a>
+            </a>
+          </div>
+        </div>
         `;
 
         categoryGrid.appendChild(categoryElement);
@@ -588,8 +708,13 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".details-button").forEach((button) => {
         button.addEventListener("click", (e) => {
           e.preventDefault();
-          const categoryData = JSON.parse(e.currentTarget.getAttribute("data-category"));
-          sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData)); // Store clicked category in sessionStorage
+          const categoryData = JSON.parse(
+            e.currentTarget.getAttribute("data-category")
+          );
+          sessionStorage.setItem(
+            "selectedCategory",
+            JSON.stringify(categoryData)
+          ); // Store clicked category in sessionStorage
           fetchProductsByCategory(categoryData.name);
         });
       });
@@ -660,10 +785,14 @@ function fetchProductsByCategory(categoryName) {
 //Product-section
 document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".products-section .row");
-  const productSection2 = document.querySelector(".products-section-2 .swiper-wrapper");
+  const productSection2 = document.querySelector(
+    ".products-section-2 .swiper-wrapper"
+  );
   const products = JSON.parse(sessionStorage.getItem("fetchedProducts"));
   const heroSection = document.querySelector(".hero-section .d-grid");
-  const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
+  const selectedCategory = JSON.parse(
+    sessionStorage.getItem("selectedCategory")
+  );
 
   // Update hero section
   if (selectedCategory) {
@@ -713,14 +842,12 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
 
     renderProducts(productSection2, ["col-sm-4"], true);
-
   } else {
     console.error("No products found in sessionStorage");
   }
 });
 
-
-const style = document.createElement('style');
+const style = document.createElement("style");
 style.innerHTML = `
   .card-title, .card-text {
     text-decoration: underline #fff;
@@ -737,11 +864,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (product) {
     document.querySelector(".product-img h2").textContent = product.productname;
-    document.querySelector(".product-img img").src = `http://44.196.192.232:5002/uploads/${product.image}`;
+    document.querySelector(
+      ".product-img img"
+    ).src = `http://44.196.192.232:5002/uploads/${product.image}`;
     document.querySelector(".product-img img").alt = product.productname;
 
-    document.querySelector(".product-info h1").textContent = product.productname;
-    document.querySelector(".product-info h5.price").textContent = "$" + product.price;
+    document.querySelector(".product-info h1").textContent =
+      product.productname;
+    document.querySelector(".product-info h5.price").textContent =
+      "$" + product.price;
     document.querySelector(".product-info p").textContent = product.description;
 
     const rfqLink = document.querySelector(".product-info a");
@@ -760,10 +891,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (product) {
     document.querySelector(".product-info h1").textContent =
       product.productname;
-    document.querySelector(".product-info .price").textContent = "$" + product.price;
+    document.querySelector(".product-info .price").textContent =
+      "$" + product.price;
     document.querySelector(".product-info .description").textContent =
       product.description;
-    document.querySelector(".product-info .id").textContent = "Product Id: " + product.productID;
+    document.querySelector(".product-info .id").textContent =
+      "Product Id: " + product.productID;
     document.querySelector(
       ".product-details img"
     ).src = `http://44.196.192.232:5002/uploads/${product.image}`;
@@ -780,3 +913,23 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("No product data found in sessionStorage");
   }
 });
+
+//About-us
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Testing fetch...");
+  fetch("http://44.196.192.232:5002/api/aboutUs/")
+    .then((response) => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
+    .then((data) => {
+      document.getElementById("startContent").textContent = data[0].startContent || "No startContent found";
+      document.getElementById("missionImage").src = data[0].image || "https://via.placeholder.com/150";
+      document.getElementById("missionContent").textContent = data[0].missionContent || "No missionContent found";
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+});
+
+

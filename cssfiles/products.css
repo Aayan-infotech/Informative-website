@@ -70,26 +70,39 @@ header > a:not(#icon):hover {
   font-weight: 400;
 }
 
+.thin-text1{
+  font-weight: 400 !important;
+  color: #000;
+}
 .categories {
   padding: 4em 0;
   text-align: center;
+}
+
+.container-cat {
+  padding: 20px;
 }
 
 .categories h2 {
   font-size: 2em;
   margin-bottom: 1em;
 }
+.category-grid > .category {
+  margin: 0 5%;
+  padding: 0% 10%;
+  color: #fff;
+}
 
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-.category {
+/* .category {
   background-color: #fff;
   border: 1px solid #ddd;
-}
+} */
 
 .left-cate {
   position: relative;
@@ -178,68 +191,6 @@ p {
 .footstrip {
   background: #000;
 }
-.category-grid > .category:nth-child(1) {
-  background-image: url(../assets/productspage/DEZ02397\ 1.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(2) {
-  background-image: url(../assets/productspage/lighter.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(3) {
-  background-image: url(../assets/productspage/cigar.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(4) {
-  background-image: url(../assets/productspage/uniquecigar.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(5) {
-  background-image: url(../assets/productspage/weddinggift.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(6) {
-  background-image: url(../assets/productspage/cloaker.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(7) {
-  background-image: url(../assets/productspage/groomsparty.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(8) {
-  background-image: url(../assets/productspage/golfkit.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category:nth-child(9) {
-  background-image: url(../assets/productspage/tker.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.category-grid > .category {
-  padding: 40% 5% 5% 1%;
-  color: #fff;
-}
-
-/* .category-grid .category {
-  margin: 20px 50px 0 0;
-} */
 
 .category-grid > .category > p {
   color: #fff;
@@ -256,8 +207,8 @@ p {
   padding: 20px 0 10px;
 }
 .categories .category a button {
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   border-radius: 11.12px;
   padding: 10px 40px;
   border: 1px solid black;
@@ -273,11 +224,42 @@ p {
   align-items: center;
   vertical-align: middle;
 }
+
+.addBack{
+  background-color: #000;
+  min-height: 500px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content:space-between;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 5px;
+}
+
+.inner-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-end;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+}
+
+.addBack .img1 img{
+  height: 140px;
+  width: 320px;
+  border-bottom: 1px solid #fff;
+}
+
 .addBack .addh3, .addp{
-  color: #fef3c7;
+  color: #fff!important;
   text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827,
   2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827;
 }
+
 
 @media screen and (max-width: 992px) {
   .hero {
@@ -357,9 +339,7 @@ p {
     font-size: 1em;
   }
 
-  .category-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+
 
   .category h3 {
     font-size: 1.2em;
@@ -423,6 +403,19 @@ p {
   .contact-info {
     margin-top: -20px;
   }
+  .addBack{
+    min-height: 500px;
+    width: 300px;
+    margin-left: -30px;
+  }
+  .inner-content{
+    width: 300px;
+  }
+  
+  .addBack .img1 img{
+    height: 100px;
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 350px) {
@@ -445,5 +438,18 @@ p {
   }
   .product p{
     margin-right: 0px;
+  }
+  .addBack{
+    min-height: 500px;
+    width: 240px;
+    margin-left: -40px;
+  }
+  .inner-content{
+    width: 240px;
+  }
+  
+  .addBack .img1 img{
+    height: 100px;
+    width: 240px;
   }
 }

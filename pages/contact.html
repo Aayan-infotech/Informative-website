@@ -18,18 +18,18 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
-    <title>Csonka Contact Form</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../cssfiles/contact.css" />
     <link rel="icon" href="../assets/images/Logo.png" type="image/png" />
   </head>
   <body>
     <header class="d-flex justify-content-between container nav nav-top">
+      <a id="icon" href="../index.html"><img src="../assets/images/logo-2.png" alt="" width="95%" /></a>
       <div>
         <a id="icon" href="../index.html"><img src="../assets/images/Logo-1.png" alt="" width="95%" /></a>
         <p style="font-size: 12px;text-align: center;">We Know Cigar... Personally</p>
       </div>
-      <a id="icon" href="../index.html"><img src="../assets/images/logo-2.png" alt="" width="95%" /></a>
       <div>
       <a id="icon" href="../index.html"><img src="../assets/images/Logo-3.png" alt="" width="95%" /></a>
       <p style="font-size: 12px;text-align: center;">SAGE number 6785</p>
@@ -38,13 +38,11 @@
     <header class="d-flex justify-content-between container nav">
       <a id="home-link" href="../index.html">Home</a>
       <a id="products-link" href="./products.html">Products</a>
-      <a id="testimonials-link" href="./testimonials.html"
-        >Testimonials</a
-      >
+      <a id="enquiry-link" href="./inquery.html">Get a Quote</a>
+      <a id="testimonials-link" href="./testimonials.html">Testimonials</a>
       <!-- <a id="gallery-link" href="./gallery.html">Gallery</a> -->
-      <a id="enquiry-link" href="./inquery.html">Enquiry</a>
       <a id="faq-link" href="./f&q.html">FAQ</a>
-      <a id="about-link" href="./AboutUs.html">About</a>
+      <a id="about-link" href="./AboutUs.html">About Us</a>
       <a id="contact-link" href="./contact.html">Contact Us</a>
     </header>
 
@@ -63,53 +61,144 @@
     <div class="form-cont">
       <div class="d-flex py-4 cont-form">
         <div class="w-60">
-          <form class="px-5" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  placeholder="First Name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  placeholder="Last Name"
-                  required
-                />
-              </div>
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="message" class="form-label enqi-wrap"
+                >I'm interested in obtaining more info, based on my needs
+                noted here:</label
+              >
+              <textarea
+                class="form-control inqu-form"
+                id="messages"
+                rows="3"
+                placeholder="Tell us what you desire, any quantity, your event or gifting need, and any budget."
+                required
+              ></textarea>
             </div>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="Email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="mobileNumber">Mobile Number</label>
+            <div class="mb-3 enqi-wrap" style="white-space: nowrap">
+              <h6>
+                Need personalization or customizing with name(s) or a logo
+                or art.
+              </h6>
               <input
-                type="tel"
-                id="mobileNumber"
-                placeholder="Mobile Number"
+                type="checkbox"
+                id="check1"
+                name="personalization"
+                value="Bike"
+              />
+              <label for="check1"
+                >No personalization nor customization is needed.</label
+              ><br />
+              <input
+                type="checkbox"
+                id="check2"
+                name="personalization"
+                value="Bike"
+              />
+              <label for="check2">
+                Today, I can provide a logo or the art (Email to:
+                orders@csonka.com). </label
+              ><br />
+              <input
+                type="checkbox"
+                id="check3"
+                name="personalization"
+                value="Bike"
+              />
+              <label for="check3"
+                >Soon, I can provide a logo or the art.</label
+              ><br />
+              <input
+                type="checkbox"
+                id="check4"
+                name="personalization"
+                value="Bike"
+              />
+              <label for="check4"
+                >I'll need name or initials or words engraved (please
+                provide this below).</label
+              ><br />
+              <input
+                type="text"
+                class="form-control inqu-form"
+                id="engravedText"
+                placeholder="Name(s) initials or words to be engraved."
+              />
+            </div>
+
+            <div class="mb-3 enqi-wrap" style="white-space: nowrap">
+              <h6>Timing needs.</h6>
+              <input
+                type="checkbox"
+                id="check12"
+                name="timing"
+                value="ASAP"
+              />
+              <label for="check12"
+                >Just desired ASAP ... there's no timing needs</label
+              ><br />
+              <input
+                type="checkbox"
+                id="check13"
+                name="timing"
+                value="Specific date"
+              />
+              <label for="check13"
+                >Needed by a specific date (please provide this
+                date).</label
+              ><br />
+              <input
+                type="date"
+                class="form-control inqu-form"
+                placeholder="Enter the required date."
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name:</label>
+              <input
+                type="text"
+                class="form-control inqu-form"
+                id="name"
+                placeholder="John "
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input
+                type="email"
+                class="form-control inqu-form"
+                id="emails"
+                placeholder="abc@gmail.com"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="phoneno" class="form-label">Phone:</label>
+              <input
+                type="text"
+                class="form-control inqu-form"
+                id="phoneno"
+                placeholder="+91 8847388392"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="postal-code" class="form-label"
+                >Postal Zip Code:</label
+              >
+              <input
+                type="text"
+                class="form-control inqu-form"
+                id="postal-code"
+                placeholder="739449"
                 required
               />
             </div>
 
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                rows="4"
-                placeholder="Your message"
-                required
-              ></textarea>
-            </div>
-            <button class="submitbtn py-2" type="submit">Submit</button>
+            <button type="submit" class="btn btn-dark w-100">Submit</button>
           </form>
         </div>
         <div class="w-40">
@@ -186,7 +275,7 @@
           </p>
           <a href="/pages/contact.html"
             ><button class="pt-2">
-              Contact Form<svg
+              Contact Us<svg
                 class="ps-2"
                 width="26"
                 height="8"
@@ -227,7 +316,7 @@
           <a href="./AboutUs.html">About</a><br />
           <a href="./products.html">Product</a><br />
           <a href="./f&q.html">FAQ</a><br />
-          <a href="./inquery.html">Enquiry</a>
+          <a href="./inquery.html">Get a Quote</a>
         </div>
         <div>
           <!-- <a href="">Gallery</a><br /> -->

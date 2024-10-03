@@ -30,7 +30,7 @@ a{
   margin: auto;
 }
 form {
-  padding: 4% 8%;
+  padding: 4% 3%;
   border-radius: 11.3px;
   background-color: white;
 }
@@ -113,6 +113,14 @@ h2 {
 
 .foot {
   margin: 20px 0;
+}
+
+#contactForm input {
+  border-radius: 100px;
+}
+#contactForm > button {
+  background-color: #000;
+  width: 60%;
 }
 
 @media screen and (max-width: 992px) {
@@ -198,10 +206,20 @@ h2 {
     position: relative;
     left: 50px;
   }
+  .form-cont #contactForm{
+    width: 90%;
+  }
+
+  .enqi-wrap{
+    white-space:normal!important;
+  }
 }
 
 @media screen and (max-width: 576px) {
   .mission-cont img {
+    width: 100%;
+  }
+  .form-cont #contactForm{
     width: 100%;
   }
 }
@@ -211,5 +229,14 @@ h2 {
   .foo-para {
     position: relative;
     left: 10px;
+  }
+  .contactForm{
+    width: 100%;
+  }
+  .btn-dark{
+    width: 100%!important;
+  }
+  .enqi-wrap{
+    width: 100%;
   }
 }
