@@ -128,9 +128,8 @@ footer > p {
 }
 
 .nav a img{
-  margin-top: -5px;
-  height: 45px;
-  width: 150px;
+  height: 70px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;

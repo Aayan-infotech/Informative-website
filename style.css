@@ -492,8 +492,7 @@ p {
 }
 
 .nav a img{
-  margin-top: -5px;
-  height: 60px;
+  height: 70px;
   width: 200px;
   display: flex;
   justify-content: center;
