@@ -652,12 +652,12 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((category) => {
         const categoryElement = document.createElement("div");
         categoryElement.classList.add("category");
-          const truncatedDescription = category.description.length > 200
-          ? category.description.substring(0, 200) + "..."
+          const truncatedDescription = category.description.length > 150
+          ? category.description.substring(0, 150) + "..."
           : category.description;
 
-          const truncatedName = category.name.length > 50
-          ? category.name.substring(0, 50) + "..."
+          const truncatedName = category.name.length > 40
+          ? category.name.substring(0, 40) + "..."
           : category.name;
 
           const formattedDescription = truncatedDescription.split(' ').map(word =>{
@@ -807,7 +807,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
               <div class="card-body">
                 <h5 class="card-title">${product.productname}</h5>
-                <p class="card-text">${product.price}</p>
+                <p class="card-text">${product.category}</p>
               </div>
             </div>
           </a>
@@ -854,6 +854,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
 
   if (product) {
+    const truncatedDescription = product.description.length > 150
+    ? product.description.substring(0, 1000) + "..."
+    : product.description;
+
     document.querySelector(".product-img h2").textContent = product.productname;
     document.querySelector(
       ".product-img img"
@@ -862,9 +866,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector(".product-info h1").textContent =
       product.productname;
-    document.querySelector(".product-info h5.price").textContent =
-      "$" + product.price;
-    document.querySelector(".product-info p").textContent = product.description;
+    document.querySelector(".product-info h5.price").textContent = product.category;
+    document.querySelector(".product-info p").textContent = truncatedDescription;
 
     const rfqLink = document.querySelector(".product-info a");
     rfqLink.addEventListener("click", (e) => {
@@ -880,12 +883,15 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
   if (product) {
+    const truncatedDescription = product.description.length > 150
+    ? product.description.substring(0, 1000) + "..."
+    : product.description;
+
     document.querySelector(".product-info h1").textContent =
       product.productname;
-    document.querySelector(".product-info .price").textContent =
-      "$" + product.price;
+    document.querySelector(".product-info .price").textContent =product.category;
     document.querySelector(".product-info .description").textContent =
-      product.description;
+      truncatedDescription;
     document.querySelector(".product-info .id").textContent =
       "Product Id: " + product.productID;
     document.querySelector(

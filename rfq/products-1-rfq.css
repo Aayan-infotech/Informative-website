@@ -54,7 +54,7 @@ footer > p {
 .product-details {
   display: grid;
   place-items: center;
-  max-width: 50%;
+  max-width: 35%;
   padding: 0 20px 20px 20px;
   background-color: #000;
   color: #fff;
@@ -154,7 +154,7 @@ footer > p {
 }
 
 .nav a img{
-  height: 70px;
+  height: 100px;
   width: 200px;
   display: flex;
   justify-content: center;
