@@ -141,6 +141,18 @@ footer > p {
   padding: 0 120px;
 }
 
+#rfqForm .button-container button {
+  background-color: #000;
+  width: 40%;
+  border-radius: 50px;
+  padding: 10px 0;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+
 .nav a img{
   margin-top: -5px;
   height: 45px;
@@ -238,6 +250,9 @@ footer > p {
     position: relative;
     left: 25%;
   } */
+  #rfqForm .button-container button {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 350px) {
