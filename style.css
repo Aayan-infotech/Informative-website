@@ -30,13 +30,21 @@ header {
   background: var(--text-white);
   padding: 1.2% 0% 1%;
   color: var(--text-black);
+  z-index: 2;
 }
-header > a {
+
+.sticky{
+  position: sticky;
+  top: 0px;
+  width: 100%;
+}
+
+header .container > a {
   text-decoration: none;
   color: var(--text-black);
   padding: 1% 2%;
 }
-header > a:not(#icon):hover {
+header .container > a:not(#icon):hover {
   border-radius: 2px;
   background-color: black;
   color: var(--text-white);
@@ -393,7 +401,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 2;
+  /* z-index: 2; */
 }
 
 /* .category h3,
@@ -577,9 +585,9 @@ p {
   .nav {
     margin-bottom: 10px !important;
   }
-  .nav-home{
+  /* .nav-home{
     margin-bottom: 50px!important;
-  }
+  } */
   .nav-top{
     text-align: center;
   }

@@ -4,9 +4,9 @@
 .box > * {
   margin: auto;
 }
-.box-1 {
+/* .box-1 {
   background-color: #f4f4f4;
-}
+} */
 body {
   font-family: "Poppins", sans-serif !important;
   margin: 0;

@@ -120,18 +120,25 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+        z-index: 2;
+        background-color: #fff;
       }
 
-      header > a {
+      header .container > a {
         text-decoration: none;
         color: var(--text-black);
         padding: 1% 2%;
       }
 
-      header > a:not(#icon):hover {
+      header .container > a:not(#icon):hover {
         border-radius: 2px;
         background-color: rgb(0, 0, 0);
         color: #ffff;
+      }
+
+      .sticky {
+        position: sticky;
+        top: 0px;
       }
 
       .footer-section {
@@ -203,7 +210,7 @@
           flex-direction: column;
         }
 
-        .product-details .product1{
+        .product-details .product1 {
           margin-left: -20px;
         }
 
@@ -282,7 +289,7 @@
           justify-content: center;
         }
 
-        header > a {
+        header .container > a {
           margin-bottom: 10px;
         }
 
@@ -378,26 +385,36 @@
   <body>
     <header class="d-flex justify-content-between container nav nav-top">
       <div>
-        <a id="icon" href="../index.html"><img src="../assets/images/logo-2.png" alt="" width="95%"/></a>
+        <a id="icon" href="../index.html"
+          ><img src="../assets/images/logo-2.png" alt="" width="95%"
+        /></a>
       </div>
       <div>
-        <a id="icon" href="../index.html"><img src="../assets/images/Logo-1.png" alt="" width="95%"/></a>
+        <a id="icon" href="../index.html"
+          ><img src="../assets/images/Logo-1.png" alt="" width="95%"
+        /></a>
         <!-- <p style="font-size: 12px; text-align: center">We Know Cigar... Personally</p> -->
       </div>
       <div>
-        <a id="icon" href="../index.html"><img src="../assets/images/Logo-3.png" alt="" width="95%"/></a>
+        <a id="icon" href="../index.html"
+          ><img src="../assets/images/Logo-3.png" alt="" width="95%"
+        /></a>
         <!-- <p style="font-size: 12px; text-align: center">SAGE number 6785</p> -->
       </div>
     </header>
-    <header class="d-flex justify-content-between container nav">
-      <a id="home-link" href="../index.html">Home</a>
-      <a id="products-link" href="../pages/products.html">Products</a>
-      <a id="enquiry-link" href="../pages/inquery.html">Get a Quote</a>
-      <a id="testimonials-link" href="../pages/testimonials.html">Testimonials</a>
-      <!-- <a id="gallery-link" href="../pages/gallery.html">Gallery</a> -->
-      <a id="faq-link" href="../pages/f&q.html">FAQ</a>
-      <a id="about-link" href="../pages/AboutUs.html">About Us</a>
-      <a id="contact-link" href="../pages/contact.html">Contact Us</a>
+    <header class="sticky">
+      <div class="container d-flex justify-content-between nav">
+        <a id="home-link" href="../index.html">Home</a>
+        <a id="products-link" href="../pages/products.html">Products</a>
+        <a id="enquiry-link" href="../pages/inquery.html">Get a Quote</a>
+        <a id="testimonials-link" href="../pages/testimonials.html"
+          >Testimonials</a
+        >
+        <!-- <a id="gallery-link" href="../pages/gallery.html">Gallery</a> -->
+        <a id="faq-link" href="../pages/f&q.html">FAQ</a>
+        <a id="about-link" href="../pages/AboutUs.html">About Us</a>
+        <a id="contact-link" href="../pages/contact.html">Contact Us</a>
+      </div>
     </header>
 
     <div class="product-detail container section">
@@ -411,13 +428,15 @@
           <h1>Gilded Smoke Ashtray</h1>
           <h5 class="price">$75</h5>
           <p class="product-p"></p>
-          <a href="../rfq/products-1-rfq.html" class="product1">Request for Quotation</a>
+          <a href="../rfq/products-1-rfq.html" class="product1"
+            >Request for Quotation</a
+          >
         </div>
       </div>
     </div>
 
     <!-- Contact Section -->
-    <div class="container" >
+    <div class="container">
       <footer class="foot d-flex justify-content-between">
         <img src="../assets/images/footer.png" alt="" height="100px" />
         <div>

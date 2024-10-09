@@ -3,20 +3,27 @@ body {
   margin: 0;
   padding: 0;
 }
-header {
+header  {
   background: var(--text-white);
   padding: 1.2% 4%;
   color: var(--text-black);
+  z-index: 2;
+  background-color: #fff;
 }
-header > a {
+header .container > a {
   text-decoration: none;
   color: var(--text-black);
   padding: 1% 2%;
 }
-header > a:not(#icon):hover {
+header .container > a:not(#icon):hover {
   border-radius: 2px;
   background-color: rgb(0, 0, 0);
   color: #ffff;
+}
+
+.sticky{
+  position: sticky;
+  top: 0px;
 }
 
 .footer-section {
