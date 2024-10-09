@@ -676,36 +676,6 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
-
-//   if (product) {
-//     const truncatedDescription =
-//       product.description.length > 150
-//         ? product.description.substring(0, 1000) + "..."
-//         : product.description;
-
-//     const productImgH2 = document.querySelector(".product-img h2");
-
-//     document.querySelector(".product-img h2").textContent = product.productname;
-//     document.querySelector(".product-img img").src = `http://44.196.192.232:5002/uploads/${product.image}`;
-//     document.querySelector(".product-img img").alt = product.productname;
-
-//     document.querySelector(".product-info h1").textContent = product.productname;
-//     document.querySelector(".product-info h5.price").textContent = product.category;
-//     document.querySelector(".product-info p").textContent = truncatedDescription;
-
-//     const rfqLink = document.querySelector(".product-info a");
-//     rfqLink.addEventListener("click", (e) => {
-//       e.preventDefault();
-//       sessionStorage.setItem("selectedProductForRFQ", JSON.stringify(product));
-//       window.location.href = rfqLink.href;
-//     });
-//   } else {
-//     console.error("No product data found in sessionStorage");
-//   }
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
 
@@ -953,4 +923,36 @@ document.addEventListener("DOMContentLoaded", () => {
 //       });
 //     })
 //     .catch((error) => console.error("Error fetching categories:", error));
+// });
+
+//Product 
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
+
+//   if (product) {
+//     const truncatedDescription =
+//       product.description.length > 150
+//         ? product.description.substring(0, 1000) + "..."
+//         : product.description;
+
+//     const productImgH2 = document.querySelector(".product-img h2");
+
+//     document.querySelector(".product-img h2").textContent = product.productname;
+//     document.querySelector(".product-img img").src = `http://44.196.192.232:5002/uploads/${product.image}`;
+//     document.querySelector(".product-img img").alt = product.productname;
+
+//     document.querySelector(".product-info h1").textContent = product.productname;
+//     document.querySelector(".product-info h5.price").textContent = product.category;
+//     document.querySelector(".product-info p").textContent = truncatedDescription;
+
+//     const rfqLink = document.querySelector(".product-info a");
+//     rfqLink.addEventListener("click", (e) => {
+//       e.preventDefault();
+//       sessionStorage.setItem("selectedProductForRFQ", JSON.stringify(product));
+//       window.location.href = rfqLink.href;
+//     });
+//   } else {
+//     console.error("No product data found in sessionStorage");
+//   }
 // });
