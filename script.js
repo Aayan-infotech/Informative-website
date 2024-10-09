@@ -589,7 +589,9 @@ function fetchProductsByCategory(categoryName) {
 
       window.location.href = redirectPath;
     })
-    .catch((error) => console.error("Error fetching products:", error));
+    .catch((error) => {
+      // console.error("Error fetching products:", error)
+    });
 }
 
 //Product-section
@@ -611,7 +613,7 @@ document.addEventListener("DOMContentLoaded", () => {
       heroSection.querySelector("p").textContent = selectedCategory.description;
     }
   } else {
-    console.error("No category found in sessionStorage");
+    // console.error("No category found in sessionStorage");
   }
 
   // Function to render products
@@ -658,7 +660,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
     renderProducts(productSection2, ["col-sm-4"], true);
   } else {
-    console.error("No products found in sessionStorage");
+    // console.error("No products found in sessionStorage");
   }
 });
 
@@ -741,7 +743,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   } else {
-    console.error("No product data found in sessionStorage");
+    // console.error("No product data found in sessionStorage");
   }
 });
 
@@ -782,7 +784,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   } else {
-    console.error("No product data found in sessionStorage");
+    // console.error("No product data found in sessionStorage");
   }
 });
 
