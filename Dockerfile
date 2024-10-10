@@ -1,4 +1,3 @@
-# Use an official Nginx runtime as a parent image
 FROM nginx:latest
 
 # Set the working directory inside the container
