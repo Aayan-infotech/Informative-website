@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
             position: "right",
             backgroundColor: "#FF0000",
           }).showToast();
-          console.error("Error:", error);
+          // console.error("Error:", error);
         });
     });
   }
@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+          // console.error("Error:", error);
         });
     });
   }
@@ -481,7 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     })
     .catch((error) => {
-      // console.error("Error fetching data:", error)
+      // console.error("Error fetching data:", error);
     });
 });
 
@@ -570,7 +570,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     })
     .catch((error) =>{ 
-      // console.error("Error fetching categories:", error)
+      // console.error("Error fetching categories:", error);
     });
 });
 
@@ -590,25 +590,23 @@ function fetchProductsByCategory(categoryName) {
       window.location.href = redirectPath;
     })
     .catch((error) => {
-      // console.error("Error fetching products:", error)
+      // console.error("Error fetching products:", error);
     });
 }
 
 //Product-section
 document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".products-section .row");
-  const productSection2 = document.querySelector(
-    ".products-section-2 .swiper-wrapper"
-  );
+  const productHead = document.querySelector(".products-section");
+  const productSection2 = document.querySelector(".products-section-2 .swiper-wrapper");
   const products = JSON.parse(sessionStorage.getItem("fetchedProducts"));
   const heroSection = document.querySelector(".hero-section .d-grid");
-  const selectedCategory = JSON.parse(
-    sessionStorage.getItem("selectedCategory")
-  );
+  const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
 
   // Update hero section
   if (selectedCategory) {
     if (heroSection) {
+      productHead.querySelector("h2").textContent = "Take A Look At Our "+selectedCategory.name;
       heroSection.querySelector("h1").textContent = selectedCategory.name;
       heroSection.querySelector("p").textContent = selectedCategory.description;
     }
@@ -628,12 +626,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const productElement = document.createElement("div");
         productElement.classList.add(...cols, "mb-4");
 
+        const truncatedName = product.productname.length > 30
+        ? product.productname.substring(0, 30) + "..."
+        : product.productname;
+
         productElement.innerHTML = `
           <a href="../products/products-1.html">
             <div class="card">
               <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
               <div class="card-body">
-                <h5 class="card-title">${product.productname}</h5>
+                <h5 class="card-title">${truncatedName}</h5>
                 <p class="card-text">${product.category}</p>
               </div>
             </div>
@@ -666,6 +668,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const style = document.createElement("style");
 style.innerHTML = `
+  .card-body{
+    // padding: 20px 0;
+  }
   .card-title, .card-text {
     text-decoration: underline #fff;
     font-weight: bold;

@@ -278,4 +278,7 @@ footer > p {
     position: relative;
     left: 10px;
   }
+  .cnumbers .second{
+    margin-right: 0px!important;
+  }
 }
