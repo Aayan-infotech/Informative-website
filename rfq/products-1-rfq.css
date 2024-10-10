@@ -162,7 +162,7 @@ footer > p {
 
 .nav a img{
   height: 100px;
-  width: 200px;
+  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -243,6 +243,10 @@ footer > p {
   }
   .enqi-wrap{
     white-space:normal!important;
+  }
+  .nav a img{
+    margin-bottom: 10px;
+    width: 280px;
   }
 }
 

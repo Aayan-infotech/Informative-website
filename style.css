@@ -330,7 +330,7 @@ body {
 .addBack{
   background-color: #000;
   min-height: 450px;
-  width: 300px;
+  width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -346,9 +346,8 @@ body {
 }
 
 .addBack .img1 img{
-  height: 140px;
-  width: 300px;
-  border-bottom: 1px solid #fff;
+  height: 170px;
+  width: 320px;
 }
 
 .category h3 {
@@ -502,7 +501,7 @@ p {
 
 .nav a img{
   height: 100px;
-  width: 200px;
+  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -671,6 +670,11 @@ p {
 
   .nav-top img{
     width: 100%;
+  }
+
+  .nav a img{
+    margin-bottom: 10px;
+    width: 280px;
   }
 }
 
