@@ -644,7 +644,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const sliderContainer = document.querySelector(".category-grid-wrapper");
       const addBackItems = document.querySelectorAll(".addBack");
       const addBackWidth = 320; // Width of each .addBack item
-      const gap = 10; // Gap between items
+      const gap = 20; // Gap between items
       const visibleItems = Math.floor(sliderContainer.clientWidth / (addBackWidth + gap)); 
       let currentPosition = 0;
 
