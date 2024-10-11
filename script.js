@@ -644,7 +644,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const sliderContainer = document.querySelector(".category-grid-wrapper");
       const addBackItems = document.querySelectorAll(".addBack");
       const addBackWidth = 320; // Width of each .addBack item
-      const gap = 12; // Gap between items
+      const gap = 10; // Gap between items
       const visibleItems = Math.floor(sliderContainer.clientWidth / (addBackWidth + gap)); 
       let currentPosition = 0;
 
@@ -690,8 +690,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching categories:", error);
     });
 });
-
-
 
 function fetchProductsByCategory(categoryName) {
   fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
