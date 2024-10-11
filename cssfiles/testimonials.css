@@ -158,6 +158,108 @@ footer nav ul li {
   margin-right: 1em;
 }
 
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.category-grid {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.category-grid .addBack {
+  flex: 0 0 calc(33.333% - 20px); /* For 3 cards in a row */
+  margin-right: 20px;
+  box-sizing: border-box;
+}
+
+.slider-prev,
+.slider-next {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slider-prev {
+  left: -40px;
+}
+
+.slider-next {
+  right: -40px;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.slider-btn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.left-btn {
+  left: 0;
+}
+
+.right-btn {
+  right: 0;
+}
+
+.category-grid-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.category-grid1 {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 10px; 
+}
+
+.addBack {
+  min-width: 300px; 
+  flex-shrink: 0;
+}
+.category-grid1 {
+  display: flex;
+  gap: -500px; /* Add a gap of 16px between each .addBack */
+  transition: transform 0.4s ease-in-out;
+}
+
+.category-grid1 > .category {
+  margin: 0%!important;
+  padding: 0%!important;
+  color: #fff;
+}
+
+.category {
+  margin-right: 16px; /* Adjust the margin-right for the gap */
+}
+
+
+
 @media screen and (max-width: 992px) {
   .container-2 .box-1 h2 {
     font-size: 1.5rem;
@@ -290,6 +392,11 @@ footer nav ul li {
   .foot {
     padding: 10px;
   }
+
+  .category-grid1 .addBack{
+    margin-right: 15px;
+    margin-left: 10px;
+  }
 }
 
 @media screen and (max-width: 350px) {
@@ -297,6 +404,9 @@ footer nav ul li {
   .foo-para {
     position: relative;
     left: 20px;
+  }
+  .category-grid .addBack{
+    width: 240px;
   }
 }
 

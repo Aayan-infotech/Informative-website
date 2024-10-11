@@ -231,7 +231,7 @@ p {
 
 .addBack{
   background-color: #000;
-  min-height: 450px;
+  min-height: 480px;
   width: 320px;
   display: flex;
   flex-direction: column;
@@ -253,7 +253,7 @@ p {
 }
 
 .addBack .img1 img{
-  height: 170px;
+  height: 200px;
   width: 320px;
 }
 
@@ -306,14 +306,14 @@ p {
     margin-bottom: 20px;
     width: 100%;
   }
-  .product-img {
+  .product-im {
     display: flex;
     flex-direction: column-reverse;
   }
-  .product-img img {
+  .product-im img {
     width: 100%;
   }
-  .product-img p {
+  .product-im p {
     width: 110%;
   }
   .footstrip {
