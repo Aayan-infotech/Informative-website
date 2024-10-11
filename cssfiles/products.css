@@ -263,6 +263,25 @@ p {
   2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827;
 }
 
+.nav a .first{
+  height: 100px;
+  width: 500px;
+}
+
+.nav a .second{
+  height: 120px;
+  width: 350px;
+  position: relative;
+  /* right: 60px; */
+}
+
+.nav a .third{
+  height: 120px;
+  width: 350px;
+  position: relative;
+  /* right: 80px; */
+}
+
 
 @media screen and (max-width: 992px) {
   .hero {
@@ -270,6 +289,10 @@ p {
   }
   .nav-top{
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
   }
   .hero h1,
   .hero p {
@@ -312,6 +335,27 @@ p {
     margin-top: 20px;
   }
 
+  .hero-sec{
+    display: flex;
+  }
+  .nav a .first{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+  
+  .nav a .second{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+  
+  .nav a .third{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+
   footer div:nth-of-type(1),
   .foo-para {
     position: relative;
@@ -327,6 +371,24 @@ p {
     width: 100px;
     margin-right: 10px;
   }
+  .nav a .first{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+  
+  .nav a .second{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+  
+  .nav a .third{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -341,8 +403,6 @@ p {
   .hero p {
     font-size: 1em;
   }
-
-
 
   .category h3 {
     font-size: 1.2em;
@@ -382,9 +442,16 @@ p {
     width: 100%;
   }
   .nav a img{
-    margin-bottom: 10px;
     width: 280px;
+    margin-bottom: 10px;
   }
+  .nav-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
 }
 
 @media screen and (max-width: 576px) {

@@ -459,7 +459,7 @@ footer > div > *,
 footer > a,
 p {
   text-decoration: none;
-  /* color: black; */
+  color: black;
   font-weight: bold;
 }
 .footstrip {
@@ -500,12 +500,29 @@ p {
 }
 
 .nav a img{
-  height: 100px;
-  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+}
+
+.nav a .first{
+  height: 100px;
+  width: 500px;
+}
+
+.nav a .second{
+  height: 120px;
+  width: 350px;
+  position: relative;
+  /* right: 60px; */
+}
+
+.nav a .third{
+  height: 120px;
+  width: 350px;
+  position: relative;
+  /* right: 80px; */
 }
 
 /*=============================== NEW-CODE-ADDED ================================*/
@@ -535,11 +552,11 @@ p {
   margin: 20px;
 }
 /*=============== LAYOUT ===============*/
-.container {
+/* .container {
   max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 .grid {
   display: grid;
@@ -588,8 +605,36 @@ p {
     margin-bottom: 50px!important;
   } */
   .nav-top{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  .nav-top a img{
+    width: 100%;
+    position: relative;
+    right: 0px;
+  }
+
+  .nav a .first{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+  
+  .nav a .second{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+  
+  .nav a .third{
+    height: 100px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+
   .second-box img {
     width: 100%;
   }
