@@ -574,6 +574,123 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("http://44.196.192.232:5002/api/category/")
+    .then((response) => response.json())
+    .then((data) => {
+      const categoryGrid = document.querySelector(".category-grid1");
+      categoryGrid.innerHTML = "";
+      sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
+
+      data.forEach((category) => {
+        const categoryElement = document.createElement("div");
+        categoryElement.classList.add("category");
+
+        const truncatedDescription =
+          category.description.length > 150
+            ? category.description.substring(0, 150) + "..."
+            : category.description;
+
+        const truncatedName =
+          category.name.length > 40
+            ? category.name.substring(0, 40) + "..."
+            : category.name;
+
+        const formattedDescription = truncatedDescription
+          .split(" ")
+          .map((word) => {
+            if (word.length > 25) {
+              return word.match(/.{1,25}/g).join(" ");
+            }
+            return word;
+          })
+          .join(" ");
+
+        const formattedName = truncatedName
+          .split(" ")
+          .map((word) => {
+            if (word.length > 20) {
+              return word.match(/.{1,18}/g).join(" ");
+            }
+            return word;
+          })
+          .join(" ");
+
+        const encodedCategory = encodeURIComponent(JSON.stringify(category));
+
+        categoryElement.innerHTML = `
+          <div class="addBack">
+            <div class="img1">
+              <img src="${category.image}" alt="${category.name}">
+            </div>
+            <div class="inner-content">
+              <h3 class="addh3">${formattedName}</h3>
+              <p class="thin-text1 addp">${formattedDescription}</p>
+              <a href="" class="details-button" data-category='${encodedCategory}'>
+              <button class="pt-2">Details
+                <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="black" stroke-width="1.58789"/>
+                </svg>
+              </button>
+              </a>
+            </div>
+          </div>
+        `;
+
+        categoryGrid.appendChild(categoryElement);
+      });
+
+      // Slider functionality
+      const sliderContainer = document.querySelector(".category-grid-wrapper");
+      const addBackItems = document.querySelectorAll(".addBack");
+      const addBackWidth = 320; // Width of each .addBack item
+      const gap = 20; // Gap between items
+      const visibleItems = Math.floor(sliderContainer.clientWidth / (addBackWidth + gap)); 
+      let currentPosition = 0;
+
+      const totalWidth = (addBackWidth + gap) * addBackItems.length - gap; // Total width of all items minus the last gap
+
+      const updateSliderPosition = () => {
+        categoryGrid.style.transform = `translateX(-${currentPosition}px)`; // Move left by currentPosition
+      };
+
+      const handleLeftClick = () => {
+        currentPosition += (addBackWidth + gap) * visibleItems;
+        if (currentPosition > 0) {
+          currentPosition = 0; // Prevent moving left beyond the first item
+        }
+        updateSliderPosition();
+      };
+
+      const handleRightClick = () => {
+        currentPosition -= (addBackWidth + gap) * visibleItems;
+        const maxPosition = totalWidth - (visibleItems * (addBackWidth + gap));
+        if (currentPosition < maxPosition) {
+          currentPosition = maxPosition; // Prevent moving right beyond the last item
+        }
+        updateSliderPosition();
+      };
+
+      document.querySelector(".left-btn").addEventListener("click", handleLeftClick);
+      document.querySelector(".right-btn").addEventListener("click", handleRightClick);
+
+      document.querySelectorAll(".details-button").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+          const categoryData = JSON.parse(decodeURIComponent(e.currentTarget.getAttribute("data-category")));
+          sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData));
+          fetchProductsByCategory(categoryData.name);
+        });
+      });
+      
+      // Initial setup
+      updateSliderPosition(); // Set the initial position
+    })
+    .catch((error) => {
+      console.error("Error fetching categories:", error);
+    });
+});
+
 function fetchProductsByCategory(categoryName) {
   fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
     .then((response) => response.json())

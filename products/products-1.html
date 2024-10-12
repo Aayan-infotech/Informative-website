@@ -196,6 +196,25 @@
         vertical-align: middle;
       }
 
+      .nav a .first {
+        height: 100px;
+        width: 500px;
+      }
+
+      .nav a .second {
+        height: 120px;
+        width: 350px;
+        position: relative;
+        /* right: 60px; */
+      }
+
+      .nav a .third {
+        height: 120px;
+        width: 350px;
+        position: relative;
+        /* right: 80px; */
+      }
+
       @media screen and (max-width: 992px) {
         .footstrip {
           display: flex;
@@ -274,6 +293,29 @@
           height: 80px;
           width: 100px;
           margin-right: 10px;
+        }
+        .nav-top {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .nav a .first {
+          height: 100px;
+          width: 270px;
+          margin-bottom: 10px;
+        }
+
+        .nav a .second {
+          height: 100px;
+          width: 270px;
+          margin-bottom: 10px;
+        }
+
+        .nav a .third {
+          height: 100px;
+          width: 270px;
+          margin-bottom: 10px;
         }
       }
 
@@ -390,18 +432,30 @@
     <header class="d-flex justify-content-between container nav nav-top">
       <div>
         <a id="icon" href="../index.html"
-          ><img src="../assets/images/logo-2.png" alt="" width="95%"
+          ><img
+            src="../assets/images/logo-2.png"
+            alt=""
+            width="95%"
+            class="first"
         /></a>
       </div>
       <div>
         <a id="icon" href="../index.html"
-          ><img src="../assets/images/Logo-1.png" alt="" width="95%"
+          ><img
+            src="../assets/images/Logo-1.png"
+            alt=""
+            width="95%"
+            class="second"
         /></a>
         <!-- <p style="font-size: 12px; text-align: center">We Know Cigar... Personally</p> -->
       </div>
       <div>
         <a id="icon" href="../index.html"
-          ><img src="../assets/images/Logo-3.png" alt="" width="95%"
+          ><img
+            src="../assets/images/Logo-3.png"
+            alt=""
+            width="95%"
+            class="third"
         /></a>
         <!-- <p style="font-size: 12px; text-align: center">SAGE number 6785</p> -->
       </div>
@@ -410,7 +464,7 @@
       <div class="container d-flex justify-content-between nav">
         <a id="home-link" href="../index.html">Home</a>
         <a id="products-link" href="../pages/products.html">Products</a>
-        <a id="enquiry-link" href="../pages/inquery.html">Get a Quote</a>
+        <a id="enquiry-link" href="../pages/inquery.html">Request a Quote</a>
         <a id="testimonials-link" href="../pages/testimonials.html"
           >Testimonials</a
         >
@@ -447,7 +501,7 @@
           <a href="../pages/AboutUs.html">About</a><br />
           <a href="../pages/products.html">Product</a><br />
           <a href="../pages/f&q.html">FAQ</a><br />
-          <a href="../pages/inquery.html">Get a Quote</a>
+          <a href="../pages/inquery.html">Request a Quote</a>
         </div>
         <div>
           <!-- <a href="">Gallery</a><br /> -->
@@ -458,7 +512,7 @@
           New York, USA <br />
           201089
         </p>
-        <a href="">800-276-6522</a>
+        <p>800-276-6522</p>
       </footer>
     </div>
 
