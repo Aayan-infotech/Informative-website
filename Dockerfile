@@ -1,6 +1,5 @@
 FROM nginx:latest
 
-# Set the working directory inside the container
 WORKDIR /usr/share/nginx/html
 
 # Copy the contents of your local directory to the working directory in the container
