@@ -30,6 +30,7 @@ header {
   background: var(--text-white);
   padding: 1.2% 0%;
   color: var(--text-black);
+  z-index: 2;
 }
 header .container > a {
   text-decoration: none;
@@ -211,7 +212,7 @@ p {
 .footstrip {
   padding: 20px 0 10px;
 }
-.categories .category a button {
+.categories .inner-content a button {
   background: white;
   color: black;
   border-radius: 11.12px;

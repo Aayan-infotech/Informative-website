@@ -373,6 +373,11 @@ body {
   width: 320px; /* Same as your addBackWidth */
 }
 
+.owl-item .active{
+  margin-right: 0px;
+  width: 320px;
+}
+
 .slider-container::-webkit-scrollbar {
   display: none; /* Optional: Hide scrollbar for a cleaner look */
 }
@@ -422,21 +427,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* z-index: 2; */
 }
-
-/* .category h3,
-.category p {
-  border-radius: 5px;
-  width: 100% !important;
-} */
-
-/* .category:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  z-index: 2;
-  border-radius: 5px;
-} */
 
 /* Continue for all categories */
 .details-btn {
@@ -448,7 +439,7 @@ body {
   text-decoration: none;
 }
 
-.categories .category a button {
+.categories a button {
   background: white;
   color: black;
   border-radius: 11.12px;

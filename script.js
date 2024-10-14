@@ -569,7 +569,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     })
-    .catch((error) =>{ 
+    .catch((error) => {
       // console.error("Error fetching categories:", error);
     });
 });
@@ -578,13 +578,13 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("http://44.196.192.232:5002/api/category/")
     .then((response) => response.json())
     .then((data) => {
-      const categoryGrid = document.querySelector(".category-grid1");
+      const categoryGrid = document.querySelector(".category-carousel");
       categoryGrid.innerHTML = "";
       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
 
       data.forEach((category) => {
         const categoryElement = document.createElement("div");
-        categoryElement.classList.add("category");
+        categoryElement.classList.add("item", "addBack");
 
         const truncatedDescription =
           category.description.length > 150
@@ -592,81 +592,109 @@ document.addEventListener("DOMContentLoaded", () => {
             : category.description;
 
         const truncatedName =
-          category.name.length > 40
-            ? category.name.substring(0, 40) + "..."
+          category.name.length > 35
+            ? category.name.substring(0, 35) + "..."
             : category.name;
 
         const formattedDescription = truncatedDescription
           .split(" ")
-          .map((word) => (word.length > 25 ? word.match(/.{1,25}/g).join(" ") : word))
+          .map((word) => {
+            if (word.length > 25) {
+              return word.match(/.{1,25}/g).join(" ");
+            }
+            return word;
+          })
           .join(" ");
 
         const formattedName = truncatedName
           .split(" ")
-          .map((word) => (word.length > 20 ? word.match(/.{1,18}/g).join(" ") : word))
+          .map((word) => {
+            if (word.length > 20) {
+              return word.match(/.{1,18}/g).join(" ");
+            }
+            return word;
+          })
           .join(" ");
 
         const encodedCategory = encodeURIComponent(JSON.stringify(category));
 
         categoryElement.innerHTML = `
-          <div class="addBack">
-            <div class="img1">
-              <img src="${category.image}" alt="${category.name}">
-            </div>
-            <div class="inner-content">
-              <h3 class="addh3">${formattedName}</h3>
-              <p class="thin-text1 addp">${formattedDescription}</p>
-              <a href="" class="details-button" data-category='${encodedCategory}'>
+          <div class="img1">
+            <img src="${category.image}" alt="${category.name}">
+          </div>
+          <div class="inner-content">
+            <h3 class="addh3">${formattedName}</h3>
+            <p class="thin-text1 addp">${formattedDescription}</p>
+            <a href="" class="details-button" data-category='${encodedCategory}'>
               <button class="pt-2">Details
                 <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="black" stroke-width="1.58789"/>
                 </svg>
               </button>
-              </a>
-            </div>
+            </a>
           </div>
         `;
-
         categoryGrid.appendChild(categoryElement);
       });
 
-      // Drag-to-scroll functionality
-      let isDown = false;
-      let startX;
-      let scrollLeft;
 
-      const sliderContainer = document.querySelector(".category-grid-wrapper");
-
-      sliderContainer.addEventListener("mousedown", (e) => {
-        isDown = true;
-        sliderContainer.classList.add("active");
-        startX = e.pageX - sliderContainer.offsetLeft;
-        scrollLeft = sliderContainer.scrollLeft;
+      $(".category-carousel").owlCarousel({
+        loop: false,
+        margin: 20,
+        nav: true, 
+        navText: ["←", "→"],
+        responsive: {
+          0: {
+            items: 1,
+            nav: false,
+            stagePadding: 10,
+          },
+          576: {
+            items: 2,
+          },
+          768: {
+            items: 2,
+            margin: 15,
+          },
+          992: {
+            items: 3,
+            margin: 20,
+          },
+          1200: {
+            items: 3,
+          },
+        },
+        onInitialized: function (event) {
+          adjustActiveItems();
+        },
+        onChanged: function (event) {
+          adjustActiveItems();
+        },
       });
 
-      sliderContainer.addEventListener("mouseleave", () => {
-        isDown = false;
-        sliderContainer.classList.remove("active");
-      });
+      function adjustActiveItems() {
+        $(".owl-item").css({
+          width: "calc(100% / 3 - 20px)",
+        });
 
-      sliderContainer.addEventListener("mouseup", () => {
-        isDown = false;
-        sliderContainer.classList.remove("active");
-      });
+      }
 
-      sliderContainer.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - sliderContainer.offsetLeft;
-        const walk = (x - startX) * 3; // Scroll faster
-        sliderContainer.scrollLeft = scrollLeft - walk;
-      });
+      function adjustActiveItems() {
+        $(".owl-item").css({
+          width: "360px",
+        });
+      }
 
       document.querySelectorAll(".details-button").forEach((button) => {
         button.addEventListener("click", (e) => {
           e.preventDefault();
-          const categoryData = JSON.parse(decodeURIComponent(e.currentTarget.getAttribute("data-category")));
-          sessionStorage.setItem("selectedCategory", JSON.stringify(categoryData));
+          const categoryData = JSON.parse(
+            decodeURIComponent(e.currentTarget.getAttribute("data-category"))
+          );
+          sessionStorage.setItem(
+            "selectedCategory",
+            JSON.stringify(categoryData)
+          );
           fetchProductsByCategory(categoryData.name);
         });
       });
@@ -675,7 +703,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching categories:", error);
     });
 });
-
 
 function fetchProductsByCategory(categoryName) {
   fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
@@ -701,15 +728,20 @@ function fetchProductsByCategory(categoryName) {
 document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".products-section .row");
   const productHead = document.querySelector(".products-section");
-  const productSection2 = document.querySelector(".products-section-2 .swiper-wrapper");
+  const productSection2 = document.querySelector(
+    ".products-section-2 .swiper-wrapper"
+  );
   const products = JSON.parse(sessionStorage.getItem("fetchedProducts"));
   const heroSection = document.querySelector(".hero-section .d-grid");
-  const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
+  const selectedCategory = JSON.parse(
+    sessionStorage.getItem("selectedCategory")
+  );
 
   // Update hero section
   if (selectedCategory) {
     if (heroSection) {
-      productHead.querySelector("h2").textContent = "Take A Look At Our "+selectedCategory.name;
+      productHead.querySelector("h2").textContent =
+        "Take A Look At Our " + selectedCategory.name;
       heroSection.querySelector("h1").textContent = selectedCategory.name;
       heroSection.querySelector("p").textContent = selectedCategory.description;
     }
@@ -729,9 +761,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const productElement = document.createElement("div");
         productElement.classList.add(...cols, "mb-4");
 
-        const truncatedName = product.productname.length > 30
-        ? product.productname.substring(0, 30) + "..."
-        : product.productname;
+        const truncatedName =
+          product.productname.length > 30
+            ? product.productname.substring(0, 30) + "..."
+            : product.productname;
 
         productElement.innerHTML = `
           <a href="../products/products-1.html">
@@ -1033,7 +1066,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //     .catch((error) => console.error("Error fetching categories:", error));
 // });
 
-//Product 
+//Product
 
 // document.addEventListener("DOMContentLoaded", () => {
 //   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
