@@ -49,6 +49,7 @@ header .container > a:not(#icon):hover {
   border-radius: 2px;
   background-color: black;
   color: var(--text-white);
+  /* font-weight: bold; */
 }
 
 .foot {
@@ -355,6 +356,26 @@ body {
   margin: 1em 0 0.5em;
 }
 
+.category-grid-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.category-grid1 {
+  display: flex;
+  gap: 20px; /* Spacing between cards */
+  padding-bottom: 20px;
+}
+
+.addBack {
+  flex-shrink: 0; /* Prevent shrinking */
+  width: 320px; /* Same as your addBackWidth */
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Optional: Hide scrollbar for a cleaner look */
+}
 
 .addBack .addh3, .addp{
   color: #fff;

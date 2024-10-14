@@ -598,22 +598,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const formattedDescription = truncatedDescription
           .split(" ")
-          .map((word) => {
-            if (word.length > 25) {
-              return word.match(/.{1,25}/g).join(" ");
-            }
-            return word;
-          })
+          .map((word) => (word.length > 25 ? word.match(/.{1,25}/g).join(" ") : word))
           .join(" ");
 
         const formattedName = truncatedName
           .split(" ")
-          .map((word) => {
-            if (word.length > 20) {
-              return word.match(/.{1,18}/g).join(" ");
-            }
-            return word;
-          })
+          .map((word) => (word.length > 20 ? word.match(/.{1,18}/g).join(" ") : word))
           .join(" ");
 
         const encodedCategory = encodeURIComponent(JSON.stringify(category));
@@ -640,39 +630,37 @@ document.addEventListener("DOMContentLoaded", () => {
         categoryGrid.appendChild(categoryElement);
       });
 
-      // Slider functionality
+      // Drag-to-scroll functionality
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
       const sliderContainer = document.querySelector(".category-grid-wrapper");
-      const addBackItems = document.querySelectorAll(".addBack");
-      const addBackWidth = 320; // Width of each .addBack item
-      const gap = 20; // Gap between items
-      const visibleItems = Math.floor(sliderContainer.clientWidth / (addBackWidth + gap)); 
-      let currentPosition = 0;
 
-      const totalWidth = (addBackWidth + gap) * addBackItems.length - gap; // Total width of all items minus the last gap
+      sliderContainer.addEventListener("mousedown", (e) => {
+        isDown = true;
+        sliderContainer.classList.add("active");
+        startX = e.pageX - sliderContainer.offsetLeft;
+        scrollLeft = sliderContainer.scrollLeft;
+      });
 
-      const updateSliderPosition = () => {
-        categoryGrid.style.transform = `translateX(-${currentPosition}px)`; // Move left by currentPosition
-      };
+      sliderContainer.addEventListener("mouseleave", () => {
+        isDown = false;
+        sliderContainer.classList.remove("active");
+      });
 
-      const handleLeftClick = () => {
-        currentPosition += (addBackWidth + gap) * visibleItems;
-        if (currentPosition > 0) {
-          currentPosition = 0; // Prevent moving left beyond the first item
-        }
-        updateSliderPosition();
-      };
+      sliderContainer.addEventListener("mouseup", () => {
+        isDown = false;
+        sliderContainer.classList.remove("active");
+      });
 
-      const handleRightClick = () => {
-        currentPosition -= (addBackWidth + gap) * visibleItems;
-        const maxPosition = totalWidth - (visibleItems * (addBackWidth + gap));
-        if (currentPosition < maxPosition) {
-          currentPosition = maxPosition; // Prevent moving right beyond the last item
-        }
-        updateSliderPosition();
-      };
-
-      document.querySelector(".left-btn").addEventListener("click", handleLeftClick);
-      document.querySelector(".right-btn").addEventListener("click", handleRightClick);
+      sliderContainer.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - sliderContainer.offsetLeft;
+        const walk = (x - startX) * 3; // Scroll faster
+        sliderContainer.scrollLeft = scrollLeft - walk;
+      });
 
       document.querySelectorAll(".details-button").forEach((button) => {
         button.addEventListener("click", (e) => {
@@ -682,14 +670,12 @@ document.addEventListener("DOMContentLoaded", () => {
           fetchProductsByCategory(categoryData.name);
         });
       });
-      
-      // Initial setup
-      updateSliderPosition(); // Set the initial position
     })
     .catch((error) => {
       console.error("Error fetching categories:", error);
     });
 });
+
 
 function fetchProductsByCategory(categoryName) {
   fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
