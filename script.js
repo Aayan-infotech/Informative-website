@@ -411,6 +411,8 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(apiEndpoint)
     .then((resp) => resp.json())
     .then((data) => {
+      data.sort((a, b) => Number(a.sequence) - Number(b.sequence));
+
       data.forEach((item) => {
         const faqItem = document.createElement("div");
         faqItem.className = "faq-item";
@@ -486,98 +488,98 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Category Section
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetch("http://44.196.192.232:5002/api/category/")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const categoryGrid = document.querySelector(".category-grid");
+//       categoryGrid.innerHTML = "";
+//       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
+
+//       data.forEach((category) => {
+//         const categoryElement = document.createElement("div");
+//         categoryElement.classList.add("category");
+
+//         const truncatedDescription =
+//           category.description.length > 150
+//             ? category.description.substring(0, 150) + "..."
+//             : category.description;
+
+//         const truncatedName =
+//           category.name.length > 40
+//             ? category.name.substring(0, 40) + "..."
+//             : category.name;
+
+//         const formattedDescription = truncatedDescription
+//           .split(" ")
+//           .map((word) => {
+//             if (word.length > 25) {
+//               return word.match(/.{1,25}/g).join(" ");
+//             }
+//             return word;
+//           })
+//           .join(" ");
+
+//         const formattedName = truncatedName
+//           .split(" ")
+//           .map((word) => {
+//             if (word.length > 20) {
+//               return word.match(/.{1,18}/g).join(" ");
+//             }
+//             return word;
+//           })
+//           .join(" ");
+
+//         const encodedCategory = encodeURIComponent(JSON.stringify(category));
+
+//         categoryElement.innerHTML = `
+//           <div class="addBack">
+//             <div class="img1">
+//               <img src="${category.image}" alt="${category.name}">
+//             </div>
+//             <div class="inner-content">
+//               <h3 class="addh3">${formattedName}</h3>
+//               <p class="thin-text1 addp">${formattedDescription}</p>
+//               <a href="" class="details-button" data-category='${encodedCategory}'>
+//               <button class="pt-2">Details
+//                 <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                   <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="black" stroke-width="1.58789"/>
+//                 </svg>
+//               </button>
+//               </a>
+//             </div>
+//           </div>
+//         `;
+
+//         categoryGrid.appendChild(categoryElement);
+//       });
+
+//       document.querySelectorAll(".details-button").forEach((button) => {
+//         button.addEventListener("click", (e) => {
+//           e.preventDefault();
+
+//           // Decode and parse the category data
+//           const categoryData = JSON.parse(
+//             decodeURIComponent(e.currentTarget.getAttribute("data-category"))
+//           );
+//           sessionStorage.setItem(
+//             "selectedCategory",
+//             JSON.stringify(categoryData)
+//           );
+//           fetchProductsByCategory(categoryData.name);
+//         });
+//       });
+//     })
+//     .catch((error) => {
+//       // console.error("Error fetching categories:", error);
+//     });
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
   fetch("http://44.196.192.232:5002/api/category/")
     .then((response) => response.json())
     .then((data) => {
-      const categoryGrid = document.querySelector(".category-grid");
-      categoryGrid.innerHTML = "";
-      sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
-
-      data.forEach((category) => {
-        const categoryElement = document.createElement("div");
-        categoryElement.classList.add("category");
-
-        const truncatedDescription =
-          category.description.length > 150
-            ? category.description.substring(0, 150) + "..."
-            : category.description;
-
-        const truncatedName =
-          category.name.length > 40
-            ? category.name.substring(0, 40) + "..."
-            : category.name;
-
-        const formattedDescription = truncatedDescription
-          .split(" ")
-          .map((word) => {
-            if (word.length > 25) {
-              return word.match(/.{1,25}/g).join(" ");
-            }
-            return word;
-          })
-          .join(" ");
-
-        const formattedName = truncatedName
-          .split(" ")
-          .map((word) => {
-            if (word.length > 20) {
-              return word.match(/.{1,18}/g).join(" ");
-            }
-            return word;
-          })
-          .join(" ");
-
-        // Safely encode the category object
-        const encodedCategory = encodeURIComponent(JSON.stringify(category));
-
-        categoryElement.innerHTML = `
-          <div class="addBack">
-            <div class="img1">
-              <img src="${category.image}" alt="${category.name}">
-            </div>
-            <div class="inner-content">
-              <h3 class="addh3">${formattedName}</h3>
-              <p class="thin-text1 addp">${formattedDescription}</p>
-              <a href="" class="details-button" data-category='${encodedCategory}'>
-              <button class="pt-2">Details
-                <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="black" stroke-width="1.58789"/>
-                </svg>
-              </button>
-              </a>
-            </div>
-          </div>
-        `;
-
-        categoryGrid.appendChild(categoryElement);
-      });
-
-      document.querySelectorAll(".details-button").forEach((button) => {
-        button.addEventListener("click", (e) => {
-          e.preventDefault();
-
-          // Decode and parse the category data
-          const categoryData = JSON.parse(
-            decodeURIComponent(e.currentTarget.getAttribute("data-category"))
-          );
-          sessionStorage.setItem(
-            "selectedCategory",
-            JSON.stringify(categoryData)
-          );
-          fetchProductsByCategory(categoryData.name);
-        });
-      });
-    })
-    .catch((error) => {
-      // console.error("Error fetching categories:", error);
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://44.196.192.232:5002/api/category/")
-    .then((response) => response.json())
-    .then((data) => {
+      data.sort((a, b) => a.sequence - b.sequence);
       const categoryGrid = document.querySelector(".category-carousel");
       categoryGrid.innerHTML = "";
       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
@@ -639,7 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       $(".category-carousel").owlCarousel({
-        loop: false,
+        loop: true,
         margin: 20,
         nav: true, 
         navText: ["←", "→"],

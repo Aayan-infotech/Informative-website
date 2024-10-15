@@ -184,7 +184,7 @@ header .container> a:not(#icon):hover {
   font-size: 1rem;
 }
 .contact-info {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 footer > div > *,
@@ -451,6 +451,10 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .contact-info .c-info{
+    margin-right: 0px!important;
   }
 
 }

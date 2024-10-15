@@ -266,6 +266,9 @@ footer > p {
     width: 270px;
     margin-bottom: 10px;
   }
+  .cnumbers .c-info{
+    margin-right: 0px!important;
+  }
 }
 
 @media screen and (max-width: 768px) {
