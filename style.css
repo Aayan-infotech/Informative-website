@@ -29,7 +29,7 @@ p {
 }
 header {
   background: var(--text-white);
-  padding: 1.2% 0% 1%;
+  padding: 0.8% 0% 1%;
   color: var(--text-black);
   z-index: 2;
 }
@@ -703,11 +703,10 @@ p {
   margin-right: 16px; /* Adjust the margin-right for the gap */
 }
 
-/* .product-info p {
-  font-size: 16px;
-  line-height: 1.5;
-  width: 500px;
-} */
+.third-box .thin-main{
+  font-weight: bold!important;
+  font-style: italic;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */

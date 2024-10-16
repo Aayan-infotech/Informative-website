@@ -3,7 +3,7 @@ body {
 }
 header {
   background: var(--text-white);
-  padding: 1.2% 0;
+  padding: 0.8% 0% 1.2%;
   color: var(--text-black);
   background-color: #fff!important;
   z-index: 2;

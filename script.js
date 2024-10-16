@@ -639,9 +639,8 @@ document.addEventListener("DOMContentLoaded", () => {
         categoryGrid.appendChild(categoryElement);
       });
 
-
       $(".category-carousel").owlCarousel({
-        loop: true,
+        loop: false,
         margin: 20,
         nav: true, 
         navText: ["←", "→"],
@@ -678,7 +677,6 @@ document.addEventListener("DOMContentLoaded", () => {
         $(".owl-item").css({
           width: "calc(100% / 3 - 20px)",
         });
-
       }
 
       function adjustActiveItems() {
@@ -690,14 +688,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".details-button").forEach((button) => {
         button.addEventListener("click", (e) => {
           e.preventDefault();
-          const categoryData = JSON.parse(
-            decodeURIComponent(e.currentTarget.getAttribute("data-category"))
-          );
-          sessionStorage.setItem(
-            "selectedCategory",
-            JSON.stringify(categoryData)
-          );
-          fetchProductsByCategory(categoryData.name);
+          const categoryData = JSON.parse(decodeURIComponent(e.currentTarget.getAttribute("data-category")));
+          sessionStorage.setItem("selectedCategory",JSON.stringify(categoryData));
+          fetchProductsByCategory(categoryData._id);
         });
       });
     })
@@ -706,8 +699,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-function fetchProductsByCategory(categoryName) {
-  fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
+function fetchProductsByCategory(categoryId) {
+  // fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
+  fetch(`http://44.196.192.232:5002/api/subcategory/getsubcategories/${categoryId}`)
     .then((response) => response.json())
     .then((products) => {
       sessionStorage.setItem("fetchedProducts", JSON.stringify(products));
@@ -730,20 +724,15 @@ function fetchProductsByCategory(categoryName) {
 document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".products-section .row");
   const productHead = document.querySelector(".products-section");
-  const productSection2 = document.querySelector(
-    ".products-section-2 .swiper-wrapper"
-  );
+  const productSection2 = document.querySelector(".products-section-2 .swiper-wrapper");
   const products = JSON.parse(sessionStorage.getItem("fetchedProducts"));
   const heroSection = document.querySelector(".hero-section .d-grid");
-  const selectedCategory = JSON.parse(
-    sessionStorage.getItem("selectedCategory")
-  );
-
+  const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
+  const products1 = products.subCategories;
   // Update hero section
   if (selectedCategory) {
     if (heroSection) {
-      productHead.querySelector("h2").textContent =
-        "Take A Look At Our " + selectedCategory.name;
+      productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedCategory.name;
       heroSection.querySelector("h1").textContent = selectedCategory.name;
       heroSection.querySelector("p").textContent = selectedCategory.description;
     }
@@ -752,40 +741,99 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Function to render products
-  if (products) {
+  // if (products1) {
+  //   const renderProducts = (productSection, cols, swiper = false) => {
+  //     if (!productSection) {
+  //       return;
+  //     }
+
+  //     productSection.innerHTML = "";
+  //     products1.forEach((product) => {
+  //       const productElement = document.createElement("div");
+  //       productElement.classList.add(...cols, "mb-4");
+
+  //       console.log(products1);
+  //       const truncatedName =
+  //         product.productname.length > 30
+  //           ? product.productname.substring(0, 30) + "..."
+  //           : product.productname;
+
+  //       productElement.innerHTML = `
+  //         <a href="../products/products-1.html">
+  //           <div class="card">
+  //             <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
+  //             <div class="card-body">
+  //               <h5 class="card-title">${truncatedName}</h5>
+  //               <p class="card-text">${product.category}</p>
+  //             </div>
+  //           </div>
+  //         </a>
+  //       `;
+
+  //       productElement.querySelector("a").addEventListener("click", (e) => {
+  //         e.preventDefault();
+  //         sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+  //         window.location.href = "../products/products-1.html";
+  //       });
+
+  //       if (swiper) {
+  //         const swiperSlide = document.createElement("div");
+  //         swiperSlide.classList.add("swiper-slide");
+  //         swiperSlide.appendChild(productElement);
+  //         productSection.appendChild(swiperSlide);
+  //       } else {
+  //         productSection.appendChild(productElement);
+  //       }
+  //     });
+  //   };
+
+  //   renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
+  //   renderProducts(productSection2, ["col-sm-4"], true);
+  // } else {
+  //   console.error("No products found in sessionStorage");
+  // }
+  if (products1 && products1.length > 0) {
     const renderProducts = (productSection, cols, swiper = false) => {
       if (!productSection) {
         return;
       }
-
-      productSection.innerHTML = "";
-      products.forEach((product) => {
+  
+      productSection.innerHTML = ""; // Clear previous content
+  
+      products1.forEach((product, index) => {
         const productElement = document.createElement("div");
         productElement.classList.add(...cols, "mb-4");
-
-        const truncatedName =
-          product.productname.length > 30
-            ? product.productname.substring(0, 30) + "..."
-            : product.productname;
-
+  
+        // Log the description of each product for debugging
+        console.log(product.description);
+  
+        // Truncate the product name if it's too long
+        const truncatedName = 
+          product.subCategoryname.length > 30 
+            ? product.subCategoryname.substring(0, 30) + "..." 
+            : product.subCategoryname;
+  
+        // Create the product card HTML
         productElement.innerHTML = `
           <a href="../products/products-1.html">
             <div class="card">
-              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
+              <img src="${product.image}" class="card-img-top" alt="${product.subCategoryname}" />
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
-                <p class="card-text">${product.category}</p>
+                <p class="card-text">${product.description}</p>
               </div>
             </div>
           </a>
         `;
-
+  
+        // Add click event to store selected product in session storage
         productElement.querySelector("a").addEventListener("click", (e) => {
           e.preventDefault();
           sessionStorage.setItem("selectedProduct", JSON.stringify(product));
           window.location.href = "../products/products-1.html";
         });
-
+  
+        // Append product to either swiper or normal section
         if (swiper) {
           const swiperSlide = document.createElement("div");
           swiperSlide.classList.add("swiper-slide");
@@ -796,12 +844,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     };
-
+  
+    // Call the function to render products in the appropriate sections
     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
     renderProducts(productSection2, ["col-sm-4"], true);
   } else {
-    // console.error("No products found in sessionStorage");
+    console.error("No products found in sessionStorage");
   }
+  
 });
 
 const style = document.createElement("style");
@@ -821,7 +871,7 @@ document.head.appendChild(style);
 
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
-
+  // console.log(product);
   if (product) {
     const truncatedDescription =
       product.description.length > 150
