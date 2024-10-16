@@ -676,12 +676,14 @@ document.addEventListener("DOMContentLoaded", () => {
       function adjustActiveItems() {
         $(".owl-item").css({
           width: "calc(100% / 3 - 20px)",
+          margin: "0 0 20px 0"
         });
       }
 
       function adjustActiveItems() {
         $(".owl-item").css({
           width: "360px",
+          margin: "0 0 20px 0"
         });
       }
 
