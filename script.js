@@ -888,7 +888,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the elements exist before trying to update them
     if (productImgH2) productImgH2.textContent = product.productname;
     if (productImgImg) {
-      productImgImg.src = `http://44.196.192.232:5002/uploads/${product.image}`;
+      productImgImg.src = `${product.image}`;
       productImgImg.alt = product.productname;
     }
     if (productInfoH1) productInfoH1.textContent = product.productname;
@@ -930,7 +930,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (productDesc) productDesc.textContent = truncatedDescription;
     if (productId) productId.textContent = "Product Id: " + product.productID;
     if (productDetailImg) {
-      productDetailImg.src = `http://44.196.192.232:5002/uploads/${product.image}`;
+      productDetailImg.src = `${product.image}`;
       // productImg.alt = product.productname;
     }
 
