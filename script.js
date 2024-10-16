@@ -676,12 +676,14 @@ document.addEventListener("DOMContentLoaded", () => {
       function adjustActiveItems() {
         $(".owl-item").css({
           width: "calc(100% / 3 - 20px)",
+          margin: "0 0 20px 0"
         });
       }
 
       function adjustActiveItems() {
         $(".owl-item").css({
           width: "360px",
+          margin: "0 0 20px 0"
         });
       }
 
@@ -871,7 +873,7 @@ document.head.appendChild(style);
 
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
-  // console.log(product);
+  console.log(product);
   if (product) {
     const truncatedDescription =
       product.description.length > 150
@@ -885,15 +887,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const productInfoP = document.querySelector(".product-info p");
     const rfqLink = document.querySelector(".product-info a");
 
+    console.log(product.image);
     // Check if the elements exist before trying to update them
-    if (productImgH2) productImgH2.textContent = product.productname;
+    if (productImgH2) productImgH2.textContent = product.subCategoryname;
     if (productImgImg) {
       productImgImg.src = `${product.image}`;
       productImgImg.alt = product.productname;
+      console.log(productImgImg.src+" Hello");
     }
-    if (productInfoH1) productInfoH1.textContent = product.productname;
-    if (productInfoPrice) productInfoPrice.textContent = product.category;
-    if (productInfoP) productInfoP.textContent = truncatedDescription;
+    if (productInfoH1) productInfoH1.textContent = product.description;
+    if (productInfoPrice) productInfoPrice.textContent = product.subCategoryname;
+    if (productInfoP) productInfoP.textContent = product.description;
 
     if (rfqLink) {
       rfqLink.addEventListener("click", (e) => {
