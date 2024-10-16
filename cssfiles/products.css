@@ -156,7 +156,7 @@ header .container> a:not(#icon):hover {
 
 .product {
   background-color: #f8f8f8;
-  padding: 2em 0;
+  /* padding: 2em 0; */
 }
 
 .product h1 {
