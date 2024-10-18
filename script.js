@@ -611,7 +611,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     })
     .catch((error) => {
-      console.error("Error fetching categories:", error);
+      // console.error("Error fetching categories:", error);
     });
 });
 
@@ -644,10 +644,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const products1 = products.products;
 
 
-  if (selectedCategory) {
+  if (productHead) {
     productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedCategory.name;
   } else {
-    console.error("No category found in sessionStorage");
+    // console.error("No category found in sessionStorage");
   }
 
   if (products1 && products1.length > 0) {
@@ -693,7 +693,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Render the products in a 3/4 column grid layout
     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
   } else {
-    console.error("No products found in sessionStorage or products array is empty");
+    // console.error("No products found in sessionStorage or products array is empty");
   }
 });
 
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const products1 = products.subCategories;
   
   if (selectedCategory) {
-    if (heroSection) {
+    if (heroSection && productHead) {
       productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedCategory.name;
       heroSection.querySelector("h1").textContent = selectedCategory.name;
       heroSection.querySelector("p").textContent = selectedCategory.description;
@@ -765,7 +765,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
     renderProducts(productSection2, ["col-sm-4"], true);
   } else {
-    console.error("No products found in sessionStorage");
+    // console.error("No products found in sessionStorage");
   }
 });
 
@@ -779,7 +779,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedProduct = JSON.parse(sessionStorage.getItem("selectedProduct"));
 
   if (!selectedProduct || !selectedProduct._id) {
-    console.error("No selected product found in sessionStorage");
+    // console.error("No selected product found in sessionStorage");
     return;
   }
 
@@ -793,7 +793,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       const products1 = data;
 
-      console.log("Fetched products by subcategory:", data);
+      // console.log("Fetched products by subcategory:", data);
 
       // Update heading with subcategory name
       if (selectedProduct.subCategoryname) {
@@ -805,11 +805,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (products1 && products1.length > 0) {
         renderProducts(products1);
       } else {
-        console.error("No products found for this subcategory");
+        // console.error("No products found for this subcategory");
       }
     })
     .catch(error => {
-      console.error("Error fetching products by subcategory:", error);
+      // console.error("Error fetching products by subcategory:", error);
     });
 
   // Function to render products in the HTML
