@@ -487,94 +487,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-//Category Section
-// document.addEventListener("DOMContentLoaded", () => {
-//   fetch("http://44.196.192.232:5002/api/category/")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const categoryGrid = document.querySelector(".category-grid");
-//       categoryGrid.innerHTML = "";
-//       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
 
-//       data.forEach((category) => {
-//         const categoryElement = document.createElement("div");
-//         categoryElement.classList.add("category");
-
-//         const truncatedDescription =
-//           category.description.length > 150
-//             ? category.description.substring(0, 150) + "..."
-//             : category.description;
-
-//         const truncatedName =
-//           category.name.length > 40
-//             ? category.name.substring(0, 40) + "..."
-//             : category.name;
-
-//         const formattedDescription = truncatedDescription
-//           .split(" ")
-//           .map((word) => {
-//             if (word.length > 25) {
-//               return word.match(/.{1,25}/g).join(" ");
-//             }
-//             return word;
-//           })
-//           .join(" ");
-
-//         const formattedName = truncatedName
-//           .split(" ")
-//           .map((word) => {
-//             if (word.length > 20) {
-//               return word.match(/.{1,18}/g).join(" ");
-//             }
-//             return word;
-//           })
-//           .join(" ");
-
-//         const encodedCategory = encodeURIComponent(JSON.stringify(category));
-
-//         categoryElement.innerHTML = `
-//           <div class="addBack">
-//             <div class="img1">
-//               <img src="${category.image}" alt="${category.name}">
-//             </div>
-//             <div class="inner-content">
-//               <h3 class="addh3">${formattedName}</h3>
-//               <p class="thin-text1 addp">${formattedDescription}</p>
-//               <a href="" class="details-button" data-category='${encodedCategory}'>
-//               <button class="pt-2">Details
-//                 <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-//                   <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="black" stroke-width="1.58789"/>
-//                 </svg>
-//               </button>
-//               </a>
-//             </div>
-//           </div>
-//         `;
-
-//         categoryGrid.appendChild(categoryElement);
-//       });
-
-//       document.querySelectorAll(".details-button").forEach((button) => {
-//         button.addEventListener("click", (e) => {
-//           e.preventDefault();
-
-//           // Decode and parse the category data
-//           const categoryData = JSON.parse(
-//             decodeURIComponent(e.currentTarget.getAttribute("data-category"))
-//           );
-//           sessionStorage.setItem(
-//             "selectedCategory",
-//             JSON.stringify(categoryData)
-//           );
-//           fetchProductsByCategory(categoryData.name);
-//         });
-//       });
-//     })
-//     .catch((error) => {
-//       // console.error("Error fetching categories:", error);
-//     });
-// });
-
+//Category-section
 document.addEventListener("DOMContentLoaded", () => {
   fetch("http://44.196.192.232:5002/api/category/")
     .then((response) => response.json())
@@ -702,11 +616,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchProductsByCategory(categoryId) {
-  // fetch(`http://44.196.192.232:5002/api/product/getproduct/${categoryName}`)
-  fetch(`http://44.196.192.232:5002/api/subcategory/getsubcategories/${categoryId}`)
+  fetch(`http://44.196.192.232:5002/api/category/${categoryId}`)
     .then((response) => response.json())
     .then((products) => {
-      sessionStorage.setItem("fetchedProducts", JSON.stringify(products));
+      sessionStorage.setItem("fetchedProducts&Categories", JSON.stringify(products));
       const currentPage = window.location.pathname;
       let redirectPath;
       if (currentPage.includes("pages/")) {
@@ -726,12 +639,74 @@ function fetchProductsByCategory(categoryId) {
 document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".products-section .row");
   const productHead = document.querySelector(".products-section");
+  const products = JSON.parse(sessionStorage.getItem("fetchedProducts&Categories"));
+  const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
+  const products1 = products.products;
+
+
+  if (selectedCategory) {
+    productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedCategory.name;
+  } else {
+    console.error("No category found in sessionStorage");
+  }
+
+  if (products1 && products1.length > 0) {
+    const renderProducts = (productSection, cols, swiper = false) => {
+      if (!productSection) {
+        return;
+      }
+
+      productSection.innerHTML = ""; 
+
+      products1.forEach((product) => {
+        const productElement = document.createElement("div");
+        productElement.classList.add(...cols, "mb-4");
+
+        // Adjusted to use `productname` instead of `subCategoryname`
+        const truncatedName = product.productname.length > 30 
+            ? product.productname.substring(0, 30) + "..." 
+            : product.productname;
+
+        productElement.innerHTML = `
+          <a href="../products/products-1.html">
+            <div class="card">
+              <img src="${product.image}" class="card-img-top" alt="${product.productname}" />
+              <div class="card-body">
+                <h5 class="card-title">${truncatedName}</h5>
+                <p class="card-text">${product.description}</p>
+              </div>
+            </div>
+          </a>
+        `;
+
+        // Add click event to store the selected product data
+        productElement.querySelector("a").addEventListener("click", (e) => {
+          e.preventDefault();
+          sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+          window.location.href = "../products/products-1.html";
+        });
+
+        productSection.appendChild(productElement);
+      });
+    };
+
+    // Render the products in a 3/4 column grid layout
+    renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
+  } else {
+    console.error("No products found in sessionStorage or products array is empty");
+  }
+});
+
+//Subcategory-section 
+document.addEventListener("DOMContentLoaded", () => {
+  const productSection = document.querySelector(".subcategory-section .row");
+  const productHead = document.querySelector(".subcategory-section");
   const productSection2 = document.querySelector(".products-section-2 .swiper-wrapper");
-  const products = JSON.parse(sessionStorage.getItem("fetchedProducts"));
+  const products = JSON.parse(sessionStorage.getItem("fetchedProducts&Categories"));
   const heroSection = document.querySelector(".hero-section .d-grid");
   const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
   const products1 = products.subCategories;
-  // Update hero section
+  
   if (selectedCategory) {
     if (heroSection) {
       productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedCategory.name;
@@ -742,82 +717,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.error("No category found in sessionStorage");
   }
 
-  // Function to render products
-  // if (products1) {
-  //   const renderProducts = (productSection, cols, swiper = false) => {
-  //     if (!productSection) {
-  //       return;
-  //     }
-
-  //     productSection.innerHTML = "";
-  //     products1.forEach((product) => {
-  //       const productElement = document.createElement("div");
-  //       productElement.classList.add(...cols, "mb-4");
-
-  //       console.log(products1);
-  //       const truncatedName =
-  //         product.productname.length > 30
-  //           ? product.productname.substring(0, 30) + "..."
-  //           : product.productname;
-
-  //       productElement.innerHTML = `
-  //         <a href="../products/products-1.html">
-  //           <div class="card">
-  //             <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
-  //             <div class="card-body">
-  //               <h5 class="card-title">${truncatedName}</h5>
-  //               <p class="card-text">${product.category}</p>
-  //             </div>
-  //           </div>
-  //         </a>
-  //       `;
-
-  //       productElement.querySelector("a").addEventListener("click", (e) => {
-  //         e.preventDefault();
-  //         sessionStorage.setItem("selectedProduct", JSON.stringify(product));
-  //         window.location.href = "../products/products-1.html";
-  //       });
-
-  //       if (swiper) {
-  //         const swiperSlide = document.createElement("div");
-  //         swiperSlide.classList.add("swiper-slide");
-  //         swiperSlide.appendChild(productElement);
-  //         productSection.appendChild(swiperSlide);
-  //       } else {
-  //         productSection.appendChild(productElement);
-  //       }
-  //     });
-  //   };
-
-  //   renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
-  //   renderProducts(productSection2, ["col-sm-4"], true);
-  // } else {
-  //   console.error("No products found in sessionStorage");
-  // }
   if (products1 && products1.length > 0) {
     const renderProducts = (productSection, cols, swiper = false) => {
       if (!productSection) {
         return;
       }
   
-      productSection.innerHTML = ""; // Clear previous content
+      productSection.innerHTML = ""; 
   
       products1.forEach((product, index) => {
         const productElement = document.createElement("div");
         productElement.classList.add(...cols, "mb-4");
-  
-        // Log the description of each product for debugging
-        console.log(product.description);
-  
-        // Truncate the product name if it's too long
         const truncatedName = 
           product.subCategoryname.length > 30 
             ? product.subCategoryname.substring(0, 30) + "..." 
             : product.subCategoryname;
   
-        // Create the product card HTML
         productElement.innerHTML = `
-          <a href="../products/products-1.html">
+          <a href="../SubProduct/SubProduct.html">
             <div class="card">
               <img src="${product.image}" class="card-img-top" alt="${product.subCategoryname}" />
               <div class="card-body">
@@ -827,15 +744,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </a>
         `;
-  
-        // Add click event to store selected product in session storage
+
         productElement.querySelector("a").addEventListener("click", (e) => {
           e.preventDefault();
           sessionStorage.setItem("selectedProduct", JSON.stringify(product));
-          window.location.href = "../products/products-1.html";
+          window.location.href = "../SubProduct/SubProduct.html";
         });
   
-        // Append product to either swiper or normal section
         if (swiper) {
           const swiperSlide = document.createElement("div");
           swiperSlide.classList.add("swiper-slide");
@@ -847,14 +762,97 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
   
-    // Call the function to render products in the appropriate sections
     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
     renderProducts(productSection2, ["col-sm-4"], true);
   } else {
     console.error("No products found in sessionStorage");
   }
-  
 });
+
+//SubProduct-section
+document.addEventListener("DOMContentLoaded", () => {
+  const productSection = document.querySelector(".subproduct-section .row");
+  const productHead = document.querySelector(".subproduct-section");
+  const heroSection = document.querySelector(".hero-section .d-grid");
+
+  // Get selected product from sessionStorage
+  const selectedProduct = JSON.parse(sessionStorage.getItem("selectedProduct"));
+
+  if (!selectedProduct || !selectedProduct._id) {
+    console.error("No selected product found in sessionStorage");
+    return;
+  }
+
+  // Get subcategory ID from selectedProduct
+  const subCategoryId = selectedProduct._id;
+  const apiUrl = `http://44.196.192.232:5002/api/product/getproductsbysubcategory/${subCategoryId}`;
+
+  // Fetch the products using the subcategory ID
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const products1 = data;
+
+      console.log("Fetched products by subcategory:", data);
+
+      // Update heading with subcategory name
+      if (selectedProduct.subCategoryname) {
+        productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedProduct.subCategoryname;
+        heroSection.querySelector("h1").textContent = selectedProduct.subCategoryname;
+        heroSection.querySelector("p").textContent = selectedProduct.description;
+      }
+
+      if (products1 && products1.length > 0) {
+        renderProducts(products1);
+      } else {
+        console.error("No products found for this subcategory");
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching products by subcategory:", error);
+    });
+
+  // Function to render products in the HTML
+  const renderProducts = (products1) => {
+    if (!productSection) {
+      return;
+    }
+
+    productSection.innerHTML = ""; // Clear any existing content
+
+    products1.forEach((product) => {
+      const productElement = document.createElement("div");
+      productElement.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4");
+
+      // Adjust to use `productname` and `description`
+      const truncatedName = product.productname.length > 30
+        ? product.productname.substring(0, 30) + "..."
+        : product.productname;
+
+      productElement.innerHTML = `
+        <a href="../products/products-1.html">
+          <div class="card">
+            <img src="${product.image}" class="card-img-top" alt="${product.productname}" />
+            <div class="card-body">
+              <h5 class="card-title">${truncatedName}</h5>
+              <p class="card-text">${product.description}</p>
+            </div>
+          </div>
+        </a>
+      `;
+
+      // Add click event to store the selected product data
+      productElement.querySelector("a").addEventListener("click", (e) => {
+        e.preventDefault();
+        sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+        window.location.href = "../products/products-1.html";
+      });
+
+      productSection.appendChild(productElement);
+    });
+  };
+});
+
 
 const style = document.createElement("style");
 style.innerHTML = `
@@ -871,9 +869,9 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
+//Product-Desc
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
-  console.log(product);
   if (product) {
     const truncatedDescription =
       product.description.length > 150
@@ -887,13 +885,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const productInfoP = document.querySelector(".product-info p");
     const rfqLink = document.querySelector(".product-info a");
 
-    console.log(product.image);
     // Check if the elements exist before trying to update them
     if (productImgH2) productImgH2.textContent = product.subCategoryname;
     if (productImgImg) {
       productImgImg.src = `${product.image}`;
       productImgImg.alt = product.productname;
-      console.log(productImgImg.src+" Hello");
     }
     if (productInfoH1) productInfoH1.textContent = product.description;
     if (productInfoPrice) productInfoPrice.textContent = product.subCategoryname;
@@ -914,6 +910,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+//Product-RFQ
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
   if (product) {
@@ -955,7 +952,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-//About-us
+//About-Us
 document.addEventListener("DOMContentLoaded", () => {
   fetch("http://44.196.192.232:5002/api/aboutUs/")
     .then((response) => {
@@ -1153,3 +1150,144 @@ document.addEventListener("DOMContentLoaded", () => {
 //     console.error("No product data found in sessionStorage");
 //   }
 // });
+
+//Category Section
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetch("http://44.196.192.232:5002/api/category/")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const categoryGrid = document.querySelector(".category-grid");
+//       categoryGrid.innerHTML = "";
+//       sessionStorage.setItem("fetchedCategory", JSON.stringify(data));
+
+//       data.forEach((category) => {
+//         const categoryElement = document.createElement("div");
+//         categoryElement.classList.add("category");
+
+//         const truncatedDescription =
+//           category.description.length > 150
+//             ? category.description.substring(0, 150) + "..."
+//             : category.description;
+
+//         const truncatedName =
+//           category.name.length > 40
+//             ? category.name.substring(0, 40) + "..."
+//             : category.name;
+
+//         const formattedDescription = truncatedDescription
+//           .split(" ")
+//           .map((word) => {
+//             if (word.length > 25) {
+//               return word.match(/.{1,25}/g).join(" ");
+//             }
+//             return word;
+//           })
+//           .join(" ");
+
+//         const formattedName = truncatedName
+//           .split(" ")
+//           .map((word) => {
+//             if (word.length > 20) {
+//               return word.match(/.{1,18}/g).join(" ");
+//             }
+//             return word;
+//           })
+//           .join(" ");
+
+//         const encodedCategory = encodeURIComponent(JSON.stringify(category));
+
+//         categoryElement.innerHTML = `
+//           <div class="addBack">
+//             <div class="img1">
+//               <img src="${category.image}" alt="${category.name}">
+//             </div>
+//             <div class="inner-content">
+//               <h3 class="addh3">${formattedName}</h3>
+//               <p class="thin-text1 addp">${formattedDescription}</p>
+//               <a href="" class="details-button" data-category='${encodedCategory}'>
+//               <button class="pt-2">Details
+//                 <svg class="ps-2" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                   <path d="M0.921997 6.98045H23.1524L16.6282 1.42285" stroke="black" stroke-width="1.58789"/>
+//                 </svg>
+//               </button>
+//               </a>
+//             </div>
+//           </div>
+//         `;
+
+//         categoryGrid.appendChild(categoryElement);
+//       });
+
+//       document.querySelectorAll(".details-button").forEach((button) => {
+//         button.addEventListener("click", (e) => {
+//           e.preventDefault();
+
+//           // Decode and parse the category data
+//           const categoryData = JSON.parse(
+//             decodeURIComponent(e.currentTarget.getAttribute("data-category"))
+//           );
+//           sessionStorage.setItem(
+//             "selectedCategory",
+//             JSON.stringify(categoryData)
+//           );
+//           fetchProductsByCategory(categoryData.name);
+//         });
+//       });
+//     })
+//     .catch((error) => {
+//       // console.error("Error fetching categories:", error);
+//     });
+// });
+
+
+  // Function to render products
+  // if (products1) {
+  //   const renderProducts = (productSection, cols, swiper = false) => {
+  //     if (!productSection) {
+  //       return;
+  //     }
+
+  //     productSection.innerHTML = "";
+  //     products1.forEach((product) => {
+  //       const productElement = document.createElement("div");
+  //       productElement.classList.add(...cols, "mb-4");
+
+  //       const truncatedName =
+  //         product.productname.length > 30
+  //           ? product.productname.substring(0, 30) + "..."
+  //           : product.productname;
+
+  //       productElement.innerHTML = `
+  //         <a href="../products/products-1.html">
+  //           <div class="card">
+  //             <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" />
+  //             <div class="card-body">
+  //               <h5 class="card-title">${truncatedName}</h5>
+  //               <p class="card-text">${product.category}</p>
+  //             </div>
+  //           </div>
+  //         </a>
+  //       `;
+
+  //       productElement.querySelector("a").addEventListener("click", (e) => {
+  //         e.preventDefault();
+  //         sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+  //         window.location.href = "../products/products-1.html";
+  //       });
+
+  //       if (swiper) {
+  //         const swiperSlide = document.createElement("div");
+  //         swiperSlide.classList.add("swiper-slide");
+  //         swiperSlide.appendChild(productElement);
+  //         productSection.appendChild(swiperSlide);
+  //       } else {
+  //         productSection.appendChild(productElement);
+  //       }
+  //     });
+  //   };
+
+  //   renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
+  //   renderProducts(productSection2, ["col-sm-4"], true);
+  // } else {
+  //   console.error("No products found in sessionStorage");
+  // }
