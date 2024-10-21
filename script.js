@@ -726,7 +726,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <line x1="12" y1="8" x2="12" y2="12"></line>
           <line x1="12" y1="16" x2="12.01" y2="16"></line>
         </svg>
-       <p style="font-size: 35px; color: #777;">No products are currently listed under this subcategory!</p>
+       <p style="font-size: 35px; color: #777;">No products are currently listed under this subcategory</p>
     </div>
 
     `;
@@ -782,7 +782,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productElement.innerHTML = `
           <a href="../SubProduct/SubProduct.html">
             <div class="card">
-              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+              <img src="http://44.196.192.232:5002/uploads/image_1729522871728.png" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
                 <p class="card-text">${product.description}</p>
@@ -820,7 +820,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <line x1="12" y1="8" x2="12" y2="12"></line>
         <line x1="12" y1="16" x2="12.01" y2="16"></line>
       </svg>
-     <p style="font-size: 35px; color: #777;">No sub-category are currently listed under this category!</p>
+     <p style="font-size: 35px; color: #777;">No sub-category are currently listed under this category</p>
   </div>
   `;
   }
