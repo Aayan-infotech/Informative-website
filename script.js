@@ -788,14 +788,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p class="card-text">${product.description}</p>
               </div>
             </div>
-          </a>
-        `;
+          </a>`;
 
         productElement.querySelector("a").addEventListener("click", (e) => {
           e.preventDefault();
           sessionStorage.setItem("selectedProduct", JSON.stringify(product));
           subProduct = product._id;
-          // console.log(subProduct);
+          console.log(window.location.href);
           sessionStorage.setItem("subProduct", product._id);
           window.location.href = "../SubProduct/SubProduct.html";
         });
@@ -936,7 +935,7 @@ document.head.appendChild(style);
 //Product-Desc
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
-  console.log(product);
+
   if (product) {
     const truncatedDescription =
       product.description.length > 150
