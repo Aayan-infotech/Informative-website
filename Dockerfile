@@ -1,20 +1,17 @@
-FROM nginx:latest
+# Use an official Node.js image as a base
+FROM node:18-alpine
 
-WORKDIR /usr/share/nginx/html
+# Set the working directory inside the container
+WORKDIR /usr/src/app
 
-COPY assets /usr/share/nginx/html/assets
-COPY cssfiles /usr/share/nginx/html/cssfiles
-COPY index.html /usr/share/nginx/html/index.html
-COPY pages /usr/share/nginx/html/pages
-COPY products /usr/share/nginx/html/products
-COPY products-pages /usr/share/nginx/html/products-pages
-COPY rfq /usr/share/nginx/html/rfq
-COPY script.js /usr/share/nginx/html/script.js
-COPY style.css /usr/share/nginx/html/style.css
+# Copy the current directory contents into the container
+COPY . .
 
-# Copy your custom Nginx configuration file
-COPY nginx.config /etc/nginx/conf.d/default.conf
+# Install http-server globally
+RUN npm install -g http-server
 
-EXPOSE 80
+# Expose the port on which the HTTP server will run
+EXPOSE 2026
 
-CMD ["nginx", "-g", "daemon off;"]
+# Command to run the HTTP server and serve the files
+CMD [ "http-server", "-p", "2026" ]
