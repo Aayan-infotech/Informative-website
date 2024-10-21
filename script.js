@@ -696,7 +696,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productElement.innerHTML = `
           <a href="../products/products-1.html">
             <div class="card">
-              <img src="${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
                 <p class="card-text">${product.description}</p>
@@ -782,7 +782,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productElement.innerHTML = `
           <a href="../SubProduct/SubProduct.html">
             <div class="card">
-              <img src="${product.image}" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
                 <p class="card-text">${product.description}</p>
@@ -936,6 +936,7 @@ document.head.appendChild(style);
 //Product-Desc
 document.addEventListener("DOMContentLoaded", () => {
   const product = JSON.parse(sessionStorage.getItem("selectedProduct"));
+  console.log(product);
   if (product) {
     const truncatedDescription =
       product.description.length > 150
@@ -952,7 +953,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the elements exist before trying to update them
     if (productImgH2) productImgH2.textContent = product.subCategoryname;
     if (productImgImg) {
-      productImgImg.src = `${product.image}`;
+      productImgImg.src = `http://44.196.192.232:5002/uploads/${product.image}`;
       productImgImg.alt = product.productname;
 
       productImgImg.onerror = function () {
@@ -1003,7 +1004,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (productDesc) productDesc.textContent = truncatedDescription;
     if (productId) productId.textContent = "Product Id: " + product.productID;
     if (productDetailImg) {
-      productDetailImg.src = `${product.image}`;
+      productDetailImg.src = `http://44.196.192.232:5002/uploads/${product.image}`;
       // productImg.alt = product.productname;
 
       productDetailImg.onerror = function () {
