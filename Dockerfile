@@ -12,7 +12,9 @@ COPY rfq /usr/share/nginx/html/rfq
 COPY script.js /usr/share/nginx/html/script.js
 COPY style.css /usr/share/nginx/html/style.css
 
+# Copy your custom Nginx configuration file
+COPY nginx.config /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
-##just want to check 
