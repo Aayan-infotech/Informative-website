@@ -870,6 +870,9 @@ p {
     height: 100px;
     width: 300px;
   }
+  .wrapercontact{
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 350px) {

@@ -154,7 +154,7 @@ header .container> a:not(#icon):hover {
   text-decoration: none;
 }
 
-.product {
+.product1 {
   background-color: #f8f8f8;
   /* padding: 2em 0; */
 }
@@ -415,6 +415,7 @@ p {
   .product .contact-info {
     display: flex;
     flex-direction: column;
+    padding-top: 30px;
   }
   footer {
     padding: 20px;

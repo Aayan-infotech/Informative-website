@@ -24,8 +24,12 @@ h1 {
 }
 
 .reach-us-sec1 {
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   margin-bottom: 30px;
+}
+
+.wrapercontact{
+  background-color: none;
 }
 
 .foot {

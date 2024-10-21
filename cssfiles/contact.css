@@ -245,6 +245,9 @@ h2 {
   .form-cont #contactForm{
     width: 100%;
   }
+  .reach-us-sec1{
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 350px) {
