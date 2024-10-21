@@ -12,6 +12,7 @@ header .container > a {
   text-decoration: none;
   color: var(--text-black);
   padding: 1% 2%;
+  font-weight: bold;
 }
 .bottom-line::after {
   content: "";
