@@ -24,7 +24,7 @@ a{
   padding: 2% 4%;
   /* margin-top: 4%; */
   display: grid;
-  background-color: black;
+  /* background-color: black; */
 }
 .form-cont > * {
   margin: auto;
@@ -33,6 +33,7 @@ form {
   padding: 4% 3%;
   border-radius: 11.3px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .form-container {
   width: 60%;
