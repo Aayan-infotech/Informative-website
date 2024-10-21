@@ -348,7 +348,7 @@ body {
 
 .addBack .img1 img{
   height: 200px;
-  width: 320px;
+  width: 320px!important;
 }
 
 .category h3 {
@@ -708,6 +708,11 @@ p {
   font-style: italic;
 }
 
+.subproduct-section .row{
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 992px) {
@@ -839,6 +844,9 @@ p {
   }
   .item .addBack{
     margin-bottom: 20px;
+  }
+  .no-products-found{
+
   }
 }
 

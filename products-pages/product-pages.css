@@ -163,6 +163,16 @@ footer > p {
   /* right: 80px; */
 }
 
+.products-section .row{
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+}
+
+.subcategory-section .row{
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+}
+
 @media screen and (max-width: 992px) {
   .gif-cont {
     display: flex;
@@ -303,6 +313,15 @@ footer > p {
   .nav a img{
     margin-bottom: 10px;
     width: 280px;
+  }
+
+  .no-products-found svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .no-products-found p {
+    font-size: 24px!important;
   }
 }
 
