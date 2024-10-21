@@ -782,7 +782,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productElement.innerHTML = `
           <a href="../SubProduct/SubProduct.html">
             <div class="card">
-              <img src="http://44.196.192.232:5002/uploads/image_1729522871728.png" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
                 <p class="card-text">${product.description}</p>
