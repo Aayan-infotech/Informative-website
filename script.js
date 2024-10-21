@@ -795,7 +795,7 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
           sessionStorage.setItem("selectedProduct", JSON.stringify(product));
           subProduct = product._id;
-          console.log(subProduct);
+          // console.log(subProduct);
           sessionStorage.setItem("subProduct", product._id);
           window.location.href = "../SubProduct/SubProduct.html";
         });
@@ -843,12 +843,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const subCategoryId = selectedProduct._id;
   const apiUrl = `http://44.196.192.232:5002/api/subcategory/${subProduct}`;
-  console.log(apiUrl);
+  // console.log(apiUrl);
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       const products1 = data.products;
-      console.log(data.products);
+      // console.log(data.products);
       if (selectedProduct.subCategoryname) {
         productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedProduct.subCategoryname;
         heroSection.querySelector("h1").textContent = selectedProduct.subCategoryname;
