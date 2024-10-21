@@ -842,14 +842,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const subCategoryId = selectedProduct._id;
-  console.log(subProduct);
-  const apiUrl = `http://44.196.192.232:5002/api/product/getproductsbysubcategory/${subProduct}`;
-
+  const apiUrl = `http://44.196.192.232:5002/api/subcategory/${subProduct}`;
+  console.log(apiUrl);
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      const products1 = data;
-
+      const products1 = data.products;
+      console.log(data.products);
       if (selectedProduct.subCategoryname) {
         productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedProduct.subCategoryname;
         heroSection.querySelector("h1").textContent = selectedProduct.subCategoryname;
@@ -885,7 +884,7 @@ document.addEventListener("DOMContentLoaded", () => {
       productElement.innerHTML = `
         <a href="../products/products-1.html">
           <div class="card">
-            <img src="${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+            <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
             <div class="card-body">
               <h5 class="card-title">${truncatedName}</h5>
               <p class="card-text">${product.description}</p>
