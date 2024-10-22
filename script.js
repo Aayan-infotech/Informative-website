@@ -689,9 +689,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Adjusted to use `productname` instead of `subCategoryname`
         const truncatedName =
-          product.productname.length > 30
-            ? product.productname.substring(0, 30) + "..."
+          product.productname.length > 25
+            ? product.productname.substring(0, 25) + "..."
             : product.productname;
+
+          const truncatedDesc =
+            product.description.length > 25
+              ? product.description.substring(0, 25) + "..."
+              : product.description;
 
         productElement.innerHTML = `
           <a href="../products/products-1.html">
@@ -699,7 +704,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
-                <p class="card-text">${product.description}</p>
+                <p class="card-text">${truncatedDesc}</p>
               </div>
             </div>
           </a>
@@ -774,10 +779,16 @@ document.addEventListener("DOMContentLoaded", () => {
       products1.forEach((product, index) => {
         const productElement = document.createElement("div");
         productElement.classList.add(...cols, "mb-4");
+
         const truncatedName =
-          product.subCategoryname.length > 30
-            ? product.subCategoryname.substring(0, 30) + "..."
+          product.subCategoryname.length > 25
+            ? product.subCategoryname.substring(0, 25) + "..."
             : product.subCategoryname;
+
+        const truncatedDesc =
+          product.description.length > 25
+              ? product.description.substring(0, 25) + "..."
+              : product.description;
 
         productElement.innerHTML = `
           <a href="../SubProduct/SubProduct.html">
@@ -785,7 +796,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
-                <p class="card-text">${product.description}</p>
+                <p class="card-text">${truncatedDesc}</p>
               </div>
             </div>
           </a>`;
@@ -875,9 +886,14 @@ document.addEventListener("DOMContentLoaded", () => {
       productElement.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4");
 
       const truncatedName =
-        product.productname.length > 30
-          ? product.productname.substring(0, 30) + "..."
+        product.productname.length > 25
+          ? product.productname.substring(0, 25) + "..."
           : product.productname;
+
+      const truncatedDesc =
+        product.description.length > 25
+            ? product.description.substring(0, 25) + "..."
+            : product.description;
 
       productElement.innerHTML = `
         <a href="../products/products-1.html">
@@ -885,7 +901,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
             <div class="card-body">
               <h5 class="card-title">${truncatedName}</h5>
-              <p class="card-text">${product.description}</p>
+              <p class="card-text">${truncatedDesc}</p>
             </div>
           </div>
         </a>
