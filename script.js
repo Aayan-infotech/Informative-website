@@ -912,8 +912,6 @@ document.addEventListener("DOMContentLoaded", fetchBoth);
 
 
 
-
-
 //SubProduct-section
 document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".subproduct-section .row");
