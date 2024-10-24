@@ -70,6 +70,15 @@ footer > div > * {
   height: 500px;
 }
 
+.enqi-span{
+  white-space: nowrap;
+  color: #800080;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  padding-right: 50px;
+  gap: 20px!important;
+}
+
 /* For large devices */
 @media screen and (max-width: 992px) {
   .row {
@@ -113,6 +122,10 @@ footer > div > * {
     display: flex;
     flex-direction: column;
     text-align: center;
+  }
+
+  .enqi-span{
+    white-space: normal;
   }
 }
 

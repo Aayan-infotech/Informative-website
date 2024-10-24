@@ -659,172 +659,261 @@ function fetchProductsByCategory(categoryId) {
 
 
 //Product-section
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
+//   const productSection = document.querySelector(".products-section .row");
+//   const productHead = document.querySelector(".products-section");
+//   const products = JSON.parse(
+//     sessionStorage.getItem("fetchedProducts&Categories")
+//   );
+//   const selectedCategory = JSON.parse(
+//     sessionStorage.getItem("selectedCategory")
+//   );
+//   const products1 = products.products;
+
+//   if (productHead) {
+//     productHead.querySelector("h2").textContent =
+//       "Take A Look At Our " + selectedCategory.name;
+//   }
+
+//   if (products1 && products1.length > 0) {
+//     const renderProducts = (productSection, cols, swiper = false) => {
+//       if (!productSection) {
+//         return;
+//       }
+
+//       productSection.innerHTML = "";
+
+//       products1.forEach((product) => {
+//         const productElement = document.createElement("div");
+//         productElement.classList.add(...cols, "mb-4");
+
+//         // Adjusted to use `productname` instead of `subCategoryname`
+//         const truncatedName =
+//           product.productname.length > 25
+//             ? product.productname.substring(0, 25) + "..."
+//             : product.productname;
+
+//           const truncatedDesc =
+//             product.description.length > 25
+//               ? product.description.substring(0, 25) + "..."
+//               : product.description;
+
+//         productElement.innerHTML = `
+//           <a href="../products/products-1.html">
+//             <div class="card">
+//               <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+//               <div class="card-body">
+//                 <h5 class="card-title">${truncatedName}</h5>
+//                 <p class="card-text">${truncatedDesc}</p>
+//               </div>
+//             </div>
+//           </a>
+//         `;
+
+//         // Add click event to store the selected product data
+//         productElement.querySelector("a").addEventListener("click", (e) => {
+//           e.preventDefault();
+//           sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+//           window.location.href = "../products/products-1.html";
+//         });
+
+//         productSection.appendChild(productElement);
+//       });
+//     };
+
+//     // Render the products in a 3/4 column grid layout
+//     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
+//   } else {
+//     productSection.innerHTML = `
+//       <div class="no-products-found" style="text-align: center; width: 100%; border: 1px solid #ccc; border-radius: 5px; padding: 20px 0 10px 0px;">
+//         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+//           <circle cx="12" cy="12" r="10"></circle>
+//           <line x1="12" y1="8" x2="12" y2="12"></line>
+//           <line x1="12" y1="16" x2="12.01" y2="16"></line>
+//         </svg>
+//        <p style="font-size: 35px; color: #777;">No products are currently listed under this subcategory</p>
+//     </div>
+
+//     `;
+//   }
+// });
+
+
+
+//Subcategory-section
+// let subProduct;
+// document.addEventListener("DOMContentLoaded", () => {
+//   const productSection = document.querySelector(".subcategory-section .row");
+//   const productHead = document.querySelector(".subcategory-section");
+//   const productSection2 = document.querySelector(".products-section-2 .swiper-wrapper");
+//   const products = JSON.parse(sessionStorage.getItem("fetchedProducts&Categories"));
+//   const heroSection = document.querySelector(".hero-section .d-grid");
+//   const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
+//   const products1 = products.subCategories;
+
+//   if (selectedCategory) {
+//     if (heroSection && productHead) {
+//       productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedCategory.name;
+//       heroSection.querySelector("h1").textContent = selectedCategory.name;
+//       heroSection.querySelector("p").textContent = selectedCategory.description;
+//     }
+//   } else {
+//     // console.error("No category found in sessionStorage");
+//   }
+
+//   if (products1 && products1.length > 0) {
+//     const renderProducts = (productSection, cols, swiper = false) => {
+//       if (!productSection) {
+//         return;
+//       }
+
+//       productSection.innerHTML = "";
+
+//       products1.forEach((product, index) => {
+//         const productElement = document.createElement("div");
+//         productElement.classList.add(...cols, "mb-4");
+
+//         const truncatedName =
+//           product.subCategoryname.length > 25
+//             ? product.subCategoryname.substring(0, 25) + "..."
+//             : product.subCategoryname;
+
+//         const truncatedDesc =
+//           product.description.length > 25
+//               ? product.description.substring(0, 25) + "..."
+//               : product.description;
+
+//         productElement.innerHTML = `
+//           <a href="../SubProduct/SubProduct.html">
+//             <div class="card">
+//               <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+//               <div class="card-body">
+//                 <h5 class="card-title">${truncatedName}</h5>
+//                 <p class="card-text">${truncatedDesc}</p>
+//               </div>
+//             </div>
+//           </a>`;
+
+//         productElement.querySelector("a").addEventListener("click", (e) => {
+//           e.preventDefault();
+//           sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+//           subProduct = product._id;
+//           console.log(window.location.href);
+//           sessionStorage.setItem("subProduct", product._id);
+//           window.location.href = "../SubProduct/SubProduct.html";
+//         });
+
+//         if (swiper) {
+//           const swiperSlide = document.createElement("div");
+//           swiperSlide.classList.add("swiper-slide");
+//           swiperSlide.appendChild(productElement);
+//           productSection.appendChild(swiperSlide);
+//         } else {
+//           productSection.appendChild(productElement);
+//         }
+//       });
+//     };
+
+//     renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
+//     renderProducts(productSection2, ["col-sm-4"], true);
+//   } else {
+//     productSection.innerHTML = `
+//     <div class="no-products-found" style="text-align: center; width: 100%; border: 1px solid #ccc; border-radius: 5px; padding: 20px 0 10px 0px;">
+//       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+//         <circle cx="12" cy="12" r="10"></circle>
+//         <line x1="12" y1="8" x2="12" y2="12"></line>
+//         <line x1="12" y1="16" x2="12.01" y2="16"></line>
+//       </svg>
+//      <p style="font-size: 35px; color: #777;">No sub-category are currently listed under this category</p>
+//   </div>
+//   `;
+//   }
+// });
+
+
+
+function fetchBoth() {
   const productSection = document.querySelector(".products-section .row");
   const productHead = document.querySelector(".products-section");
-  const products = JSON.parse(
-    sessionStorage.getItem("fetchedProducts&Categories")
-  );
-  const selectedCategory = JSON.parse(
-    sessionStorage.getItem("selectedCategory")
-  );
-  const products1 = products.products;
+  const mainHead = document.querySelector(".bottom-line");
+  const products = JSON.parse(sessionStorage.getItem("fetchedProducts&Categories"));
+  const selectedCategory = JSON.parse(sessionStorage.getItem("selectedCategory"));
+  const heroSection = document.querySelector(".hero-section .d-grid");
+  const products1 = products?.products || [];
+  const subCategories1 = products?.subCategories || [];
 
-  if (productHead) {
-    productHead.querySelector("h2").textContent =
-      "Take A Look At Our " + selectedCategory.name;
+  const alreadyRedirected = sessionStorage.getItem("alreadyRedirected");
+
+  if (products1.length === 0 && subCategories1.length === 0 && !alreadyRedirected) {
+    sessionStorage.setItem("alreadyRedirected", "true"); 
+    window.location.href = "../pages/contact.html";
+    return; 
+  }
+  if(mainHead){
+    if(subCategories1.length > 0){
+      mainHead.textContent = "Sub-Category";
+    }else if(products1.length > 0){
+      mainHead.textContent = "PRODUCTs";
+    }
   }
 
-  if (products1 && products1.length > 0) {
-    const renderProducts = (productSection, cols, swiper = false) => {
-      if (!productSection) {
-        return;
-      }
+  if (productHead) {
+    productHead.querySelector("h2").textContent = "Take A Look At Our " + selectedCategory.name;
+    heroSection.querySelector("h1").textContent = selectedCategory.name;
+    heroSection.querySelector("p").textContent = selectedCategory.description;
+  }
 
-      productSection.innerHTML = "";
+  if (productSection) {
+    productSection.innerHTML = ""; 
 
-      products1.forEach((product) => {
+    const renderProducts = (items, cols, isSubcategory) => {
+      items.forEach((item) => {
         const productElement = document.createElement("div");
         productElement.classList.add(...cols, "mb-4");
 
-        // Adjusted to use `productname` instead of `subCategoryname`
-        const truncatedName =
-          product.productname.length > 30
-            ? product.productname.substring(0, 30) + "..."
-            : product.productname;
+        const name = isSubcategory ? item.subCategoryname : item.productname;
+        const description = item.description;
+
+        const truncatedName = name.length > 25 ? name.substring(0, 25) + "..." : name;
+        const truncatedDesc = description.length > 25 ? description.substring(0, 25) + "..." : description;
+
+        const hrefLink = isSubcategory ? "../SubProduct/SubProduct.html" : "../products/products-1.html";
 
         productElement.innerHTML = `
-          <a href="../products/products-1.html">
+          <a href="${hrefLink}">
             <div class="card">
-              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
+              <img src="http://44.196.192.232:5002/uploads/${item.image}" class="card-img-top" alt="${name}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
               <div class="card-body">
                 <h5 class="card-title">${truncatedName}</h5>
-                <p class="card-text">${product.description}</p>
+                <p class="card-text">${truncatedDesc}</p>
               </div>
             </div>
           </a>
         `;
 
-        // Add click event to store the selected product data
         productElement.querySelector("a").addEventListener("click", (e) => {
           e.preventDefault();
-          sessionStorage.setItem("selectedProduct", JSON.stringify(product));
-          window.location.href = "../products/products-1.html";
+          sessionStorage.setItem(isSubcategory ? "selectedSubProduct" : "selectedProduct", JSON.stringify(item));
+          window.location.href = hrefLink;
         });
 
         productSection.appendChild(productElement);
       });
     };
 
-    // Render the products in a 3/4 column grid layout
-    renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
-  } else {
-    productSection.innerHTML = `
-      <div class="no-products-found" style="text-align: center; width: 100%; border: 1px solid #ccc; border-radius: 5px; padding: 20px 0 10px 0px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="8" x2="12" y2="12"></line>
-          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-        </svg>
-       <p style="font-size: 35px; color: #777;">No products are currently listed under this subcategory</p>
-    </div>
-
-    `;
-  }
-});
-
-
-
-//Subcategory-section
-let subProduct;
-document.addEventListener("DOMContentLoaded", () => {
-  const productSection = document.querySelector(".subcategory-section .row");
-  const productHead = document.querySelector(".subcategory-section");
-  const productSection2 = document.querySelector(
-    ".products-section-2 .swiper-wrapper"
-  );
-  const products = JSON.parse(
-    sessionStorage.getItem("fetchedProducts&Categories")
-  );
-  const heroSection = document.querySelector(".hero-section .d-grid");
-  const selectedCategory = JSON.parse(
-    sessionStorage.getItem("selectedCategory")
-  );
-  const products1 = products.subCategories;
-
-  if (selectedCategory) {
-    if (heroSection && productHead) {
-      productHead.querySelector("h2").textContent =
-        "Take A Look At Our " + selectedCategory.name;
-      heroSection.querySelector("h1").textContent = selectedCategory.name;
-      heroSection.querySelector("p").textContent = selectedCategory.description;
+    if (subCategories1.length > 0) {
+      renderProducts(subCategories1, ["col-lg-3", "col-md-4", "col-sm-6"], true);
+    } else if (products1.length > 0) {
+      renderProducts(products1, ["col-lg-3", "col-md-4", "col-sm-6"], false);
     }
-  } else {
-    // console.error("No category found in sessionStorage");
+
+    if (products1.length === 0 && subCategories1.length === 0) {
+      window.location.href = "../pages/contact.html";
+    }
   }
+}
 
-  if (products1 && products1.length > 0) {
-    const renderProducts = (productSection, cols, swiper = false) => {
-      if (!productSection) {
-        return;
-      }
-
-      productSection.innerHTML = "";
-
-      products1.forEach((product, index) => {
-        const productElement = document.createElement("div");
-        productElement.classList.add(...cols, "mb-4");
-        const truncatedName =
-          product.subCategoryname.length > 30
-            ? product.subCategoryname.substring(0, 30) + "..."
-            : product.subCategoryname;
-
-        productElement.innerHTML = `
-          <a href="../SubProduct/SubProduct.html">
-            <div class="card">
-              <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.subCategoryname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
-              <div class="card-body">
-                <h5 class="card-title">${truncatedName}</h5>
-                <p class="card-text">${product.description}</p>
-              </div>
-            </div>
-          </a>`;
-
-        productElement.querySelector("a").addEventListener("click", (e) => {
-          e.preventDefault();
-          sessionStorage.setItem("selectedProduct", JSON.stringify(product));
-          subProduct = product._id;
-          console.log(window.location.href);
-          sessionStorage.setItem("subProduct", product._id);
-          window.location.href = "../SubProduct/SubProduct.html";
-        });
-
-        if (swiper) {
-          const swiperSlide = document.createElement("div");
-          swiperSlide.classList.add("swiper-slide");
-          swiperSlide.appendChild(productElement);
-          productSection.appendChild(swiperSlide);
-        } else {
-          productSection.appendChild(productElement);
-        }
-      });
-    };
-
-    renderProducts(productSection, ["col-lg-3", "col-md-4", "col-sm-6"]);
-    renderProducts(productSection2, ["col-sm-4"], true);
-  } else {
-    productSection.innerHTML = `
-    <div class="no-products-found" style="text-align: center; width: 100%; border: 1px solid #ccc; border-radius: 5px; padding: 20px 0 10px 0px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="8" x2="12" y2="12"></line>
-        <line x1="12" y1="16" x2="12.01" y2="16"></line>
-      </svg>
-     <p style="font-size: 35px; color: #777;">No sub-category are currently listed under this category</p>
-  </div>
-  `;
-  }
-});
+document.addEventListener("DOMContentLoaded", fetchBoth);
 
 
 
@@ -833,7 +922,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.querySelector(".subproduct-section .row");
   const productHead = document.querySelector(".subproduct-section");
   const heroSection = document.querySelector(".hero-section .d-grid");
-  const selectedProduct = JSON.parse(sessionStorage.getItem("selectedProduct"));
+  const selectedProduct = JSON.parse(sessionStorage.getItem("selectedSubProduct"));
   const subProduct = sessionStorage.getItem("subProduct");
 
   if (!selectedProduct || !selectedProduct._id) {
@@ -841,7 +930,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const subCategoryId = selectedProduct._id;
-  const apiUrl = `http://44.196.192.232:5002/api/subcategory/${subProduct}`;
+  console.log(subCategoryId);
+  const apiUrl = `http://44.196.192.232:5002/api/subcategory/${subCategoryId}`;
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
@@ -875,9 +965,14 @@ document.addEventListener("DOMContentLoaded", () => {
       productElement.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4");
 
       const truncatedName =
-        product.productname.length > 30
-          ? product.productname.substring(0, 30) + "..."
+        product.productname.length > 25
+          ? product.productname.substring(0, 25) + "..."
           : product.productname;
+
+      const truncatedDesc =
+        product.description.length > 25
+            ? product.description.substring(0, 25) + "..."
+            : product.description;
 
       productElement.innerHTML = `
         <a href="../products/products-1.html">
@@ -885,7 +980,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <img src="http://44.196.192.232:5002/uploads/${product.image}" class="card-img-top" alt="${product.productname}" onerror="this.onerror=null;this.src='../assets/images/ImageNotFound.png';"/>
             <div class="card-body">
               <h5 class="card-title">${truncatedName}</h5>
-              <p class="card-text">${product.description}</p>
+              <p class="card-text">${truncatedDesc}</p>
             </div>
           </div>
         </a>

@@ -21,10 +21,12 @@ a{
   border-bottom: 2px solid black;
 }
 .form-cont {
-  padding: 2% 4%;
-  /* margin-top: 4%; */
+  padding: 1% 4% 2% 4%;
   display: grid;
-  /* background-color: black; */
+}
+
+.outer-head{
+  margin-bottom: 1rem;
 }
 .form-cont > * {
   margin: auto;
